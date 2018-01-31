@@ -1,0 +1,6 @@
+public enum Options {
+    CLOSEST_CHARGING_STATION,
+    STATION_AT_LOCATION,
+    STATION_AT_AREA
+    ;
+}
