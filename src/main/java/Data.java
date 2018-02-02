@@ -50,5 +50,27 @@ public class Data {
 
     }
 
+    ////////////////////////// FIND STATION AT AREA ////////////////////////////////////////////////////////////////////////
+
+    public List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
+
+
+        List<ChargingPoint> chargingPoints = new ArrayList<>();
+
+        for (ChargingPoint p : points) {
+
+            if ((Math.pow(longitude - p.getOperatorInfo().getAddressInfo().getLongitude(), 2) +
+
+                    +(Math.pow(latitude - p.getOperatorInfo().getAddressInfo().getLatitude(), 2))
+
+                    < radius * radius)) {
+
+                chargingPoints.add(p);
+            }
+        }
+
+        return chargingPoints;
+
+    }
 }
 
