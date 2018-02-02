@@ -5,7 +5,7 @@ public class OperatorInfo {
     private String title;
     private String websiteURL;
     private String comments;
-    private String addressInfo;
+    private AddressInfo addressInfo;
     private String bookingURL;
     private String contactEmail;
     private String faultReportEmail;
@@ -42,11 +42,11 @@ public class OperatorInfo {
         this.comments = comments;
     }
 
-    public String getAddressInfo() {
+    public AddressInfo getAddressInfo() {
         return addressInfo;
     }
 
-    public void setAddressInfo(String addressInfo) {
+    public void setAddressInfo(AddressInfo addressInfo) {
         this.addressInfo = addressInfo;
     }
 
