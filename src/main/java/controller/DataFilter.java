@@ -22,9 +22,9 @@ public class DataFilter {
         return chargingPoints;
     }
 
-    public void findClosestChargingStation(List<ChargingPoint> points, double longitude, double latitude) {
+    public static ChargingPoint findClosestChargingStation(List<ChargingPoint> points, double longitude, double latitude) {
 
-        List<ChargingPoint> chargingPoints = new ArrayList();
+        ChargingPoint chargingPoint = null;
 
         double distance;
 
@@ -37,9 +37,11 @@ public class DataFilter {
 
             if (distance < closest) {
                 closest = distance;
+                chargingPoint = p;
             }
 
         }
+        return chargingPoint;
 
     }
 

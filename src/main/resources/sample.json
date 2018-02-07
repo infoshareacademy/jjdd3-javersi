@@ -1,0 +1,1382 @@
+[
+  {
+    "ID": 99562,
+    "UUID": "75E21538-5A47-4A8E-995A-7D07B02EEE5F",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "37665",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99908,
+      "Title": "Bank of Colorado",
+      "AddressLine1": "1146 Interquest Pkwy",
+      "AddressLine2": null,
+      "Town": "Colorado Springs",
+      "StateOrProvince": "CO",
+      "Postcode": "80903",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 38.991507,
+      "Longitude": -104.808268,
+      "ContactTelephone1": "(719) 227-0100",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 3,
+    "GeneralComments": "3 Tesla Connectors, up to 16kW.Available to the public. Self park.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-30T06:47:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-30T06:47:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140691,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 3,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-30T06:47:00Z"
+  },
+  {
+    "ID": 99559,
+    "UUID": "99D22B9B-B787-4105-8236-D3871F99F9F3",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "37188",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99905,
+      "Title": "Pupatella",
+      "AddressLine1": "1 N Morris St",
+      "AddressLine2": null,
+      "Town": "Richmond",
+      "StateOrProvince": "VA",
+      "Postcode": "23220",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 37.546347,
+      "Longitude": -77.456361,
+      "ContactTelephone1": "(804) 355-3135",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 2,
+    "GeneralComments": "2 Tesla Connectors, up to 12kW.Available for customers. Self park.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-30T06:46:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-30T06:46:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140688,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 12.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 2,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-30T06:46:00Z"
+  },
+  {
+    "ID": 99560,
+    "UUID": "A79D0E9A-04F3-40A0-BF56-F65DA2AA44E1",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "22338",
+    "UsageTypeID": 6,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": false,
+      "IsAccessKeyRequired": false,
+      "ID": 6,
+      "Title": "Private - For Staff, Visitors or Customers"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99906,
+      "Title": "Element By Westin Chandler",
+      "AddressLine1": "44 S Chandler Village DR",
+      "AddressLine2": null,
+      "Town": "Chandler",
+      "StateOrProvince": "AZ",
+      "Postcode": "85225",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 33.302804,
+      "Longitude": -111.903236,
+      "ContactTelephone1": "(480) 553-7277",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 2,
+    "GeneralComments": "2 Tesla Connectors, up to 16kW.Available for patrons only. Self park.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-30T06:46:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-30T06:46:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140689,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 2,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-30T06:46:00Z"
+  },
+  {
+    "ID": 99466,
+    "UUID": "06FAA3B7-8360-467A-BA8D-385B56D98507",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40033",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99812,
+      "Title": "JW Marriott Santa Monica le Merigot",
+      "AddressLine1": "1740 Ocean Ave",
+      "AddressLine2": null,
+      "Town": "Santa Monica",
+      "StateOrProvince": "California",
+      "Postcode": "90401",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 34.00854,
+      "Longitude": -118.492438,
+      "ContactTelephone1": "(310) 395-9700",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 4,
+    "GeneralComments": "4 Tesla Connectors, up to 16kW.Available for customers. Please see valet.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:54:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:54:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140555,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 4,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:54:00Z"
+  },
+  {
+    "ID": 99460,
+    "UUID": "7691F121-989E-4586-8206-EDE447A19175",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40032",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99806,
+      "Title": "Electric Cooperatives of Arkansas",
+      "AddressLine1": "1 Cooperative Wy",
+      "AddressLine2": null,
+      "Town": "Little Rock",
+      "StateOrProvince": "Arkansas",
+      "Postcode": "72209",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 34.677546,
+      "Longitude": -92.32246,
+      "ContactTelephone1": "(501) 570-2200",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 4,
+    "GeneralComments": "4 Tesla Connectors, up to 13kW.Available to the public. Self park.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:53:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:53:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140549,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 13.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 4,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:53:00Z"
+  },
+  {
+    "ID": 99461,
+    "UUID": "01072A99-FBD7-4603-B725-FA110FFE6CA3",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40080",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99807,
+      "Title": "Fairmont Chateau Whistler - Parking Level P1",
+      "AddressLine1": "4599 Chateau BLVD",
+      "AddressLine2": null,
+      "Town": "Whistler",
+      "StateOrProvince": "British Columbia",
+      "Postcode": "V0N 1B4",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 50.117399,
+      "Longitude": -122.944972,
+      "ContactTelephone1": "(604) 938-8000",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 10,
+    "GeneralComments": "10 Tesla Connectors, up to 16kW.Available for customers. Self park.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:53:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:53:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140550,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 10,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:53:00Z"
+  },
+  {
+    "ID": 99462,
+    "UUID": "B49138E7-FFE0-43A0-BB3F-21FE50B32970",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40026",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99808,
+      "Title": "Quality Inn - Redwoods Area",
+      "AddressLine1": "1209 4th St",
+      "AddressLine2": null,
+      "Town": "Eureka",
+      "StateOrProvince": "California",
+      "Postcode": "95501",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 40.804184,
+      "Longitude": -124.158086,
+      "ContactTelephone1": "(707) 443-1601",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 4,
+    "GeneralComments": "4 Tesla Connectors, up to 16kW.Available for customers. Please see front desk.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:53:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:53:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140551,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 4,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:53:00Z"
+  },
+  {
+    "ID": 99463,
+    "UUID": "0BFD777D-67C1-48E8-AF07-05F0DD1AEB5A",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40076",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99809,
+      "Title": "The Hotel Sync",
+      "AddressLine1": "518 Corvette DR",
+      "AddressLine2": null,
+      "Town": "Bowling Green",
+      "StateOrProvince": "Kentucky",
+      "Postcode": "42101",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 37.0096951,
+      "Longitude": -86.374556,
+      "ContactTelephone1": "(270) 745-0123",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 3,
+    "GeneralComments": "3 Tesla Connectors, up to 18kW.Available for customers. Please see front desk.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:53:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:53:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140552,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 18.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 3,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:53:00Z"
+  },
+  {
+    "ID": 99464,
+    "UUID": "10BA1305-E6D8-41C7-B145-3CC3D404D7A4",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40078",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99810,
+      "Title": "Dacotah Ridge Golf Club",
+      "AddressLine1": "31042 County RD 2",
+      "AddressLine2": null,
+      "Town": "Morton",
+      "StateOrProvince": "Minnesota",
+      "Postcode": "56270",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 44.5010352,
+      "Longitude": -94.9310494,
+      "ContactTelephone1": "(507) 697-8050",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 2,
+    "GeneralComments": "2 Tesla Connectors, up to 16kW.Available for customers. Please see front desk.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:53:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:53:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140553,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 2,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:53:00Z"
+  },
+  {
+    "ID": 99454,
+    "UUID": "528AFE95-B1F2-4D17-AB1C-3D7E49D6B417",
+    "ParentChargePointID": null,
+    "DataProviderID": 1,
+    "DataProvider": {
+      "WebsiteURL": "http://openchargemap.org",
+      "Comments": null,
+      "DataProviderStatusType": {
+        "IsProviderEnabled": true,
+        "ID": 1,
+        "Title": "Manual Data Entry"
+      },
+      "IsRestrictedEdit": false,
+      "IsOpenDataLicensed": true,
+      "IsApprovedImport": true,
+      "License": "Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "DateLastImported": null,
+      "ID": 1,
+      "Title": "Open Charge Map Contributors"
+    },
+    "DataProvidersReference": null,
+    "OperatorID": 23,
+    "OperatorInfo": {
+      "WebsiteURL": "http://www.teslamotors.com",
+      "Comments": null,
+      "PhonePrimaryContact": null,
+      "PhoneSecondaryContact": null,
+      "IsPrivateIndividual": null,
+      "AddressInfo": null,
+      "BookingURL": null,
+      "ContactEmail": null,
+      "FaultReportEmail": null,
+      "IsRestrictedEdit": null,
+      "ID": 23,
+      "Title": "Tesla Motors (Worldwide)"
+    },
+    "OperatorsReference": "40087",
+    "UsageTypeID": 4,
+    "UsageType": {
+      "IsPayAtLocation": false,
+      "IsMembershipRequired": true,
+      "IsAccessKeyRequired": true,
+      "ID": 4,
+      "Title": "Public - Membership Required"
+    },
+    "UsageCost": null,
+    "AddressInfo": {
+      "ID": 99800,
+      "Title": "Snowbird Parking Structure, Level 2",
+      "AddressLine1": "1 Cliff Lodge DR",
+      "AddressLine2": null,
+      "Town": "Snowbird",
+      "StateOrProvince": "Utah",
+      "Postcode": "84092",
+      "CountryID": 2,
+      "Country": {
+        "ISOCode": "US",
+        "ContinentCode": "NA",
+        "ID": 2,
+        "Title": "United States"
+      },
+      "Latitude": 40.582857,
+      "Longitude": -111.651537,
+      "ContactTelephone1": "(801) 933-2222",
+      "ContactTelephone2": null,
+      "ContactEmail": null,
+      "AccessComments": null,
+      "RelatedURL": null,
+      "Distance": null,
+      "DistanceUnit": 0
+    },
+    "NumberOfPoints": 3,
+    "GeneralComments": "3 Tesla Connectors, up to 16kW.Available for customers. Self park.",
+    "DatePlanned": null,
+    "DateLastConfirmed": null,
+    "StatusTypeID": 50,
+    "StatusType": {
+      "IsOperational": true,
+      "IsUserSelectable": true,
+      "ID": 50,
+      "Title": "Operational"
+    },
+    "DateLastStatusUpdate": "2018-01-26T06:52:00Z",
+    "DataQualityLevel": 1,
+    "DateCreated": "2018-01-26T06:52:00Z",
+    "SubmissionStatusTypeID": 200,
+    "SubmissionStatus": {
+      "IsLive": true,
+      "ID": 200,
+      "Title": "Submission Published"
+    },
+    "UserComments": null,
+    "PercentageSimilarity": null,
+    "Connections": [
+      {
+        "ID": 140543,
+        "ConnectionTypeID": 30,
+        "ConnectionType": {
+          "FormalName": null,
+          "IsDiscontinued": false,
+          "IsObsolete": false,
+          "ID": 30,
+          "Title": "Tesla (Model S onwards)"
+        },
+        "Reference": null,
+        "StatusTypeID": 50,
+        "StatusType": {
+          "IsOperational": true,
+          "IsUserSelectable": true,
+          "ID": 50,
+          "Title": "Operational"
+        },
+        "LevelID": 2,
+        "Level": {
+          "Comments": "Over 2 kW, usually non-domestic socket type",
+          "IsFastChargeCapable": false,
+          "ID": 2,
+          "Title": "Level 2 : Medium (Over 2kW)"
+        },
+        "Amps": null,
+        "Voltage": null,
+        "PowerKW": 16.0,
+        "CurrentTypeID": 20,
+        "CurrentType": {
+          "Description": "Alternating Current - Three Phase",
+          "ID": 20,
+          "Title": "AC (Three-Phase)"
+        },
+        "Quantity": 3,
+        "Comments": null
+      }
+    ],
+    "MediaItems": null,
+    "MetadataValues": null,
+    "IsRecentlyVerified": true,
+    "DateLastVerified": "2018-01-26T06:52:00Z"
+  }
+]
