@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         List<ChargingPoint> chargingPointList = null;
         try {
-            String jsonContent = JsonLoader.loadFromFile("/home/dawidbyczkowski/Desktop/example.json");
+            String jsonContent = JsonLoader.loadFromFile("src/main/resources/sample.json");
             chargingPointList = JsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
             e.printStackTrace();
