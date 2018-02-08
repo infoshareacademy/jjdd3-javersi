@@ -2,14 +2,13 @@ package controller;
 
 import model.ChargingPoint;
 import model.Country;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.lang.StrictMath.sqrt;
 
 public class DataFilter {
-    public List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town, Country country) {
+
+    public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town, Country country) {
 
         List<ChargingPoint> chargingPoints = new ArrayList();
 
@@ -18,7 +17,6 @@ public class DataFilter {
                 chargingPoints.add(p);
             }
         }
-
         return chargingPoints;
     }
 
@@ -39,14 +37,11 @@ public class DataFilter {
                 closest = distance;
                 chargingPoint = p;
             }
-
         }
         return chargingPoint;
-
     }
 
-    public List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
-
+    public static List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
 
         List<ChargingPoint> chargingPoints = new ArrayList();
 
@@ -61,9 +56,7 @@ public class DataFilter {
                 chargingPoints.add(p);
             }
         }
-
         return chargingPoints;
-
     }
 }
 
