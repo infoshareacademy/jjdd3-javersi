@@ -5,8 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class JsonLoader {
-    public static String loadFromFile(String path)throws IOException
-    {
+
+    public static String loadFromFile(String path)throws IOException {
 
         String everything ="";
         String line = null;

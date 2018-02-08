@@ -1,7 +1,6 @@
 package view;
 
 import model.ChargingPoint;
-
 import java.util.List;
 
 public class PointDisplayer {
@@ -10,6 +9,12 @@ public class PointDisplayer {
 
         System.out.println(
                 "Properties of the: " + chargingPoint + "\n" +
+
+    public static void showChargingPointProperties(ChargingPoint chargingPoint) {
+
+        System.out.println(
+                "Properties of the: " + chargingPoint + "\n" +
+
                         "\nID: " + chargingPoint.getId() +
                         "\nUUID: " + chargingPoint.getUuid() +
 
@@ -34,7 +39,8 @@ public class PointDisplayer {
         );
     }
 
-    public void showAllAvailablePointsProperties(List<ChargingPoint> chargingPoints) {
+    public static void showAllAvailablePointsProperties(List<ChargingPoint> chargingPoints) {
+
 
         for (ChargingPoint p : chargingPoints) {
 
