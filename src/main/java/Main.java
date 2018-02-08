@@ -2,6 +2,7 @@ import controller.DataFilter;
 import controller.JsonLoader;
 import controller.JsonParser;
 import model.ChargingPoint;
+import model.OperatorInfo;
 import view.Menu;
 
 import java.io.IOException;
@@ -23,8 +24,12 @@ public class Main {
             case 1: {
                 // wczytac polozenie od uzytkownika
                 ChargingPoint chargingPoint = DataFilter.findClosestChargingStation(chargingPointList,10,10);
-
-
+            }
+            case 2: {
+                List<ChargingPoint> chargingPointListAtArea = DataFilter.findChargingStationAtArea(chargingPointList,10,10,5);
+            }
+            case 3: {
+            //    List<ChargingPoint> chargingPointListAtTown = DataFilter.findChargingStationAtTown(chargingPointList,"Warszawa","Poland");
             }
         }
     }
