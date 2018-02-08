@@ -2,7 +2,7 @@ package model;
 
 public class Country {
     private int id;
-    private String iSOCode;
+    private String isoCode;
     private String continentCode;
     private String title;
 
@@ -14,12 +14,12 @@ public class Country {
         this.id = id;
     }
 
-    public String getiSOCode() {
-        return iSOCode;
+    public String getIsoCode() {
+        return isoCode;
     }
 
-    public void setiSOCode(String iSOCode) {
-        this.iSOCode = iSOCode;
+    public void setIsoCode(String isoCode) {
+        this.isoCode = isoCode;
     }
 
     public String getContinentCode() {
