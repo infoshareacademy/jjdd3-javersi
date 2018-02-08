@@ -5,11 +5,6 @@ import java.util.List;
 
 public class PointDisplayer {
 
-    public void showChargingPointProperties(ChargingPoint chargingPoint) {
-
-        System.out.println(
-                "Properties of the: " + chargingPoint + "\n" +
-
     public static void showChargingPointProperties(ChargingPoint chargingPoint) {
 
         System.out.println(
@@ -41,11 +36,9 @@ public class PointDisplayer {
 
     public static void showAllAvailablePointsProperties(List<ChargingPoint> chargingPoints) {
 
-
         for (ChargingPoint p : chargingPoints) {
 
             showChargingPointProperties(p);
         }
     }
-
 }
