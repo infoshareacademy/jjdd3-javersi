@@ -11,7 +11,7 @@ public class DataFilter {
     public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town, Country country) {
 
         List<ChargingPoint> chargingPoints = new ArrayList();
-        
+
 
         for (ChargingPoint p : points) {
             if (p.getOperatorInfo().getAddressInfo().getTown() == town) {
