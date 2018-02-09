@@ -17,6 +17,7 @@ public class ChargingPoint {
     private List<Connection> connectionList;
     private Date dateLastVerified;
 
+
     public int getId() {
         return id;
     }

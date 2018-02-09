@@ -1,13 +1,15 @@
 package controller;
 
+import model.ChargingPoint;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class DataFilterTest {
 
+
     @Test
     void findChargingStationAtTown() {
+
 
 
 
@@ -15,6 +17,7 @@ class DataFilterTest {
 
     @Test
     void findClosestChargingStation() {
+
 
 
 
