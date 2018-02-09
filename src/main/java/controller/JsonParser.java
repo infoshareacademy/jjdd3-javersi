@@ -35,7 +35,7 @@ public class JsonParser {
                 ChargingPoint chargingPoint = new ChargingPoint();
 
                 JsonElement subElement = jsonObject.get("ID");
-                if(!subElement.isJsonNull()) {
+                if(!subElement.isJsonNull()){
                     chargingPoint.setId(subElement.getAsInt());
                 }
 
@@ -75,7 +75,7 @@ public class JsonParser {
                 }
 
                 subElement = jsonObject.get("DateLastStatusUpdate");
-                if(!subElement.isJsonNull()) {
+                if(!subElement.isJsonNull()){
                     chargingPoint.setDateLastStatusUpdate(parseDate(subElement.getAsString()));
                 }
 
@@ -89,9 +89,8 @@ public class JsonParser {
                     chargingPoint.setDateCreated(parseDate(subElement.getAsString()));
                 }
 
-
                 subElement = jsonObject.getAsJsonArray("Connections");
-                if(!subElement.isJsonNull()) {
+                if(!subElement.isJsonNull()){
                     List<Connection> connectionList = new ArrayList<Connection>();
                     for (JsonElement subArrayElement : subElement.getAsJsonArray()) {
                         if(!subArrayElement.isJsonNull())
@@ -100,12 +99,10 @@ public class JsonParser {
                     chargingPoint.setConnectionList(connectionList);
                 }
 
-
                 subElement = jsonObject.get("DateLastVerified");
                 if(!subElement.isJsonNull()) {
                     chargingPoint.setDateLastVerified(parseDate(subElement.getAsString()));
                 }
-
 
                 subElement = jsonObject.get("NumberOfPoints");
                 if(!subElement.isJsonNull()) {
@@ -123,14 +120,9 @@ public class JsonParser {
                 }
 
                 subElement = jsonObject.get("DateLastConfirmed");
-                if(!subElement.isJsonNull()) {
+                if(!subElement.isJsonNull()){
                     chargingPoint.setDateLastConfirmed(parseDate(subElement.getAsString()));
                 }
-
-
-                //DOKOŃCZYĆ
-
-
                 chargingPoints.add(chargingPoint);
             }
 
@@ -302,7 +294,6 @@ public class JsonParser {
                 usageType.setAccessKeyRequired(subElement.getAsBoolean());
             }
 
-
             return  usageType;
         }
 
@@ -325,7 +316,6 @@ public class JsonParser {
                 statusType.setUserSelectable(subElement.getAsBoolean());
             }
 
-
             return statusType;
         }
 
@@ -338,6 +328,7 @@ public class JsonParser {
                 e.printStackTrace(); //Usunąć jak poznamy loggery
                 return null;
             }
+
             return date;
         }
 
