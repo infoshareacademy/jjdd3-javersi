@@ -125,4 +125,36 @@ public class ChargingPoint {
     public void setAddressInfo(AddressInfo addressInfo) {
         this.addressInfo = addressInfo;
     }
+
+    public int getNumberOfPoints() {
+        return numberOfPoints;
+    }
+
+    public void setNumberOfPoints(int numberOfPoints) {
+        this.numberOfPoints = numberOfPoints;
+    }
+
+    public String getGeneralComments() {
+        return generalComments;
+    }
+
+    public void setGeneralComments(String generalComments) {
+        this.generalComments = generalComments;
+    }
+
+    public Date getDatePlanned() {
+        return datePlanned;
+    }
+
+    public void setDatePlanned(Date datePlanned) {
+        this.datePlanned = datePlanned;
+    }
+
+    public Date getDateLastConfirmed() {
+        return dateLastConfirmed;
+    }
+
+    public void setDateLastConfirmed(Date dateLastConfirmed) {
+        this.dateLastConfirmed = dateLastConfirmed;
+    }
 }

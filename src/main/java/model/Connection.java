@@ -1,7 +1,6 @@
 package model;
 
 public class Connection {
-    private int id;
     private ConnectionType connectionType;
     private StatusType statusType;
     private Level level;
@@ -11,14 +10,6 @@ public class Connection {
     private CurrentType currentType;
     private int quantity;
     private String comments;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public ConnectionType getConnectionType() {
         return connectionType;
