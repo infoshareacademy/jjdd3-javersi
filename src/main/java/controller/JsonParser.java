@@ -3,6 +3,7 @@ package controller;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import model.*;
+
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -11,8 +12,9 @@ import java.util.*;
 
 public class JsonParser {
 
-    public List<ChargingPoint> jsonToChargingPointList (String json){
-        Type listType = new TypeToken<LinkedList<ChargingPoint>>(){}.getType();
+    public List<ChargingPoint> jsonToChargingPointList(String json) {
+        Type listType = new TypeToken<LinkedList<ChargingPoint>>() {
+        }.getType();
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(listType, new ChargingPointDeserializer());
         Gson gson = gsonBuilder.create();
@@ -29,98 +31,98 @@ public class JsonParser {
 
             JsonArray jsonArray = json.getAsJsonArray();
 
-            for (JsonElement jsonElement: jsonArray) {
+            for (JsonElement jsonElement : jsonArray) {
                 JsonObject jsonObject = jsonElement.getAsJsonObject();
 
                 ChargingPoint chargingPoint = new ChargingPoint();
 
                 JsonElement subElement = jsonObject.get("ID");
-                if(!subElement.isJsonNull()){
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setId(subElement.getAsInt());
                 }
 
                 subElement = jsonObject.get("UUID");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setUuid(subElement.getAsString());
                 }
 
                 subElement = jsonObject.get("ParentChargePointID");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setParentChargePointID(subElement.getAsInt());
                 }
 
                 JsonElement object = jsonObject.get("OperatorInfo");
-                if(!object.isJsonNull()) {
+                if (!object.isJsonNull()) {
                     chargingPoint.setOperatorInfo(parseAsOperatorInfo(object));
                 }
 
                 subElement = jsonObject.get("UsageType");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setUsageType(parseAsUsageType(subElement));
                 }
 
                 subElement = jsonObject.get("UsageCost");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setUsageCost(subElement.getAsDouble());
                 }
 
                 subElement = jsonObject.get("AddressInfo");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setAddressInfo(parseAsAddressInfo(subElement));
                 }
 
                 subElement = jsonObject.get("StatusType");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setStatusType(parseAsStatusType(subElement));
                 }
 
                 subElement = jsonObject.get("DateLastStatusUpdate");
-                if(!subElement.isJsonNull()){
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setDateLastStatusUpdate(parseDate(subElement.getAsString()));
                 }
 
                 subElement = jsonObject.get("DataQualityLevel");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setDataQualityLevel(subElement.getAsInt());
                 }
 
                 subElement = jsonObject.get("DateCreated");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setDateCreated(parseDate(subElement.getAsString()));
                 }
 
                 subElement = jsonObject.getAsJsonArray("Connections");
-                if(!subElement.isJsonNull()){
+                if (!subElement.isJsonNull()) {
                     List<Connection> connectionList = new ArrayList<Connection>();
                     for (JsonElement subArrayElement : subElement.getAsJsonArray()) {
-                        if(!subArrayElement.isJsonNull())
+                        if (!subArrayElement.isJsonNull())
                             connectionList.add(parseAsConnection(subArrayElement));
                     }
                     chargingPoint.setConnectionList(connectionList);
                 }
 
                 subElement = jsonObject.get("DateLastVerified");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setDateLastVerified(parseDate(subElement.getAsString()));
                 }
 
                 subElement = jsonObject.get("NumberOfPoints");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setNumberOfPoints(subElement.getAsInt());
                 }
 
                 subElement = jsonObject.get("GeneralComments");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setGeneralComments(subElement.getAsString());
                 }
 
                 subElement = jsonObject.get("DatePlanned");
-                if(!subElement.isJsonNull()) {
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setDatePlanned(parseDate(subElement.getAsString()));
                 }
 
                 subElement = jsonObject.get("DateLastConfirmed");
-                if(!subElement.isJsonNull()){
+                if (!subElement.isJsonNull()) {
                     chargingPoint.setDateLastConfirmed(parseDate(subElement.getAsString()));
                 }
                 chargingPoints.add(chargingPoint);
@@ -133,7 +135,7 @@ public class JsonParser {
             OperatorInfo operatorInfo = new OperatorInfo();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 operatorInfo.setTitle(subElement.getAsString());
             }
@@ -149,7 +151,7 @@ public class JsonParser {
             }
 
             subElement = jsonObject.get("AddressInfo");
-            if(!subElement.isJsonNull()) {
+            if (!subElement.isJsonNull()) {
                 operatorInfo.setAddressInfo(parseAsAddressInfo(subElement));
             }
 
@@ -168,7 +170,7 @@ public class JsonParser {
                 operatorInfo.setFaultReportEmail(subElement.getAsString());
             }
 
-            return  operatorInfo;
+            return operatorInfo;
         }
 
         private AddressInfo parseAsAddressInfo(JsonElement jsonElement) {
@@ -245,14 +247,14 @@ public class JsonParser {
                 addressInfo.setRelatedURL(subElement.getAsString());
             }
 
-            return  addressInfo;
+            return addressInfo;
         }
 
         private Country parseAsCountry(JsonElement jsonElement) {
             Country country = new Country();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 country.setTitle(subElement.getAsString());
             }
@@ -267,14 +269,14 @@ public class JsonParser {
                 country.setIsoCode(subElement.getAsString());
             }
 
-            return  country;
+            return country;
         }
 
         private UsageType parseAsUsageType(JsonElement jsonElement) {
             UsageType usageType = new UsageType();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 usageType.setTitle(subElement.getAsString());
             }
@@ -294,14 +296,14 @@ public class JsonParser {
                 usageType.setAccessKeyRequired(subElement.getAsBoolean());
             }
 
-            return  usageType;
+            return usageType;
         }
 
         private StatusType parseAsStatusType(JsonElement jsonElement) {
             StatusType statusType = new StatusType();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 statusType.setTitle(subElement.getAsString());
             }
@@ -336,23 +338,23 @@ public class JsonParser {
             Connection connection = new Connection();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Comments");
+            JsonElement subElement = jsonObject.get("Comments");
             if (!subElement.isJsonNull()) {
                 connection.setComments(subElement.getAsString());
             }
 
             subElement = jsonObject.get("ConnectionType");
-            if(!subElement.isJsonNull()) {
+            if (!subElement.isJsonNull()) {
                 connection.setConnectionType(parseAsConnectionType(subElement));
             }
 
             subElement = jsonObject.get("StatusType");
-            if(!subElement.isJsonNull()) {
+            if (!subElement.isJsonNull()) {
                 connection.setStatusType(parseAsStatusType(subElement));
             }
 
             subElement = jsonObject.get("Level");
-            if(!subElement.isJsonNull()) {
+            if (!subElement.isJsonNull()) {
                 connection.setLevel(parseAsLevel(subElement));
             }
 
@@ -372,7 +374,7 @@ public class JsonParser {
             }
 
             subElement = jsonObject.get("CurrentType");
-            if(!subElement.isJsonNull()) {
+            if (!subElement.isJsonNull()) {
                 connection.setCurrentType(parseAsCurrentType(subElement));
             }
 
@@ -393,12 +395,12 @@ public class JsonParser {
             ConnectionType connectionType = new ConnectionType();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 connectionType.setTitle(subElement.getAsString());
             }
 
-            subElement  =  jsonObject.get("FormalName");
+            subElement = jsonObject.get("FormalName");
             if (!subElement.isJsonNull()) {
                 connectionType.setFormalName(subElement.getAsString());
             }
@@ -421,11 +423,11 @@ public class JsonParser {
             Level level = new Level();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull())
                 level.setTitle(subElement.getAsString());
 
-            subElement  =  jsonObject.get("Comments");
+            subElement = jsonObject.get("Comments");
             if (!subElement.isJsonNull())
                 level.setComments(subElement.getAsString());
 
@@ -441,12 +443,12 @@ public class JsonParser {
             CurrentType currentType = new CurrentType();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement  =  jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 currentType.setTitle(subElement.getAsString());
             }
 
-            subElement  =  jsonObject.get("Description");
+            subElement = jsonObject.get("Description");
             if (!subElement.isJsonNull()) {
                 currentType.setDescription(subElement.getAsString());
             }
