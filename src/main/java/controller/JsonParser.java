@@ -3,7 +3,6 @@ package controller;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import model.*;
-
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,7 +11,7 @@ import java.util.*;
 
 public class JsonParser {
 
-    public  List<ChargingPoint> jsonToChargingPointList (String json){
+    public List<ChargingPoint> jsonToChargingPointList (String json){
         Type listType = new TypeToken<LinkedList<ChargingPoint>>(){}.getType();
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(listType, new ChargingPointDeserializer());
@@ -20,11 +19,10 @@ public class JsonParser {
 
         List<ChargingPoint> chargingPoints = gson.fromJson(json, listType);
 
-        return  chargingPoints;
+        return chargingPoints;
     }
 
     private class ChargingPointDeserializer implements JsonDeserializer<List<ChargingPoint>> {
-
         public List<ChargingPoint> deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
                 throws JsonParseException {
             List<ChargingPoint> chargingPoints = new LinkedList<ChargingPoint>();
@@ -464,8 +462,5 @@ public class JsonParser {
 
             return currentType;
         }
-
     }
-
-
 }
