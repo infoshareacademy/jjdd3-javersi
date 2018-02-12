@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.toList;
 
 public class DataFilter {
 
-    public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town, Country country) {
+    public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town) {
 
         List<ChargingPoint> chargingPoints = points.stream()
                 .filter(p -> p.getAddressInfo().getTown().equals(town))
