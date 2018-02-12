@@ -2,8 +2,10 @@ package controller;
 
 import model.ChargingPoint;
 import model.Country;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static java.lang.StrictMath.sqrt;
 
 public class DataFilter {
@@ -32,7 +34,7 @@ public class DataFilter {
 
         for (ChargingPoint p : points) {
 
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(),  latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(), latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
 
 
             if (distance < closest) {
@@ -49,7 +51,7 @@ public class DataFilter {
 
         double distance;
         for (ChargingPoint p : points) {
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(),  latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(), latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
 
             if (distance < radius) {
 
