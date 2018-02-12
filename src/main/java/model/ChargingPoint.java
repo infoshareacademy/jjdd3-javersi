@@ -22,6 +22,7 @@ public class ChargingPoint {
     private Date datePlanned;
     private Date dateLastConfirmed;
 
+
     public int getId() {
         return id;
     }
