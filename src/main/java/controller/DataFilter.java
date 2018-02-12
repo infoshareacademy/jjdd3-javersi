@@ -1,7 +1,9 @@
 package controller;
 
 import model.ChargingPoint;
+
 import java.util.List;
+
 import static java.util.stream.Collectors.toList;
 
 public class DataFilter {
