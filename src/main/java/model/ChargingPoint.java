@@ -10,12 +10,17 @@ public class ChargingPoint {
     private OperatorInfo operatorInfo;
     private UsageType usageType;
     private double usageCost;
+    private AddressInfo addressInfo;
     private StatusType statusType;
     private Date dateLastStatusUpdate;
     private int dataQualityLevel;
     private Date dateCreated;
     private List<Connection> connectionList;
     private Date dateLastVerified;
+    private int numberOfPoints;
+    private String generalComments;
+    private Date datePlanned;
+    private Date dateLastConfirmed;
 
 
     public int getId() {
@@ -112,5 +117,45 @@ public class ChargingPoint {
 
     public void setDateLastVerified(Date dateLastVerified) {
         this.dateLastVerified = dateLastVerified;
+    }
+
+    public AddressInfo getAddressInfo() {
+        return addressInfo;
+    }
+
+    public void setAddressInfo(AddressInfo addressInfo) {
+        this.addressInfo = addressInfo;
+    }
+
+    public int getNumberOfPoints() {
+        return numberOfPoints;
+    }
+
+    public void setNumberOfPoints(int numberOfPoints) {
+        this.numberOfPoints = numberOfPoints;
+    }
+
+    public String getGeneralComments() {
+        return generalComments;
+    }
+
+    public void setGeneralComments(String generalComments) {
+        this.generalComments = generalComments;
+    }
+
+    public Date getDatePlanned() {
+        return datePlanned;
+    }
+
+    public void setDatePlanned(Date datePlanned) {
+        this.datePlanned = datePlanned;
+    }
+
+    public Date getDateLastConfirmed() {
+        return dateLastConfirmed;
+    }
+
+    public void setDateLastConfirmed(Date dateLastConfirmed) {
+        this.dateLastConfirmed = dateLastConfirmed;
     }
 }

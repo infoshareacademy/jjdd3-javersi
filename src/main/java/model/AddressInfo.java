@@ -6,10 +6,8 @@ public class AddressInfo {
     private String addressLine1;
     private String addressLine2;
     private String town;
-    private String StateOrProvince;
-    private String Postcode;
-    private int countryID;
     private String stateOrProvince;
+    private String postcode;
     private Country country;
     private double latitude;
     private double longitude;
@@ -60,11 +58,11 @@ public class AddressInfo {
     }
 
     public String getStateOrProvince() {
-        return StateOrProvince;
+        return stateOrProvince;
     }
 
     public void setStateOrProvince(String stateOrProvince) {
-        StateOrProvince = stateOrProvince;
+        this.stateOrProvince = stateOrProvince;
     }
 
     public Country getCountry() {
@@ -132,18 +130,13 @@ public class AddressInfo {
     }
 
     public String getPostcode() {
-        return Postcode;
+        return postcode;
     }
 
     public void setPostcode(String postcode) {
-        Postcode = postcode;
+        this.postcode = postcode;
     }
 
-    public int getCountryID() {
-        return countryID;
-    }
 
-    public void setCountryID(int countryID) {
-        this.countryID = countryID;
-    }
+
 }

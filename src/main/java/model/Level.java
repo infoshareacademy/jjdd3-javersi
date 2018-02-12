@@ -1,18 +1,9 @@
 package model;
 
 public class Level {
-    private int id;
     private String title;
     private String comments;
     private boolean isFastChargeCapable;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
