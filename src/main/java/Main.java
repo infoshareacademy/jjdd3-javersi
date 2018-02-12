@@ -5,12 +5,8 @@ import model.ChargingPoint;
 import model.OperatorInfo;
 import view.Menu;
 import view.PointDisplayer;
-
 import java.io.IOException;
 import java.util.List;
-
-import static java.lang.StrictMath.*;
-import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class Main {
 
@@ -20,7 +16,8 @@ public class Main {
 
         try {
             String jsonContent = JsonLoader.loadFromFile("src/main/resources/sample.json");
-            chargingPointList = JsonParser.jsonToChargingPointList(jsonContent);
+            JsonParser jsonParser = new JsonParser();
+            chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,17 +25,14 @@ public class Main {
         Menu menu = new Menu();
         switch (menu.pickOption()) {
             case 1: {
-
                 ChargingPoint chargingPoint = DataFilter.findClosestChargingStation(chargingPointList,10,10);
             }
             case 2: {
                 List<ChargingPoint> chargingPointListAtArea = DataFilter.findChargingStationAtArea(chargingPointList,10,10,5);
             }
             case 3: {
-
+                List<ChargingPoint> chargingPointListAtTown = DataFilter.findChargingStationAtTown(chargingPointList,"Warsaw");
             }
         }
-
     }
-
 }
