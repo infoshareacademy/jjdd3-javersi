@@ -39,43 +39,6 @@ public class Main {
             }
         }
 
-//        Main.getDistance();
-
     }
 
-
- /*   public static double getDistance() {
-
-        double radius = 6371000;
-
-        double diffLat = 10;
-
-        double diffLon = 90;
-
-        double a = sin(diffLat / 2) * sin(diffLat / 2) + cos(2) * cos(3) * sin(diffLon / 2) * sin(diffLon / 2);
-
-        double b = 2 * asin(sqrt(a));
-
-        //double b = 2 * atan2( sqrt(a), sqrt(1-a) );
-
-        double distance = radius * b;
-
-        System.out.println(distance);
-
-        return distance;
-
-    }
-
-    function Dist() {
-
-        final double dz = 12756.274;//średnica Ziemi na równiku [km]
-        double a, b;
-
-        a = (Lon2 - Lon1) * Cos(Lat1 * pi / 180);
-
-        b = (Lat2 - Lat1);
-
-        double result = sqrt(a * a + b * b) * PI * dz / 360;//[km]
-
-    }*/
 }
