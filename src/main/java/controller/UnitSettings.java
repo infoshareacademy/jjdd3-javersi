@@ -1,7 +1,7 @@
 package controller;
 
 public class UnitSettings {
-    private static final double  R = 6371;//km
+    private static final double R = 6371;//km
 
     public static double distanceBetweenTwoPoints(double latitude1, double latitude2, double longitude1, double longitude2) {
 

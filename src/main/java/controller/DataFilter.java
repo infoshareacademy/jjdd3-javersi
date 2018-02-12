@@ -2,8 +2,10 @@ package controller;
 
 import model.ChargingPoint;
 import model.Country;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static java.lang.StrictMath.sqrt;
 
 public class DataFilter {
@@ -28,13 +30,12 @@ public class DataFilter {
         double distance;
 
         double closest = Double.MAX_VALUE;
-        longitude = UnitSettings.longitudeToMeters(longitude);
-        latitude = UnitSettings.latitudeToMeters(latitude);
+
 
         for (ChargingPoint p : points) {
 
-            distance = sqrt(Math.pow(latitude - p.getOperatorInfo().getAddressInfo().getLatitude(), 2)
-                    + Math.pow(longitude - p.getOperatorInfo().getAddressInfo().getLongitude(), 2));
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(), latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
+
 
             if (distance < closest) {
                 closest = distance;
@@ -47,16 +48,12 @@ public class DataFilter {
     public static List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
 
         List<ChargingPoint> chargingPoints = new ArrayList();
-        longitude = UnitSettings.longitudeToMeters(longitude);
-        latitude = UnitSettings.latitudeToMeters(latitude);
 
+        double distance;
         for (ChargingPoint p : points) {
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(), latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
 
-            if ((Math.pow(longitude - p.getOperatorInfo().getAddressInfo().getLongitude(), 2) +
-
-                    +(Math.pow(latitude - p.getOperatorInfo().getAddressInfo().getLatitude(), 2))
-
-                    < radius * radius)) {
+            if (distance < radius) {
 
                 chargingPoints.add(p);
             }
