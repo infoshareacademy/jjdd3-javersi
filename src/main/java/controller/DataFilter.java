@@ -1,16 +1,7 @@
 package controller;
 
 import model.ChargingPoint;
-import model.Country;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Stream;
-
-import static java.lang.StrictMath.sqrt;
 import static java.util.stream.Collectors.toList;
 
 public class DataFilter {
