@@ -21,8 +21,6 @@ public class Menu {
                 }
             } catch (NumberFormatException e) {
             }
-
-            System.out.println("Błędna wartość, podaj liczby z zakresu [1,2,3]");
         }
     }
 }
