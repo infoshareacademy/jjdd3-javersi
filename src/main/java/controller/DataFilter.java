@@ -5,20 +5,20 @@ import model.Country;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
 
 import static java.lang.StrictMath.sqrt;
+import static java.util.stream.Collectors.toList;
 
 public class DataFilter {
 
     public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town, Country country) {
 
-        List<ChargingPoint> chargingPoints = new ArrayList();
+        List<ChargingPoint> chargingPoints = points.stream()
+                .filter(p -> p.getAddressInfo().getTown().equals(town))
+                .collect(toList());
 
-        for (ChargingPoint p : points) {
-            if (p.getOperatorInfo().getAddressInfo().getTown() == town) {
-                chargingPoints.add(p);
-            }
-        }
         return chargingPoints;
     }
 
