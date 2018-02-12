@@ -33,8 +33,8 @@ public class DataFilter {
 
         for (ChargingPoint p : points) {
 
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(), latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
-
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(),
+                    latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
 
             if (distance < closest) {
                 closest = distance;
@@ -50,7 +50,9 @@ public class DataFilter {
 
         double distance;
         for (ChargingPoint p : points) {
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(), latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
+
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(),
+                    latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
 
             if (distance < radius) {
 
