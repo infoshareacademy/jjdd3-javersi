@@ -4,7 +4,9 @@ import model.ChargingPoint;
 import model.Country;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
 
@@ -30,11 +32,10 @@ public class DataFilter {
 
         double closest = Double.MAX_VALUE;
 
-
         for (ChargingPoint p : points) {
 
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(),
-                    latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
+            distance = UnitSettings.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
+                    p.getAddressInfo().getLongitude(), longitude);
 
             if (distance < closest) {
                 closest = distance;
@@ -46,19 +47,11 @@ public class DataFilter {
 
     public static List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
 
-        List<ChargingPoint> chargingPoints = new ArrayList();
+        List<ChargingPoint> chargingPoints = points.stream()
+                .filter(p -> UnitSettings.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
+                        p.getAddressInfo().getLongitude(), longitude) < radius)
+                .collect(toList());
 
-        double distance;
-        for (ChargingPoint p : points) {
-
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getOperatorInfo().getAddressInfo().getLatitude(),
-                    latitude, p.getOperatorInfo().getAddressInfo().getLongitude(), longitude);
-
-            if (distance < radius) {
-
-                chargingPoints.add(p);
-            }
-        }
         return chargingPoints;
     }
 }
