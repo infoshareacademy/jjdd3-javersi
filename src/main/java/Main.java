@@ -25,17 +25,17 @@ public class Main {
         Menu menu = new Menu();
         switch (menu.pickOption()) {
             case 1: {
-                ChargingPoint chargingPoint = DataFilter.findClosestChargingStation(chargingPointList,10,10);
+                ChargingPoint chargingPoint = DataFilter.findClosestChargingStation(chargingPointList,-110,40);
                 PointDisplayer.showChargingPointProperties(chargingPoint);
                 break;
             }
             case 2: {
-                List<ChargingPoint> chargingPointListAtArea = DataFilter.findChargingStationAtArea(chargingPointList,10,10,10000);
+                List<ChargingPoint> chargingPointListAtArea = DataFilter.findChargingStationAtArea(chargingPointList,-99.36,39.16,500);
                 PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                 break;
             }
             case 3: {
-                List<ChargingPoint> chargingPointListAtTown = DataFilter.findChargingStationAtTown(chargingPointList,"Colorado Springs");
+                List<ChargingPoint> chargingPointListAtTown = DataFilter.findChargingStationAtTown(chargingPointList,"Whistler");
                 PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                 break;
             }
