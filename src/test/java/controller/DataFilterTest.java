@@ -14,21 +14,30 @@ class DataFilterTest {
 
     @Test
     void shouldProperlySetFirstAndLastName() {
+
         List<ChargingPoint> chargingPointList = new ArrayList<>();
-        ChargingPoint point = new ChargingPoint();
-        AddressInfo addressInfo = new AddressInfo();
-        addressInfo.setTown("Warsaw");
-        point.setAddressInfo(addressInfo);
-        chargingPointList.add(point);
+        ChargingPoint pointOne = new ChargingPoint();
+        AddressInfo addressInfoOne = new AddressInfo();
+        addressInfoOne.setTown("Wroclaw");
+        pointOne.setAddressInfo(addressInfoOne);
+        chargingPointList.add(pointOne);
+
+        ChargingPoint pointTwo = new ChargingPoint();
+        AddressInfo addressInfoTwo = new AddressInfo();
+        addressInfoTwo.setTown("Gdansk");
+        pointTwo.setAddressInfo(addressInfoTwo);
+        chargingPointList.add(pointTwo);
 
         assertAll("Get town",
-                () -> assertEquals("Warsaw", point.getAddressInfo().getTown(), "Town:")
+                () -> assertEquals("Wroclaw", pointOne.getAddressInfo().getTown(), "Town: "),
+                () -> assertEquals("Gdansk", pointTwo.getAddressInfo().getTown(), "Town: ")
         );
     }
 
-
     @Test
     void findClosestChargingStation() {
+
+        List<ChargingPoint> chargingPointList = new ArrayList<>();
 
 
     }
