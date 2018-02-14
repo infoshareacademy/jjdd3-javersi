@@ -7,26 +7,26 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class AppProperties {
-    private static final String FILE_NAME = "src/main/resources/config.properties";
+    private static final String FILE_NAME = "config.properties";
     private static final String UNIT_PROPERTY_NAME = "unit";
 
     private Properties applicationProps = new Properties();
 
     private static AppProperties instance;
 
-    public AppProperties() {
+    private AppProperties() {
         load();
     }
 
-    static{
-        try{
+    static {
+        try {
             instance = new AppProperties();
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Exception occured in creating singleton instance");
         }
     }
 
-    public static AppProperties getInstance(){
+    public static AppProperties getInstance() {
         return instance;
     }
 
@@ -71,6 +71,3 @@ public class AppProperties {
         applicationProps.setProperty(UNIT_PROPERTY_NAME, value.toString());
     }
 }
-
-
-
