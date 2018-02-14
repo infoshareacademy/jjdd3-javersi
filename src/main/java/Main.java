@@ -2,6 +2,7 @@ import controller.DataFilter;
 import controller.JsonLoader;
 import controller.JsonParser;
 import model.ChargingPoint;
+import model.Coordinates;
 import model.OperatorInfo;
 import view.Menu;
 import view.PointDisplayer;
@@ -21,21 +22,28 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        Coordinates coordinates = new Coordinates();
         Menu menu = new Menu();
         switch (menu.pickOption()) {
             case 1: {
-                ChargingPoint chargingPoint = DataFilter.findClosestChargingStation(chargingPointList, -110, 40);
+                coordinates = menu.readCoordinates();
+                ChargingPoint chargingPoint = DataFilter
+                        .findClosestChargingStation(chargingPointList, coordinates.getLongtitude(),
+                                coordinates.getLatitude());
                 PointDisplayer.showChargingPointProperties(chargingPoint);
                 break;
             }
             case 2: {
-                List<ChargingPoint> chargingPointListAtArea = DataFilter.findChargingStationAtArea(chargingPointList, -99.36, 39.16, 500);
+                menu.readCoordinates();
+                List<ChargingPoint> chargingPointListAtArea = DataFilter
+                        .findChargingStationAtArea(chargingPointList, coordinates.getLongtitude(),
+                                coordinates.getLatitude(), 700);
                 PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                 break;
             }
             case 3: {
-                List<ChargingPoint> chargingPointListAtTown = DataFilter.findChargingStationAtTown(chargingPointList, "Whistler");
+                List<ChargingPoint> chargingPointListAtTown = DataFilter
+                        .findChargingStationAtTown(chargingPointList, "Whistler");
                 PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                 break;
             }

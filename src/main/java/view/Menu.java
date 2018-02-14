@@ -1,5 +1,7 @@
 package view;
 
+import model.Coordinates;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -21,6 +23,29 @@ public class Menu {
                 }
             } catch (NumberFormatException e) {
             }
+            System.out.println("Błędna wartość");
         }
+
     }
+
+    public Coordinates readCoordinates() {
+        System.out.println("Podaj współrzędne geograficzne : ");
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            try {
+                System.out.print("Longitude (-180; 180) :");
+                double longitude = Integer.valueOf(scanner.nextLine());
+                System.out.print("Latitude (-90; 90) :");
+                double latitude = Integer.valueOf(scanner.nextLine());
+                if ((longitude >= -180 && longitude <= 180) && (latitude >= -90 && latitude <= 90)) {
+                    return new Coordinates(longitude, latitude);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Błędna wartość!");
+            }
+        }
+
+    }
+
 }
