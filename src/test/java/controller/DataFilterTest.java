@@ -38,6 +38,34 @@ class DataFilterTest {
 
         List<ChargingPoint> chargingPointList = new ArrayList<>();
 
+        ChargingPoint pointOne = new ChargingPoint();
+        AddressInfo addressInfoOne = new AddressInfo();
+        addressInfoOne.setLatitude(15);
+        addressInfoOne.setLongitude(30);
+        addressInfoOne.setId(1111);
+        pointOne.setAddressInfo(addressInfoOne);
+        chargingPointList.add(pointOne);
+
+        ChargingPoint pointTwo = new ChargingPoint();
+        AddressInfo addressInfoTwo = new AddressInfo();
+        addressInfoTwo.setLatitude(87);
+        addressInfoTwo.setLongitude(82);
+        addressInfoTwo.setId(2222);
+        pointTwo.setAddressInfo(addressInfoTwo);
+        chargingPointList.add(pointTwo);
+
+        ChargingPoint pointThree = new ChargingPoint();
+        AddressInfo addressInfoThree = new AddressInfo();
+        addressInfoThree.setLatitude(18);
+        addressInfoThree.setLongitude(47);
+        addressInfoThree.setId(3333);
+        pointThree.setAddressInfo(addressInfoThree);
+        chargingPointList.add(pointThree);
+
+        ChargingPoint returnedPoint = DataFilter.findClosestChargingStation(chargingPointList,
+                31, 16);
+
+        assertEquals(1111, returnedPoint.getAddressInfo().getId());
     }
 
     @Test
@@ -83,6 +111,5 @@ class DataFilterTest {
         assertEquals(2, returnedList.size());
         assertEquals(1111, returnedList.get(0).getAddressInfo().getId());
         assertEquals(3333, returnedList.get(1).getAddressInfo().getId());
-
     }
 }
