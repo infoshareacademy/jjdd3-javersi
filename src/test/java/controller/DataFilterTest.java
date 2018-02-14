@@ -66,7 +66,6 @@ class DataFilterTest {
                 31, 16);
 
         assertEquals(1111, returnedPoint.getAddressInfo().getId());
-
     }
 
     @Test
@@ -112,6 +111,5 @@ class DataFilterTest {
         assertEquals(2, returnedList.size());
         assertEquals(1111, returnedList.get(0).getAddressInfo().getId());
         assertEquals(3333, returnedList.get(1).getAddressInfo().getId());
-
     }
 }
