@@ -2,9 +2,9 @@ import controller.DataFilter;
 import controller.JsonLoader;
 import controller.JsonParser;
 import model.ChargingPoint;
-import model.OperatorInfo;
 import view.Menu;
-import view.PointDisplayer;
+import view.Settings;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -22,9 +22,9 @@ public class Main {
             e.printStackTrace();
         }
 
+        Settings.run();
         Menu menu = new Menu();
         switch (menu.pickOption()) {
-            case 1: {
                 ChargingPoint chargingPoint = DataFilter.findClosestChargingStation(chargingPointList, -110, 40);
                 PointDisplayer.showChargingPointProperties(chargingPoint);
                 break;

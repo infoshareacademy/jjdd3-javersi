@@ -27,7 +27,7 @@ public class DataFilter {
 
         for (ChargingPoint p : points) {
 
-            distance = UnitSettings.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
+            distance = DistanceCalculator.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
                     p.getAddressInfo().getLongitude(), longitude);
 
             if (distance < closest) {
@@ -41,7 +41,7 @@ public class DataFilter {
     public static List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
 
         List<ChargingPoint> chargingPoints = points.stream()
-                .filter(p -> UnitSettings.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
+                .filter(p -> DistanceCalculator.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
                         p.getAddressInfo().getLongitude(), longitude) < radius)
                 .collect(toList());
 
