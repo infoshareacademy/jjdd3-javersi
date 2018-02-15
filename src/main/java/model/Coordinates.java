@@ -6,19 +6,19 @@ public final class Coordinates {
     private double latitude;
 
     public Coordinates(double longtitude, double latitude) {
-        this.longitude = longtitude;
+        this.longitude = longitude;
         this.latitude = latitude;
     }
 
     public Coordinates() {
     }
 
-    public double getLongtitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongtitude(double longtitude) {
-        this.longitude = longtitude;
+    public void setLongtitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public double getLatitude() {
