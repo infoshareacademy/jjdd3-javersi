@@ -20,7 +20,6 @@ public class Main {
         List<ChargingPoint> chargingPointList = null;
 
         try {
-            //String jsonContent = JsonLoader.loadFromFile("src/main/resources/sample.json");
             String jsonContent = JsonLoader.loadFromFile(args[0]);
             JsonParser jsonParser = new JsonParser();
             chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
