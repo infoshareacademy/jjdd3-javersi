@@ -3,6 +3,7 @@ package view;
 import model.ChargingPoint;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class PointDisplayer {
 

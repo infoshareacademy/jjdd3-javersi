@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Settings {
     public static void show() {
+        ClearScreen.clearScreen();
         int yesNo = -1;
         do {
             Scanner scanner = new Scanner(System.in);

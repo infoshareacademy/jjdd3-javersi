@@ -11,7 +11,7 @@ public class DataFilter {
     public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town) {
 
         List<ChargingPoint> chargingPoints = points.stream()
-                .filter(p -> p.getAddressInfo().getTown().equals(town))
+                .filter(p -> p.getAddressInfo().getTown().toUpperCase().equals(town.toUpperCase()))
                 .collect(toList());
 
         return chargingPoints;
