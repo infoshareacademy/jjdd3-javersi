@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Settings {
     public static void show() {
-        ClearScreen.clearScreen();
         int yesNo = -1;
         do {
             Scanner scanner = new Scanner(System.in);
@@ -16,13 +15,14 @@ public class Settings {
                     "1. TAK\n" +
                     "2. NIE");
             try {
-                yesNo = scanner.nextInt();
+                yesNo = Integer.valueOf(scanner.nextLine());
             } catch (Exception e) {
                 System.out.println("Musisz podać liczbę");
             }
         } while (yesOrNo(yesNo) == false);
 
         if (yesNo == 1) {
+
             AppProperties.getInstance().setUnits(UnitPicker.chooseUnit());
             AppProperties.getInstance().save();
         }
