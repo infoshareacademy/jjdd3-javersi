@@ -52,6 +52,7 @@ public class Main {
                     List<ChargingPoint> chargingPointListAtArea = DataFilter
                             .findChargingStationAtArea(chargingPointList, coordinates.getLongitude(),
                                     coordinates.getLatitude(), radius);
+
                     if (chargingPointListAtArea.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                     } else {
@@ -75,7 +76,6 @@ public class Main {
                 case 4: {
                     ClearScreen.clearScreen();
                     Settings.show();
-//                    scanner.nextLine();
                     break;
                 }
                 case 5: {
