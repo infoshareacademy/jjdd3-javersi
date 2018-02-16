@@ -9,6 +9,7 @@ public class UnitPicker {
     public static Units chooseUnit() {
         int unitNumber = -1;
         do {
+            ClearScreen.clearScreen();
             System.out.println("Wybierz jednostkę wpisując jej numer:");
 
             Arrays.stream(Units.values()).forEach(s -> System.out.println((s.ordinal() + 1) + ". " + s.toString()));

@@ -40,11 +40,7 @@ public class Main {
                             .findClosestChargingStation(chargingPointList, coordinates.getLongitude(),
                                     coordinates.getLatitude());
                     if (chargingPoint != null) {
-                        ClearScreen.clearScreen();
                         PointDisplayer.showChargingPointProperties(chargingPoint);
-                    }
-                    else {
-                        System.out.println("Nie znaleziono żadnego punktu");
                     }
                     scanner.nextLine();
                     break;
@@ -56,7 +52,8 @@ public class Main {
                     List<ChargingPoint> chargingPointListAtArea = DataFilter
                             .findChargingStationAtArea(chargingPointList, coordinates.getLongitude(),
                                     coordinates.getLatitude(), radius);
-                    if (!chargingPointList.isEmpty()) {
+
+                    if (chargingPointListAtArea.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                     } else {
                         System.out.println("Nie znaleziono żadnych punktów");
@@ -68,7 +65,7 @@ public class Main {
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
                             .findChargingStationAtTown(chargingPointList, menu.readTown());
-                    if (!chargingPointList.isEmpty() && chargingPointList != null) {
+                    if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                     } else {
                         System.out.println("Nie znaleziono żadnych punktów");
@@ -79,10 +76,8 @@ public class Main {
                 case 4: {
                     ClearScreen.clearScreen();
                     Settings.show();
-                    scanner.nextLine();
                     break;
                 }
-
                 case 5: {
                     break outerloop;
                 }

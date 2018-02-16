@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Menu {
 
     public int pickOption() {
-        ClearScreen.clearScreen();
         System.out.println("1. Znajdź najbliższą stację ładowania");
         System.out.println("2. Znajdź stacje ładowania w podanym promieniu");
         System.out.println("3. Znajdź stacje ładowania w danym mieście ");
