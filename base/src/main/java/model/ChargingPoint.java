@@ -158,4 +158,7 @@ public class ChargingPoint {
     public void setDateLastConfirmed(Date dateLastConfirmed) {
         this.dateLastConfirmed = dateLastConfirmed;
     }
+
+
+
 }
