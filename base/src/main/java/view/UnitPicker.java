@@ -10,14 +10,14 @@ public class UnitPicker {
         int unitNumber = -1;
         do {
             ClearScreen.clearScreen();
-            System.out.println("Wybierz jednostkę wpisując jej numer:");
+            System.out.println("Select the unit:");
 
             Arrays.stream(Units.values()).forEach(s -> System.out.println((s.ordinal() + 1) + ". " + s.toString()));
             Scanner scanner = new Scanner(System.in);
             try {
                 unitNumber = scanner.nextInt() - 1;
             } catch (Exception e) {
-                System.out.println("Musisz podać liczbę");
+                System.out.println("Write a number.");
             }
         } while (ifExist(unitNumber) == false);
 
