@@ -74,7 +74,7 @@ public class Menu {
             try {
                 System.out.print("Town:");
                 String town = scanner.nextLine();
-                if ( town != null ) {
+                if (town != null) {
                     return town;
                 }
             } catch (NumberFormatException e) {

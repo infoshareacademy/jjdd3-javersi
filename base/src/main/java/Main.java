@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-/home/michalmatosek/development/jjdd3-javersi/src/main/java/Main.java
     public static void main(String[] args) {
 
         List<ChargingPoint> chargingPointList = null;
