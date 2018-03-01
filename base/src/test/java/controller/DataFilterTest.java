@@ -24,7 +24,7 @@ class DataFilterTest {
 
         ChargingPoint pointTwo = new ChargingPoint();
         AddressInfo addressInfoTwo = new AddressInfo();
-        addressInfoTwo.setTown("Gdansk");
+        addressInfoTwo.setTown("Wroclaw");
         pointTwo.setAddressInfo(addressInfoTwo);
         chargingPointList.add(pointTwo);
 
@@ -32,6 +32,7 @@ class DataFilterTest {
                 "Wroclaw");
 
         assertEquals("Wroclaw", chargPoints.get(0).getAddressInfo().getTown(), "Town: ");
+        assertEquals("Wroclaw", chargPoints.get(1).getAddressInfo().getTown(), "Town: ");
     }
 
     @Test
