@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
+/home/michalmatosek/development/jjdd3-javersi/src/main/java/Main.java
     public static void main(String[] args) {
 
         List<ChargingPoint> chargingPointList = null;
@@ -41,6 +41,8 @@ public class Main {
                                     coordinates.getLatitude());
                     if (chargingPoint != null) {
                         PointDisplayer.showChargingPointProperties(chargingPoint);
+                    }else {
+                        System.out.println("Charging points not found.");
                     }
                     scanner.nextLine();
                     break;
@@ -56,7 +58,7 @@ public class Main {
                     if (chargingPointListAtArea.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                     } else {
-                        System.out.println("Nie znaleziono żadnych punktów");
+                        System.out.println("Charging points not found.");
                     }
                     scanner.nextLine();
                     break;
@@ -68,7 +70,7 @@ public class Main {
                     if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                     } else {
-                        System.out.println("Nie znaleziono żadnych punktów");
+                        System.out.println("Charging points not found.");
                     }
                     scanner.nextLine();
                     break;

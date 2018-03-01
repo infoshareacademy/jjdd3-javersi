@@ -10,15 +10,15 @@ public class Settings {
         int yesNo = -1;
         do {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Załadowano konfigurację\n" +
-                    "Wybrana jednostka to: " + AppProperties.getInstance().getUnits() + "\n" +
-                    "czy chcesz ją zmienić?\n" +
-                    "1. TAK\n" +
-                    "2. NIE");
+            System.out.println("Configuration has been loaded\n" +
+                    "Selected unit: " + AppProperties.getInstance().getUnits() + "\n" +
+                    "would you like to change?\n" +
+                    "1. YES\n" +
+                    "2. NO");
             try {
                 yesNo = Integer.valueOf(scanner.nextLine());
             } catch (Exception e) {
-                System.out.println("Musisz podać liczbę");
+                System.out.println("Write a number.");
             }
         } while (yesOrNo(yesNo) == false);
 
