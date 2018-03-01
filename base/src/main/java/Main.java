@@ -40,7 +40,7 @@ public class Main {
                                     coordinates.getLatitude());
                     if (chargingPoint != null) {
                         PointDisplayer.showChargingPointProperties(chargingPoint);
-                    }else {
+                    } else {
                         System.out.println("Charging points not found.");
                     }
                     scanner.nextLine();
