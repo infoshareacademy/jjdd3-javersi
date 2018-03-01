@@ -65,7 +65,7 @@ public class Main {
                 case 3: {
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
-                            .findChargingStationAtTown(chargingPointList, menu.readTown());
+                            .findChargingStationInCity(chargingPointList, menu.readCity());
                     if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                     } else {
@@ -76,10 +76,22 @@ public class Main {
                 }
                 case 4: {
                     ClearScreen.clearScreen();
-                    Settings.show();
+                    List<ChargingPoint> chargingPointListAtTown = DataFilter
+                            .findChargingStationInCountry(chargingPointList, menu.readCountry());
+                    if (chargingPointListAtTown.size() != 0) {
+                        PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
+                    } else {
+                        System.out.println("Charging points not found.");
+                    }
+                    scanner.nextLine();
                     break;
                 }
                 case 5: {
+                    ClearScreen.clearScreen();
+                    Settings.show();
+                    break;
+                }
+                case 6: {
                     break outerloop;
                 }
             }
