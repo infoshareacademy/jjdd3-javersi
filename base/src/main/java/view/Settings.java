@@ -1,10 +1,16 @@
 package view;
 
 import controller.AppProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
+
 public class Settings {
+
+    private static final Logger logger = LoggerFactory.getLogger(Settings.class);
+
     public static void show() {
         ClearScreen.clearScreen();
         int yesNo = -1;

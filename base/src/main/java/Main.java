@@ -3,7 +3,8 @@ import controller.JsonLoader;
 import controller.JsonParser;
 import model.ChargingPoint;
 import model.Coordinates;
-import model.OperatorInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.ClearScreen;
 import view.Menu;
 import view.PointDisplayer;
@@ -17,6 +18,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        private final Logger logger = LoggerFactory.getLogger(Main.class.getName());
+
         List<ChargingPoint> chargingPointList = null;
 
         try {
@@ -24,7 +27,7 @@ public class Main {
             JsonParser jsonParser = new JsonParser();
             chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("IOException was catched in class ");
         }
 
         Menu menu = new Menu();
@@ -34,6 +37,7 @@ public class Main {
             ClearScreen.clearScreen();
             switch (menu.pickOption()) {
                 case 1: {
+                    logger.info("User searched closest charging station.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     ChargingPoint chargingPoint = DataFilter
@@ -46,6 +50,7 @@ public class Main {
                     break;
                 }
                 case 2: {
+                    logger.info("User searched charging station at the area.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     double radius = menu.readRadius();
@@ -62,6 +67,7 @@ public class Main {
                     break;
                 }
                 case 3: {
+                    logger.info("User searched charging station at town.");
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
                             .findChargingStationAtTown(chargingPointList, menu.readTown());
@@ -74,6 +80,7 @@ public class Main {
                     break;
                 }
                 case 4: {
+                    logger.info("User changed settings.");
                     ClearScreen.clearScreen();
                     Settings.show();
                     break;

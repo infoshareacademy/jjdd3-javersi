@@ -2,10 +2,15 @@ package view;
 
 import controller.AppProperties;
 import model.Coordinates;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
+
 public class Menu {
+
+    Logger logger = LoggerFactory.getLogger(Menu.class.getName());
 
     public int pickOption() {
         System.out.println("1. Znajdź najbliższą stację ładowania");
@@ -24,6 +29,7 @@ public class Menu {
                     return x;
                 }
             } catch (NumberFormatException e) {
+                logger.error("NumberFormatException was catched in class in method pickOption ");
             }
             System.out.println("Błędna wartość");
         }
@@ -45,6 +51,7 @@ public class Menu {
                     return new Coordinates(longitude, latitude);
                 }
             } catch (NumberFormatException e) {
+                logger.error("NumberFormatException was catched in class in method readCoordinates ");
             }
             System.out.println("Błędna wartość!");
         }
@@ -62,6 +69,7 @@ public class Menu {
                     return radius;
                 }
             } catch (NumberFormatException e) {
+                logger.error("NumberFormatException was catched in class in method readRadius ");
             }
             System.out.println("Błędna wartość!");
         }
@@ -78,6 +86,7 @@ public class Menu {
                     return town;
                 }
             } catch (NumberFormatException e) {
+                logger.error("NumberFormatException was catched in class in method readTown ");
             }
             System.out.println("Błędna wartość!");
         }
