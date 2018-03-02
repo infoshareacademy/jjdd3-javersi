@@ -13,17 +13,17 @@ public class Menu {
     Logger logger = LoggerFactory.getLogger(Menu.class.getName());
 
     public int pickOption() {
-        System.out.println("1. Znajdź najbliższą stację ładowania");
-        System.out.println("2. Znajdź stacje ładowania w podanym promieniu");
-        System.out.println("3. Znajdź stacje ładowania w danym mieście ");
-        System.out.println("4. Ustawienia");
-        System.out.println("5. Wyjście");
+        System.out.println("1. Find the closest charging point");
+        System.out.println("2. Find charging points with the given radius");
+        System.out.println("3. Find charging points in the given city");
+        System.out.println("4. Settings");
+        System.out.println("5. Exit");
 
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             try {
-                System.out.print("Wybierz opcje: ");
+                System.out.print("Select option: ");
                 int x = Integer.valueOf(scanner.nextLine());
                 if (x >= 1 && x <= 5) {
                     return x;
@@ -31,21 +31,21 @@ public class Menu {
             } catch (NumberFormatException e) {
                 logger.error("NumberFormatException was catched in class in method pickOption ");
             }
-            System.out.println("Błędna wartość");
+            System.out.println("Wrong value.");
         }
 
     }
 
     public Coordinates readCoordinates() {
 
-        System.out.println("Podaj współrzędne geograficzne : ");
+        System.out.println("Set geographical coordinates: ");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             try {
-                System.out.print("Longitude (-180; 180) :");
+                System.out.print("Longitude (-180; 180): ");
                 double longitude = Double.valueOf(scanner.nextLine());
-                System.out.print("Latitude (-90; 90) :");
+                System.out.print("Latitude (-90; 90): ");
                 double latitude = Double.valueOf(scanner.nextLine());
                 if ((longitude >= -180 && longitude <= 180) && (latitude >= -90 && latitude <= 90)) {
                     return new Coordinates(longitude, latitude);
@@ -53,7 +53,7 @@ public class Menu {
             } catch (NumberFormatException e) {
                 logger.error("NumberFormatException was catched in class in method readCoordinates ");
             }
-            System.out.println("Błędna wartość!");
+            System.out.println("Wrong value.");
         }
 
     }
@@ -63,7 +63,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
-                System.out.print("Radius (" + AppProperties.getInstance().getUnits() + ") :");
+                System.out.print("Radius (" + AppProperties.getInstance().getUnits() + "):");
                 double radius = Double.valueOf(scanner.nextLine());
                 if (radius > 0) {
                     return radius;
@@ -71,7 +71,7 @@ public class Menu {
             } catch (NumberFormatException e) {
                 logger.error("NumberFormatException was catched in class in method readRadius ");
             }
-            System.out.println("Błędna wartość!");
+            System.out.println("Wrong value.");
         }
     }
 
@@ -80,15 +80,15 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
-                System.out.print("Town :");
+                System.out.print("Town:");
                 String town = scanner.nextLine();
-                if ( town != null ) {
+                if (town != null) {
                     return town;
                 }
             } catch (NumberFormatException e) {
                 logger.error("NumberFormatException was catched in class in method readTown ");
             }
-            System.out.println("Błędna wartość!");
+            System.out.println("Wrong value.");
         }
     }
 }
