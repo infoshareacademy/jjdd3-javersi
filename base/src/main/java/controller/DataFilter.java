@@ -35,6 +35,7 @@ public class DataFilter {
                 chargingPoint = p;
             }
         }
+
         return chargingPoint;
     }
 
