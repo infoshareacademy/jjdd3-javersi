@@ -15,10 +15,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    
+    public static final Logger LOG = LoggerFactory.getLogger(Main.class);
+    
     public static void main(String[] args) {
-
-        final Logger logger = LoggerFactory.getLogger(Main.class.getName());
-
+        
         List<ChargingPoint> chargingPointList = null;
 
         try {
@@ -26,7 +27,7 @@ public class Main {
             JsonParser jsonParser = new JsonParser();
             chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
-            logger.error("IOException was catched");
+            LOG.error("IOException was catched");
         }
 
         Menu menu = new Menu();
@@ -36,7 +37,7 @@ public class Main {
             ClearScreen.clearScreen();
             switch (menu.pickOption()) {
                 case 1: {
-                    logger.info("User searched closest charging station.");
+                    LOG.info("User searched closest charging station.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     ChargingPoint chargingPoint = DataFilter
@@ -51,7 +52,7 @@ public class Main {
                     break;
                 }
                 case 2: {
-                    logger.info("User searched charging station at the area.");
+                    LOG.info("User searched charging station at the area.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     double radius = menu.readRadius();
@@ -68,7 +69,7 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    logger.info("User searched charging station at town.");
+                    LOG.info("User searched charging station at town.");
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
                             .findChargingStationAtTown(chargingPointList, menu.readTown());
@@ -81,7 +82,7 @@ public class Main {
                     break;
                 }
                 case 4: {
-                    logger.info("User changed settings.");
+                    LOG.info("User changed settings.");
                     ClearScreen.clearScreen();
                     Settings.show();
                     break;

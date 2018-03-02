@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Settings {
 
-    private static final Logger logger = LoggerFactory.getLogger(Settings.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Settings.class);
 
     public static void show() {
         ClearScreen.clearScreen();
@@ -25,7 +25,7 @@ public class Settings {
                 yesNo = Integer.valueOf(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Write a number.");
-                logger.error("NumberFormatException was catched in method show");
+                LOG.error("NumberFormatException was catched in method show");
             }
         } while (yesOrNo(yesNo) == false);
 

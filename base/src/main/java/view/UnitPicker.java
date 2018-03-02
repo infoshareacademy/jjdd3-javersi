@@ -8,7 +8,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class UnitPicker {
-    private static final Logger logger = LoggerFactory.getLogger(UnitPicker.class);
+    
+    private static final Logger LOG = LoggerFactory.getLogger(UnitPicker.class);
+    
     public static Units chooseUnit() {
         int unitNumber = -1;
         do {
@@ -21,7 +23,7 @@ public class UnitPicker {
                 unitNumber = scanner.nextInt() - 1;
             } catch (NumberFormatException e) {
                 System.out.println("Write a number.");
-                logger.error("NumberFormatException was catched in method chooseUnit");
+                LOG.error("NumberFormatException was catched in method chooseUnit");
             }
         } while (ifExist(unitNumber) == false);
 

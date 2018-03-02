@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Logger logger = LoggerFactory.getLogger(Menu.class.getName());
+    public static final Logger LOG = LoggerFactory.getLogger(Menu.class);
 
     public int pickOption() {
         System.out.println("1. Find the closest charging point");
@@ -29,7 +29,7 @@ public class Menu {
                     return x;
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in method pickOption");
+                LOG.error("NumberFormatException was catched in method pickOption");
             }
             System.out.println("Wrong value.");
         }
@@ -51,7 +51,7 @@ public class Menu {
                     return new Coordinates(longitude, latitude);
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in method readCoordinates");
+                LOG.error("NumberFormatException was catched in method readCoordinates");
             }
             System.out.println("Wrong value.");
         }
@@ -69,7 +69,7 @@ public class Menu {
                     return radius;
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in method readRadius");
+                LOG.error("NumberFormatException was catched in method readRadius");
             }
             System.out.println("Wrong value.");
         }
@@ -86,7 +86,7 @@ public class Menu {
                     return town;
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in method readTown");
+                LOG.error("NumberFormatException was catched in method readTown");
             }
             System.out.println("Wrong value.");
         }
