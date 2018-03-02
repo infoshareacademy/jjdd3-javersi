@@ -23,7 +23,7 @@ public class PointDisplayer {
                         "\nLatitude: " + chargingPoint.getAddressInfo().getLatitude() +
                         "\nTown: " + chargingPoint.getAddressInfo().getTown() +
                         "\nState/province: " + chargingPoint.getAddressInfo().getStateOrProvince() +
-                        "\nCountry: " + chargingPoint.getAddressInfo().getCountry()
+                        "\nCountry: " + chargingPoint.getAddressInfo().getCountry().getTitle()
         );
     }
 
