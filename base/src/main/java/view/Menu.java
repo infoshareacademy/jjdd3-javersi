@@ -29,7 +29,7 @@ public class Menu {
                     return x;
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in class in method pickOption ");
+                logger.error("NumberFormatException was catched in method pickOption");
             }
             System.out.println("Wrong value.");
         }
@@ -51,7 +51,7 @@ public class Menu {
                     return new Coordinates(longitude, latitude);
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in class in method readCoordinates ");
+                logger.error("NumberFormatException was catched in method readCoordinates");
             }
             System.out.println("Wrong value.");
         }
@@ -69,7 +69,7 @@ public class Menu {
                     return radius;
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in class in method readRadius ");
+                logger.error("NumberFormatException was catched in method readRadius");
             }
             System.out.println("Wrong value.");
         }
@@ -86,7 +86,7 @@ public class Menu {
                     return town;
                 }
             } catch (NumberFormatException e) {
-                logger.error("NumberFormatException was catched in class in method readTown ");
+                logger.error("NumberFormatException was catched in method readTown");
             }
             System.out.println("Wrong value.");
         }

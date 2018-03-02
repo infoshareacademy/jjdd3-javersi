@@ -23,8 +23,9 @@ public class Settings {
                     "2. NO");
             try {
                 yesNo = Integer.valueOf(scanner.nextLine());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Write a number.");
+                logger.error("NumberFormatException was catched in method show");
             }
         } while (yesOrNo(yesNo) == false);
 

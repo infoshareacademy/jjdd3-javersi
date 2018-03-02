@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        private final Logger logger = LoggerFactory.getLogger(Main.class.getName());
+        final Logger logger = LoggerFactory.getLogger(Main.class.getName());
 
         List<ChargingPoint> chargingPointList = null;
 
@@ -26,7 +26,7 @@ public class Main {
             JsonParser jsonParser = new JsonParser();
             chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
-            logger.error("IOException was catched in class ");
+            logger.error("IOException was catched");
         }
 
         Menu menu = new Menu();
