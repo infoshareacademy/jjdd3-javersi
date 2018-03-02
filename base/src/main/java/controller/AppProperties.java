@@ -1,12 +1,20 @@
 package controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import view.Menu;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+
 public class AppProperties {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AppProperties.class);
+
     private static final String FILE_NAME = "config.properties";
     private static final String UNIT_PROPERTY_NAME = "unit";
 
@@ -22,7 +30,9 @@ public class AppProperties {
         try {
             instance = new AppProperties();
         } catch (Exception e) {
+            LOG.error("RuntimeException was catched");
             throw new RuntimeException("Exception occured in creating singleton instance");
+
         }
     }
 
@@ -37,10 +47,11 @@ public class AppProperties {
             applicationProps.load(in);
             in.close();
         } catch (FileNotFoundException e) {
+            LOG.error("FileNotFoundException was catched");
             creatDefaultFile();
             load();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("IOException was catched");
         }
     }
 
@@ -56,9 +67,9 @@ public class AppProperties {
             applicationProps.store(out, "chosen unit");
             out.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            LOG.error("FileNotFoundException was catched");
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("IOException was catched");
         }
     }
 

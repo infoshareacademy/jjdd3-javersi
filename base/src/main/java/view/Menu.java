@@ -2,10 +2,15 @@ package view;
 
 import controller.AppProperties;
 import model.Coordinates;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
+
 public class Menu {
+
+    public static final Logger LOG = LoggerFactory.getLogger(Menu.class);
 
     public int pickOption() {
         System.out.println("1. Find the closest charging point");
@@ -24,6 +29,7 @@ public class Menu {
                     return x;
                 }
             } catch (NumberFormatException e) {
+                LOG.error("NumberFormatException was catched in method pickOption");
             }
             System.out.println("Wrong value.");
         }
@@ -45,6 +51,7 @@ public class Menu {
                     return new Coordinates(longitude, latitude);
                 }
             } catch (NumberFormatException e) {
+                LOG.error("NumberFormatException was catched in method readCoordinates");
             }
             System.out.println("Wrong value.");
         }
@@ -62,6 +69,7 @@ public class Menu {
                     return radius;
                 }
             } catch (NumberFormatException e) {
+                LOG.error("NumberFormatException was catched in method readRadius");
             }
             System.out.println("Wrong value.");
         }
@@ -78,6 +86,7 @@ public class Menu {
                     return town;
                 }
             } catch (NumberFormatException e) {
+                LOG.error("NumberFormatException was catched in method readTown");
             }
             System.out.println("Wrong value.");
         }
