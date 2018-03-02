@@ -14,8 +14,6 @@ public class DataFilter {
                 .filter(p -> p.getAddressInfo().getTown().toUpperCase().equals(town.toUpperCase()))
                 .collect(toList());
 
-
-
         return chargingPoints;
     }
 
@@ -37,6 +35,7 @@ public class DataFilter {
                 chargingPoint = p;
             }
         }
+
         return chargingPoint;
     }
 
@@ -49,7 +48,5 @@ public class DataFilter {
 
         return chargingPoints;
     }
-
-
 }
 

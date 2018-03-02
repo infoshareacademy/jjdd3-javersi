@@ -21,8 +21,7 @@ public class ChargingPoint {
     private String generalComments;
     private Date datePlanned;
     private Date dateLastConfirmed;
-
-
+    
     public int getId() {
         return id;
     }
@@ -158,7 +157,4 @@ public class ChargingPoint {
     public void setDateLastConfirmed(Date dateLastConfirmed) {
         this.dateLastConfirmed = dateLastConfirmed;
     }
-
-
-
 }
