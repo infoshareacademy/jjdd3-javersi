@@ -21,8 +21,7 @@ public class ChargingPoint {
     private String generalComments;
     private Date datePlanned;
     private Date dateLastConfirmed;
-
-
+    
     public int getId() {
         return id;
     }
