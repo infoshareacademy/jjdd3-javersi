@@ -1,20 +1,49 @@
 package model;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = "ADDRESS_INFO")
 public class AddressInfo {
+
+    @Id
+    @Column(name = "id")
     private int id;
-    private String title;
-    private String addressLine1;
-    private String addressLine2;
+
+    @Column(name = "town")
     private String town;
+    @Column(name = "province")
     private String stateOrProvince;
-    private String postcode;
-    private Country country;
+    @Column(name = "latitude")
     private double latitude;
+    @Column(name = "longitude")
     private double longitude;
+
+    @OneToMany(mappedBy = "addressInfo", fetch = FetchType.EAGER)
+    private Set<ChargingPoint> chargingPoints;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
+    @Transient
+    private String postcode;
+    @Transient
+    private String title;
+    @Transient
+    private String addressLine1;
+    @Transient
+    private String addressLine2;
+    @Transient
     private String contactTelephone1;
+    @Transient
     private String contactTelephone2;
+    @Transient
     private String contactEmail;
+    @Transient
     private String accessComments;
+    @Transient
     private String relatedURL;
 
     public int getId() {
