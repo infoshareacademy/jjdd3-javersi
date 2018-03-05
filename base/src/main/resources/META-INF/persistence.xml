@@ -5,7 +5,7 @@
   http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd" version="2.2">
 
   <persistence-unit name="javersi" transaction-type="JTA">
-    <jta-data-source>javersi:app</jta-data-source>
+    <jta-data-source>javersi_app</jta-data-source>
 
     <properties>
       <!-- Hibernate settings -->
