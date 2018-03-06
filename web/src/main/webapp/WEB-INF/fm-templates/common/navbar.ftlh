@@ -16,14 +16,14 @@
                         <a class="dropdown-item" href="#">Nearest</a>
                         <a class="dropdown-item" href="#">In given radius</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">By town name</a>
+                        <a class="dropdown-item" href="../search-by-town">By town name</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Administration</a>
+                    <a class="nav-link" href="../administration">Administration</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../about">About</a>
