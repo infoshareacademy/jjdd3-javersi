@@ -1,6 +1,6 @@
 package servlets;
 
-import cdi.FileUploadProcessor;
+import cdi.FileUploadProcessorBean;
 import exceptions.JsonFileNotFound;
 
 import javax.inject.Inject;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class JsonFileUploadServlet extends HttpServlet {
 
     @Inject
-    FileUploadProcessor fileUploadProcessor;
+    FileUploadProcessorBean fileUploadProcessor;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

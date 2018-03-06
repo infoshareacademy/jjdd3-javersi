@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 @WebServlet("/search-by-town")
-public class SearchByTown extends HttpServlet{
+public class SearchByTown extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, Object> dataModel = new HashMap<>();
@@ -41,7 +42,8 @@ public class SearchByTown extends HttpServlet{
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            //todo: Zastąpić loggerem jak będą działały
+            writer.write(Arrays.toString(e.getStackTrace()));
         }
     }
 

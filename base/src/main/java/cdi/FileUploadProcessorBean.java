@@ -15,9 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RequestScoped
-public class FileUploadProcessorBean implements FileUploadProcessor{
+public class FileUploadProcessorBean {
 
-    @Override
     public int uploadJsonFile(Part filePart) throws JsonFileNotFound, IOException {
         if (filePart == null) {
             throw new JsonFileNotFound("No json file has been uploaded #1");
