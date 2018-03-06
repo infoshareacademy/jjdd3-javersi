@@ -23,7 +23,7 @@
                     <a class="nav-link" href="#">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Administration</a>
+                    <a class="nav-link" href="../administration">Administration</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../about">About</a>
