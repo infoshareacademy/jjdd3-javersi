@@ -1,7 +1,7 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "ADDRESS_INFO")
@@ -21,7 +21,7 @@ public class AddressInfo {
     private double longitude;
 
     @OneToMany(mappedBy = "addressInfo", fetch = FetchType.EAGER)
-    private Set<ChargingPoint> chargingPoints;
+    private List<ChargingPoint> chargingPoints;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -45,6 +45,14 @@ public class AddressInfo {
     private String accessComments;
     @Transient
     private String relatedURL;
+
+    public List<ChargingPoint> getChargingPoints() {
+        return chargingPoints;
+    }
+
+    public void setChargingPoints(List<ChargingPoint> chargingPoints) {
+        this.chargingPoints = chargingPoints;
+    }
 
     public int getId() {
         return id;

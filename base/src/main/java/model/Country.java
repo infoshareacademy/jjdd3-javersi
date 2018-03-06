@@ -1,7 +1,7 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "COUNTRY")
@@ -15,12 +15,20 @@ public class Country {
     private String title;
 
     @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
-    private Set<AddressInfo> addresses;
+    private List<AddressInfo> addresses;
 
     @Transient
     private String isoCode;
     @Transient
     private String continentCode;
+
+    public List<AddressInfo> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<AddressInfo> addresses) {
+        this.addresses = addresses;
+    }
 
     public int getId() {
         return id;
