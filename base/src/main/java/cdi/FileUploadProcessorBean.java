@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 @RequestScoped
 public class FileUploadProcessorBean extends UploadProcessor {
 
-
-
     public int uploadJsonFile(Part filePart) throws JsonFileNotFound, IOException {
         if (filePart == null) {
             throw new JsonFileNotFound("No json file has been uploaded #1");
@@ -39,7 +37,7 @@ public class FileUploadProcessorBean extends UploadProcessor {
         InputStream fileContent = filePart.getInputStream();
         String content = convertInputSteamToString(fileContent);
 
-        List<ChargingPoint> chargingPointList =  new JsonParser().jsonToChargingPointList(content);
+        List<ChargingPoint> chargingPointList = new JsonParser().jsonToChargingPointList(content);
 
         saveChargingPoints(chargingPointList);
 
@@ -51,5 +49,4 @@ public class FileUploadProcessorBean extends UploadProcessor {
                 .lines().collect(Collectors.joining(""));
         return result;
     }
-
 }
