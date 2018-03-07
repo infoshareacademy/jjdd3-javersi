@@ -15,9 +15,10 @@ public class AddressInfoDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<AddressInfo> findByCountry(String town) {
+    public List<AddressInfo> findByCountry(String countryName) {
         final Query query = entityManager.createQuery("SELECT ai FROM AddressInfo ai JOIN Country c ON " +
                 "ai.coutry = c WHERE c.title = :title");
+        query.setParameter("title", countryName);
         return query.getResultList();
     }
     
