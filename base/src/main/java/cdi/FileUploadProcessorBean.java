@@ -1,21 +1,30 @@
 package cdi;
 
 import controller.JsonParser;
+import dao.ChargingPointDao;
+import dao.CountryDao;
 import exceptions.JsonFileNotFound;
 import model.ChargingPoint;
+import model.Country;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.servlet.http.Part;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
-public class FileUploadProcessorBean {
+public class FileUploadProcessorBean extends UploadProcessor {
+
+
 
     public int uploadJsonFile(Part filePart) throws JsonFileNotFound, IOException {
         if (filePart == null) {
@@ -32,7 +41,8 @@ public class FileUploadProcessorBean {
 
         List<ChargingPoint> chargingPointList =  new JsonParser().jsonToChargingPointList(content);
 
-        //todo: Dodać zapis charging pointów do bazy danych (po mergu z innymi branchami)
+        saveChargingPoints(chargingPointList);
+
         return chargingPointList.size();
     }
 

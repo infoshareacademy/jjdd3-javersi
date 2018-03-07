@@ -10,7 +10,7 @@
     <title>${title}</title>
 </head>
 <body style="padding-top: 70px;">
-    <#include "/common/navbar.ftlh">git 
+    <#include "/common/navbar.ftlh">
     <div class="container body-content">
         <#include "/body-templates/" + body_template + ".ftlh">
 
