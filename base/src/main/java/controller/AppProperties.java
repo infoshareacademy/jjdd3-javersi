@@ -4,13 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import view.Menu;
 
+import javax.enterprise.context.RequestScoped;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-
+@RequestScoped
 public class AppProperties {
 
     private static final Logger LOG = LoggerFactory.getLogger(AppProperties.class);
