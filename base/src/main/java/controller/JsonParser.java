@@ -24,6 +24,8 @@ public class JsonParser {
         return chargingPoints;
     }
 
+    public Set<Country> countries = new HashSet<>();
+
     private class ChargingPointDeserializer implements JsonDeserializer<List<ChargingPoint>> {
         public List<ChargingPoint> deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
                 throws JsonParseException {
@@ -177,7 +179,12 @@ public class JsonParser {
             AddressInfo addressInfo = new AddressInfo();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement = jsonObject.get("Title");
+            JsonElement subElement = jsonObject.get("ID");
+            if (!subElement.isJsonNull()) {
+                addressInfo.setId(subElement.getAsInt());
+            }
+
+            subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 addressInfo.setTitle(subElement.getAsString());
             }
@@ -251,10 +258,24 @@ public class JsonParser {
         }
 
         private Country parseAsCountry(JsonElement jsonElement) {
-            Country country = new Country();
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonElement subElement = jsonObject.get("Title");
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            int id =-1;
+            JsonElement subElement = jsonObject.get("ID");
+            if (!subElement.isJsonNull()) {
+                id= subElement.getAsInt();
+            }
+
+            final int idFinal = id;
+
+            if(countries.stream().anyMatch(c -> c.getId() == idFinal)) {
+                return countries.stream().filter(c -> c.getId() == idFinal).findFirst().get();
+            }
+
+            Country country = new Country();
+            country.setId(idFinal);
+
+            subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
                 country.setTitle(subElement.getAsString());
             }
@@ -268,7 +289,7 @@ public class JsonParser {
             if (!subElement.isJsonNull()) {
                 country.setIsoCode(subElement.getAsString());
             }
-
+            countries.add(country);
             return country;
         }
 
