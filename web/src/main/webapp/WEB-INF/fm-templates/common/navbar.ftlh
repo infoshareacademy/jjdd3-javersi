@@ -13,10 +13,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Search <span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="download">
-                        <a class="dropdown-item" href="#">Nearest</a>
-                        <a class="dropdown-item" href="#">In given radius</a>
+                        <a class="dropdown-item" href="./find-the-closest">Nearest</a>
+                        <a class="dropdown-item" href="./find-the-closest-in-radius">In given radius</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../search-by-town">By town name</a>
+                        <a class="dropdown-item" href="../search-by-country">By country name</a>
                     </div>
                 </li>
                 <li class="nav-item">
