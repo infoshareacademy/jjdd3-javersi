@@ -16,6 +16,9 @@ public class Menu {
         System.out.println("1. Find the closest charging point");
         System.out.println("2. Find charging points with the given radius");
         System.out.println("3. Find charging points in the given city");
+        System.out.println("4. Find charging points in the given country");
+        System.out.println("5. Settings");
+        System.out.println("6. Exit");
         System.out.println("4. Settings");
         System.out.println("5. Exit");
 
@@ -25,7 +28,7 @@ public class Menu {
             try {
                 System.out.print("Select option: ");
                 int x = Integer.valueOf(scanner.nextLine());
-                if (x >= 1 && x <= 5) {
+                if (x >= 1 && x <= 6) {
                     return x;
                 }
             } catch (NumberFormatException e) {
@@ -75,7 +78,7 @@ public class Menu {
         }
     }
 
-    public String readTown() {
+    public String readCity() {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -87,6 +90,23 @@ public class Menu {
                 }
             } catch (NumberFormatException e) {
                 LOG.error("NumberFormatException was catched in method readTown");
+            }
+            System.out.println("Wrong value.");
+
+        }
+    }
+
+    public String readCountry() {
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.print("Country:");
+                String country = scanner.nextLine();
+                if (country != null) {
+                    return country;
+                }
+            } catch (NumberFormatException e) {
             }
             System.out.println("Wrong value.");
         }

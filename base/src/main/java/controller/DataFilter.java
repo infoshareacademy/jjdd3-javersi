@@ -8,10 +8,19 @@ import static java.util.stream.Collectors.toList;
 
 public class DataFilter {
 
-    public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town) {
+    public static List<ChargingPoint> findChargingStationInCity(List<ChargingPoint> points, String city) {
 
         List<ChargingPoint> chargingPoints = points.stream()
-                .filter(p -> p.getAddressInfo().getTown().toUpperCase().equals(town.toUpperCase()))
+                .filter(p -> p.getAddressInfo().getTown().toUpperCase().equals(city.toUpperCase()))
+                .collect(toList());
+
+        return chargingPoints;
+    }
+
+    public static List<ChargingPoint> findChargingStationInCountry(List<ChargingPoint> points, String country) {
+
+        List<ChargingPoint> chargingPoints = points.stream()
+                .filter(p -> p.getAddressInfo().getCountry().getTitle().toUpperCase().equals(country.toUpperCase()))
                 .collect(toList());
 
         return chargingPoints;

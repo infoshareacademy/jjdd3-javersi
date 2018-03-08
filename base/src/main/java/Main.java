@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    
+
     public static final Logger LOG = LoggerFactory.getLogger(Main.class);
-    
+
     public static void main(String[] args) {
         
         List<ChargingPoint> chargingPointList = null;
@@ -72,7 +72,7 @@ public class Main {
                     LOG.info("User searched charging station at town.");
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
-                            .findChargingStationAtTown(chargingPointList, menu.readTown());
+                            .findChargingStationInCity(chargingPointList, menu.readCity());
                     if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                     } else {
@@ -84,10 +84,22 @@ public class Main {
                 case 4: {
                     LOG.info("User changed settings.");
                     ClearScreen.clearScreen();
-                    Settings.show();
+                    List<ChargingPoint> chargingPointListAtTown = DataFilter
+                            .findChargingStationInCountry(chargingPointList, menu.readCountry());
+                    if (chargingPointListAtTown.size() != 0) {
+                        PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
+                    } else {
+                        System.out.println("Charging points not found.");
+                    }
+                    scanner.nextLine();
                     break;
                 }
                 case 5: {
+                    ClearScreen.clearScreen();
+                    Settings.show();
+                    break;
+                }
+                case 6: {
                     break outerloop;
                 }
             }

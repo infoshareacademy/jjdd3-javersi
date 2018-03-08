@@ -21,6 +21,7 @@ public class UnitPicker {
             Scanner scanner = new Scanner(System.in);
             try {
                 unitNumber = scanner.nextInt() - 1;
+
             } catch (NumberFormatException e) {
                 System.out.println("Write a number.");
                 LOG.error("NumberFormatException was catched in method chooseUnit");

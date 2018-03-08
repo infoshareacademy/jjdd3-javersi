@@ -23,6 +23,7 @@ public class Settings {
                     "2. NO");
             try {
                 yesNo = Integer.valueOf(scanner.nextLine());
+
             } catch (NumberFormatException e) {
                 System.out.println("Write a number.");
                 LOG.error("NumberFormatException was catched in method show");
