@@ -16,8 +16,10 @@ class JsonParserTest {
     @Test
     void jsonToChargingPointListOne() throws IOException {
 
-        String json = new String(Files.readAllBytes(Paths.get(getClass()
-                .getClassLoader().getResource("jsonParserTests/testChargingPointOne.json").getPath())));
+        String json = "{\n" +
+                "  \"id\": 99562,\n" +
+                "  \"uuid\": \"75E21538-5A47-4A8E-995A-7D07B02EEE5F\"\n" +
+                "}";
 
         ChargingPoint point = new Gson().fromJson(json, ChargingPoint.class);
 
@@ -30,8 +32,8 @@ class JsonParserTest {
     @Test
     void jsonToChargingPointListTwo() throws IOException {
 
-        String json = new String(Files.readAllBytes(Paths.get(getClass()
-                .getClassLoader().getResource("jsonParserTests/testChargingPointTwo.json").getPath())));
+        String json = "{   \"id\": 99559,\n" +
+                "  \"uuid\": \"99D22B9B-B787-4105-8236-D3871F99F9F3\" }";
 
         ChargingPoint point = new Gson().fromJson(json, ChargingPoint.class);
 
