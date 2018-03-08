@@ -26,7 +26,7 @@ public class PromotedChargingPointDao {
             entityManager.remove(pcp);
         }
     }
-    
+
     public PromotedChargingPoint findById(Long id) {
         return entityManager.find(PromotedChargingPoint.class, id);
     }

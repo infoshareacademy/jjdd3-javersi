@@ -15,6 +15,13 @@ public class PromotedChargingPoint {
     @Column(name = "charging_point_id")
     private int chargingPointId;
 
+    public PromotedChargingPoint() {
+    }
+
+    public PromotedChargingPoint(int chargingPointId) {
+        this.chargingPointId = chargingPointId;
+    }
+
     public int getChargingPointId() {
         return chargingPointId;
     }
