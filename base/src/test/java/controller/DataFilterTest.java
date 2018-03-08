@@ -12,9 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataFilterTest {
 
     @Test
-    void shouldProperlySetFirstAndLastName() {
+    void findChargingStationAtTownCheck() {
 
         List<ChargingPoint> chargingPointList = new ArrayList<>();
+
         ChargingPoint pointOne = new ChargingPoint();
         AddressInfo addressInfoOne = new AddressInfo();
         addressInfoOne.setTown("Wroclaw");
@@ -23,18 +24,19 @@ class DataFilterTest {
 
         ChargingPoint pointTwo = new ChargingPoint();
         AddressInfo addressInfoTwo = new AddressInfo();
-        addressInfoTwo.setTown("Gdansk");
+        addressInfoTwo.setTown("Wroclaw");
         pointTwo.setAddressInfo(addressInfoTwo);
         chargingPointList.add(pointTwo);
 
-        assertAll("Get town",
-                () -> assertEquals("Wroclaw", pointOne.getAddressInfo().getTown(), "Town: "),
-                () -> assertEquals("Gdansk", pointTwo.getAddressInfo().getTown(), "Town: ")
-        );
+        List<ChargingPoint> chargPoints = DataFilter.findChargingStationAtTown(chargingPointList,
+                "Wroclaw");
+
+        assertEquals("Wroclaw", chargPoints.get(0).getAddressInfo().getTown(), "Town: ");
+        assertEquals("Wroclaw", chargPoints.get(1).getAddressInfo().getTown(), "Town: ");
     }
 
     @Test
-    void findClosestChargingStation() {
+    void findClosestChargingStationCheck() {
 
         List<ChargingPoint> chargingPointList = new ArrayList<>();
 
@@ -69,7 +71,7 @@ class DataFilterTest {
     }
 
     @Test
-    void findChargingStationAtArea() {
+    void findChargingStationAtAreaCheck() {
 
         List<ChargingPoint> chargingPointList = new ArrayList<>();
 

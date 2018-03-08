@@ -1,28 +1,52 @@
 package model;
 
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "CHARGING_POINTS")
 public class ChargingPoint {
+    @Id
+    @Column(name = "id")
     private int id;
-    private String uuid;
-    private int parentChargePointID;
-    private OperatorInfo operatorInfo;
-    private UsageType usageType;
-    private double usageCost;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private AddressInfo addressInfo;
+
+    @Transient
+    private String uuid;
+    @Transient
+    private int parentChargePointID;
+    @Transient
+    private OperatorInfo operatorInfo;
+    @Transient
+    private UsageType usageType;
+    @Transient
+    private double usageCost;
+    @Transient
     private StatusType statusType;
+    @Transient
     private Date dateLastStatusUpdate;
+    @Transient
     private int dataQualityLevel;
+    @Transient
     private Date dateCreated;
+    @Transient
     private List<Connection> connectionList;
+    @Transient
     private Date dateLastVerified;
+    @Transient
     private int numberOfPoints;
+    @Transient
     private String generalComments;
+    @Transient
     private Date datePlanned;
+    @Transient
     private Date dateLastConfirmed;
-
-
+    
     public int getId() {
         return id;
     }

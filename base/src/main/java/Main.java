@@ -3,7 +3,8 @@ import controller.JsonLoader;
 import controller.JsonParser;
 import model.ChargingPoint;
 import model.Coordinates;
-import model.OperatorInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.ClearScreen;
 import view.Menu;
 import view.PointDisplayer;
@@ -14,8 +15,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
 
+    public static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
+    public static void main(String[] args) {
+        
         List<ChargingPoint> chargingPointList = null;
 
         try {
@@ -23,7 +27,7 @@ public class Main {
             JsonParser jsonParser = new JsonParser();
             chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("IOException was catched");
         }
 
         Menu menu = new Menu();
@@ -33,6 +37,7 @@ public class Main {
             ClearScreen.clearScreen();
             switch (menu.pickOption()) {
                 case 1: {
+                    LOG.info("User searched closest charging station.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     ChargingPoint chargingPoint = DataFilter
@@ -47,6 +52,7 @@ public class Main {
                     break;
                 }
                 case 2: {
+                    LOG.info("User searched charging station at the area.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     double radius = menu.readRadius();
@@ -63,6 +69,7 @@ public class Main {
                     break;
                 }
                 case 3: {
+                    LOG.info("User searched charging station at town.");
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
                             .findChargingStationInCity(chargingPointList, menu.readCity());
@@ -75,6 +82,7 @@ public class Main {
                     break;
                 }
                 case 4: {
+                    LOG.info("User changed settings.");
                     ClearScreen.clearScreen();
                     List<ChargingPoint> chargingPointListAtTown = DataFilter
                             .findChargingStationInCountry(chargingPointList, menu.readCountry());
