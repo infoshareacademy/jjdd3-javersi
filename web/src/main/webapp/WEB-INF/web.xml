@@ -9,7 +9,7 @@
         version="3.1">
 
     <data-source>
-        <name>javersi_app</name>
+        <name>java:ds/javersi_app</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
         <url>jdbc:mysql://0.0.0.0:6603/javersi_data</url>
         <user>root</user>
