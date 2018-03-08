@@ -17,7 +17,8 @@ import java.util.Scanner;
 public class Main {
     
     public static final Logger LOG = LoggerFactory.getLogger(Main.class);
-    
+    public static final Logger UI_LOG = LoggerFactory.getLogger("UI");
+
     public static void main(String[] args) {
         
         List<ChargingPoint> chargingPointList = null;
@@ -46,7 +47,7 @@ public class Main {
                     if (chargingPoint != null) {
                         PointDisplayer.showChargingPointProperties(chargingPoint);
                     } else {
-                        System.out.println("Charging points not found.");
+                        UI_LOG.info("Charging points not found.");
                     }
                     scanner.nextLine();
                     break;
@@ -63,7 +64,7 @@ public class Main {
                     if (chargingPointListAtArea.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                     } else {
-                        System.out.println("Charging points not found.");
+                        UI_LOG.info("Charging points not found.");
                     }
                     scanner.nextLine();
                     break;
@@ -76,7 +77,7 @@ public class Main {
                     if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                     } else {
-                        System.out.println("Charging points not found.");
+                        UI_LOG.info("Charging points not found.");
                     }
                     scanner.nextLine();
                     break;

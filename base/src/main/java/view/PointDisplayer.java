@@ -1,15 +1,19 @@
 package view;
 
 import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class PointDisplayer {
 
+    public static final Logger UI_LOG = LoggerFactory.getLogger("UI");
+
     public static void showChargingPointProperties(ChargingPoint chargingPoint) {
 
-        System.out.println(
+        UI_LOG.info(
                 "Properties of the: " + chargingPoint + "\n" +
 
                         "\nID: " + chargingPoint.getId() +

@@ -2,7 +2,6 @@
 <Configuration>
     <Appenders>
         <Console name="Console">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
         <File name="MyFile" fileName="logs/app.log">
             <PatternLayout>
@@ -14,8 +13,9 @@
         </Async>
     </Appenders>
     <Loggers>
-        <logger name="file-appender" level="INFO">
+        <Root level="INFO">
             <AppenderRef ref="Async"/>
-        </logger>
+            <AppenderRef ref="Console"/>
+        </Root>
     </Loggers>
 </Configuration>
