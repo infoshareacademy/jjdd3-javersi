@@ -17,7 +17,7 @@ public class AddressInfoDao {
 
     public List<AddressInfo> findByCountry(String town) {
         final Query query = entityManager.createQuery("SELECT ai FROM AddressInfo ai JOIN Country c ON " +
-                "ai.coutry = c WHERE c.title = :title");
+                "ai.country = c WHERE c.title = :title");
         return query.getResultList();
     }
     
