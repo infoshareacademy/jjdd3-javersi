@@ -28,7 +28,7 @@ class DataFilterTest {
         pointTwo.setAddressInfo(addressInfoTwo);
         chargingPointList.add(pointTwo);
 
-        List<ChargingPoint> chargPoints = DataFilter.findChargingStationAtTown(chargingPointList,
+        List<ChargingPoint> chargPoints = new DataFilter().findChargingStationAtTown(chargingPointList,
                 "Wroclaw");
 
         assertEquals("Wroclaw", chargPoints.get(0).getAddressInfo().getTown(), "Town: ");
@@ -64,7 +64,7 @@ class DataFilterTest {
         pointThree.setAddressInfo(addressInfoThree);
         chargingPointList.add(pointThree);
 
-        ChargingPoint returnedPoint = DataFilter.findClosestChargingStation(chargingPointList,
+        ChargingPoint returnedPoint = new DataFilter().findClosestChargingStation(chargingPointList,
                 31, 16);
 
         assertEquals(1111, returnedPoint.getAddressInfo().getId());
@@ -107,7 +107,7 @@ class DataFilterTest {
         pointFour.setAddressInfo(addressInfoFour);
         chargingPointList.add(pointFour);
 
-        List<ChargingPoint> returnedList = DataFilter.findChargingStationAtArea(chargingPointList,
+        List<ChargingPoint> returnedList = new DataFilter().findChargingStationAtArea(chargingPointList,
                 30, 15, 200);
 
         assertEquals(2, returnedList.size());

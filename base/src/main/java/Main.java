@@ -41,7 +41,7 @@ public class Main {
                     LOG.info("User searched closest charging station.");
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
-                    ChargingPoint chargingPoint = DataFilter
+                    ChargingPoint chargingPoint = new DataFilter()
                             .findClosestChargingStation(chargingPointList, coordinates.getLongitude(),
                                     coordinates.getLatitude());
                     if (chargingPoint != null) {
@@ -57,7 +57,7 @@ public class Main {
                     ClearScreen.clearScreen();
                     Coordinates coordinates = menu.readCoordinates();
                     double radius = menu.readRadius();
-                    List<ChargingPoint> chargingPointListAtArea = DataFilter
+                    List<ChargingPoint> chargingPointListAtArea =new DataFilter()
                             .findChargingStationAtArea(chargingPointList, coordinates.getLongitude(),
                                     coordinates.getLatitude(), radius);
 
@@ -72,7 +72,7 @@ public class Main {
                 case 3: {
                     LOG.info("User searched charging station at town.");
                     ClearScreen.clearScreen();
-                    List<ChargingPoint> chargingPointListAtTown = DataFilter
+                    List<ChargingPoint> chargingPointListAtTown = new DataFilter()
                             .findChargingStationAtTown(chargingPointList, menu.readTown());
                     if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);

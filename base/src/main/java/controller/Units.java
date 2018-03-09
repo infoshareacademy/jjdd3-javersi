@@ -1,9 +1,9 @@
 package controller;
 
 public enum Units {
-    metres(1000),
-    kilometres(1),
-    miles(1 / 1.609344);
+    METRES(1000),
+    KILOMETRES(1),
+    MILES(1 / 1.609344);
 
     double converter;
 

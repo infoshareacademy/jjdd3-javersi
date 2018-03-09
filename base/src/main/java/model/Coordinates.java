@@ -5,7 +5,7 @@ public final class Coordinates {
     private double longitude;
     private double latitude;
 
-    public Coordinates(double longtitude, double latitude) {
+    public Coordinates(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }
@@ -15,6 +15,10 @@ public final class Coordinates {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public void setLongtitude(double longitude) {

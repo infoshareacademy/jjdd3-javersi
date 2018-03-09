@@ -9,6 +9,17 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <!-- Below property indicates the pattern of the test suite -->
+        <runSuite>**/*Test.java</runSuite>
+        <!-- Sonar-JaCoCo properties -->
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPaths>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPaths>
+        <sonar.language>java</sonar.language>
+        <sonar.junit.reportPaths>${project.basedir}/../target/surefire-reports</sonar.junit.reportPaths>
+    </properties>
+
     <!-- SLF4J  -->
     <dependencies>
         <dependency>
@@ -30,6 +41,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>6.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.openpojo</groupId>
+            <artifactId>openpojo</artifactId>
+            <version>0.7.3</version>
         </dependency>
     </dependencies>
 

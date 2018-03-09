@@ -1,10 +1,10 @@
 package model;
 
 public class StatusType {
+
     private String title;
     private boolean IsOperational;
     private boolean IsUserSelectable;
-
 
     public String getTitle() {
         return title;
