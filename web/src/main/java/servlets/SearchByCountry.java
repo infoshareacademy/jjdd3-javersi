@@ -32,8 +32,6 @@ public class SearchByCountry extends HttpServlet{
         String country = req.getParameter("country");
 
 
-
-
         String town = req.getParameter("country");
         if (town == null || town.isEmpty()) {
             dataModel.put("body_template", "search-by-country");

@@ -23,17 +23,12 @@ public class SearchByTown extends HttpServlet {
     @Inject
     private ChargingPointDao chargingPointDao;
 
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
 
         Map<String, Object> dataModel = new HashMap<>();
         PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
-
 
         String town = req.getParameter("town");
 
@@ -47,7 +42,6 @@ public class SearchByTown extends HttpServlet {
             dataModel.put("title", "Search by town");
             dataModel.put("chargingPoints", chargingPointsList);
         }
-
 
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 

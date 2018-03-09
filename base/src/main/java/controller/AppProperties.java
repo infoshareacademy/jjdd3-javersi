@@ -56,7 +56,7 @@ public class AppProperties {
     }
 
     private void creatDefaultFile() {
-        applicationProps.setProperty(UNIT_PROPERTY_NAME, Units.kilometres.toString());
+        applicationProps.setProperty(UNIT_PROPERTY_NAME, Units.KILOMETRES.toString());
         save();
     }
 
