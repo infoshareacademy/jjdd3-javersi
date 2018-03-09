@@ -2,13 +2,14 @@ package controller;
 
 import model.ChargingPoint;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
-
+@RequestScoped
 public class DataFilter {
 
-    public static List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town) {
+    public List<ChargingPoint> findChargingStationAtTown(List<ChargingPoint> points, String town) {
 
         List<ChargingPoint> chargingPoints = points.stream()
                 .filter(p -> p.getAddressInfo().getTown().toUpperCase().equals(town.toUpperCase()))
@@ -17,7 +18,7 @@ public class DataFilter {
         return chargingPoints;
     }
 
-    public static ChargingPoint findClosestChargingStation(List<ChargingPoint> points, double longitude, double latitude) {
+    public ChargingPoint findClosestChargingStation(List<ChargingPoint> points, double longitude, double latitude) {
 
         ChargingPoint chargingPoint = null;
 
@@ -39,7 +40,7 @@ public class DataFilter {
         return chargingPoint;
     }
 
-    public static List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
+    public List<ChargingPoint> findChargingStationAtArea(List<ChargingPoint> points, double longitude, double latitude, double radius) {
 
         List<ChargingPoint> chargingPoints = points.stream()
                 .filter(p -> DistanceCalculator.distanceBetweenTwoPoints(p.getAddressInfo().getLatitude(), latitude,
