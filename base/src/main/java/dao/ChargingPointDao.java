@@ -17,6 +17,7 @@ public class ChargingPointDao {
     public List<ChargingPoint> findByTown(String town) {
         final Query query = entityManager.createQuery("SELECT cp FROM ChargingPoint cp JOIN AddressInfo ai ON " +
                 "cp.address = ai WHERE ai.town = :town");
+        query.setParameter("town", town);
         return query.getResultList();
     }
 
