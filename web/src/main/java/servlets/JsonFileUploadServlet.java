@@ -33,6 +33,6 @@ public class JsonFileUploadServlet extends HttpServlet {
             PrintWriter writer = resp.getWriter();
             writer.write(Arrays.toString(jsonFileNotFound.getStackTrace()));
         }
-        resp.sendRedirect("/administration?recordsAdded=" + recordsAdded);
+        resp.sendRedirect("/json-upload?recordsAdded=" + recordsAdded);
     }
 }

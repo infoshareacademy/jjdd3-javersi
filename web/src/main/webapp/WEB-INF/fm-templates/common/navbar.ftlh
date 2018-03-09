@@ -11,7 +11,7 @@
                     <a class="nav-link" href="../">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Search <span class="caret"></span></a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="search">Search <span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="download">
                         <a class="dropdown-item" href="../find-the-closest">Nearest</a>
                         <a class="dropdown-item" href="../find-the-closest-in-radius">In given radius</a>
@@ -23,9 +23,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Settings</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../administration">Administration</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="administration">Administration <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="download">
+                        <a class="dropdown-item" href="../json-upload">JSON file upload</a>
+                        <a class="dropdown-item" href="../promoted-settings">Promoted Charging Points settings</a>
+                    </div>
                 </li>
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="../about">About</a>
                 </li>

@@ -1,6 +1,5 @@
 package dao;
 
-import model.ChargingPoint;
 import model.PromotedChargingPoint;
 
 import javax.ejb.Stateless;

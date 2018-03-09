@@ -3,12 +3,13 @@
 <#list chargingPoints>
     <ul>
         <#items as chargingPoint>
-            <li>
-                <strong>Town:</strong> ${chargingPoint.addressInfo.town} <br/>
-                <strong>Country:</strong> ${chargingPoint.addressInfo.country.title} <br/>
-                <strong>Latitude:</strong> ${chargingPoint.addressInfo.latitude} <br/>
-                <strong>Longitude:</strong> ${chargingPoint.addressInfo.longitude}
-            </li>
+            <div class="card border-primary mb-3" style="max-width: 20rem;">
+                <h3 class="card-header">${chargingPoint.addressInfo.country.title} - ${chargingPoint.addressInfo.town}</h3>
+                <div class="card-body">
+                    <p class="card-text"><strong>Latitude:</strong> ${chargingPoint.addressInfo.latitude} <br/>
+                        <strong>Longitude:</strong> ${chargingPoint.addressInfo.longitude}</p>
+                </div>
+            </div>
         </#items>
     </ul>
 </#list>
