@@ -7,6 +7,8 @@ import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -24,6 +26,7 @@ import java.util.Map;
 @WebServlet("/find-the-closest-in-radius")
 public class FindTheClosestInRadius extends HttpServlet{
 
+    public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadius.class);
 
     @Inject
     ChargingPointDao chargingPointDao;
@@ -72,7 +75,7 @@ public class FindTheClosestInRadius extends HttpServlet{
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOG.error("Template Exception was catched.");
         }
     }
 

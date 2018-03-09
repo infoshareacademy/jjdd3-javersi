@@ -5,6 +5,8 @@ import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -21,6 +23,9 @@ import java.util.Map;
 
 @WebServlet("/search-by-country")
 public class SearchByCountry extends HttpServlet{
+
+    public static final Logger LOG = LoggerFactory.getLogger(SearchByCountry.class);
+
     @Inject
     private ChargingPointDao chargingPointDao;
     @Override
@@ -30,8 +35,6 @@ public class SearchByCountry extends HttpServlet{
         resp.setContentType("text/html;charset=UTF-8");
 
         String country = req.getParameter("country");
-
-
 
 
         String town = req.getParameter("country");
@@ -51,7 +54,7 @@ public class SearchByCountry extends HttpServlet{
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOG.error("Template Exception was catched.");
         }
     }
 

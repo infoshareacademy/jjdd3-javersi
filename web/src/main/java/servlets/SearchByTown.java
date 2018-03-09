@@ -6,6 +6,8 @@ import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,6 +21,8 @@ import java.util.*;
 
 @WebServlet("/search-by-town")
 public class SearchByTown extends HttpServlet {
+
+    public static final Logger LOG = LoggerFactory.getLogger(SearchByTown.class);
 
     @Inject
     private ChargingPointDao chargingPointDao;
@@ -54,7 +58,7 @@ public class SearchByTown extends HttpServlet {
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            //todo: Zastąpić loggerem jak będą działały
+            LOG.error("Template Exception was catched.");
             writer.write(Arrays.toString(e.getStackTrace()));
         }
     }

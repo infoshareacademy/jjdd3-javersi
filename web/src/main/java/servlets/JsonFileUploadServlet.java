@@ -2,6 +2,8 @@ package servlets;
 
 import cdi.FileUploadProcessorBean;
 import exceptions.JsonFileNotFound;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,6 +21,8 @@ import java.util.Arrays;
 @MultipartConfig
 public class JsonFileUploadServlet extends HttpServlet {
 
+    public static final Logger LOG = LoggerFactory.getLogger(JsonFileUploadServlet.class);
+
     @Inject
     FileUploadProcessorBean fileUploadProcessor;
 
@@ -29,7 +33,7 @@ public class JsonFileUploadServlet extends HttpServlet {
         try {
             recordsAdded = fileUploadProcessor.uploadJsonFile(filePart);
         } catch (JsonFileNotFound jsonFileNotFound) {
-            //todo: Zastąpić loggerem
+            LOG.error("JsonFileNotFound Exception was catched.");
             PrintWriter writer = resp.getWriter();
             writer.write(Arrays.toString(jsonFileNotFound.getStackTrace()));
         }
