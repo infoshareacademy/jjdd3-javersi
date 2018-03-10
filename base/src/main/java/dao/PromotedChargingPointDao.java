@@ -33,7 +33,6 @@ public class PromotedChargingPointDao {
     public List<PromotedChargingPoint> findAll() {
         final Query query = entityManager.createQuery("SELECT p FROM PromotedChargingPoint p");
         return query.getResultList();
-      //  return null;
     }
 }
 
