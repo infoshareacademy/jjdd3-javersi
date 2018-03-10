@@ -74,5 +74,4 @@ public class PromotedPointsSettingsServlet extends HttpServlet {
             LOG.error("Template problem occurred.");
         }
     }
-
 }

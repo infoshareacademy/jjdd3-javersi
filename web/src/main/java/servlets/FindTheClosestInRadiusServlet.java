@@ -45,7 +45,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     @Inject
     ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
-    public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
+    public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -90,5 +90,4 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
             LOG.error("Template problem occurred.");
         }
     }
-
 }

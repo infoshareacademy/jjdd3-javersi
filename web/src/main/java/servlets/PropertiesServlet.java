@@ -27,7 +27,7 @@ public class PropertiesServlet extends HttpServlet {
     @Inject
     private AppPropertiesBean appPropertiesBean;
 
-    public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
+    public static final Logger LOG = LoggerFactory.getLogger(PropertiesServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -56,5 +56,4 @@ public class PropertiesServlet extends HttpServlet {
             LOG.error("Template problem occurred.");
         }
     }
-
 }

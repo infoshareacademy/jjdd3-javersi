@@ -37,7 +37,7 @@ public class FindTheClosestServlet extends HttpServlet {
     @Inject
     ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
-    public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
+    public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
