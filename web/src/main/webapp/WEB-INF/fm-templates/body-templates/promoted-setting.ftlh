@@ -1,7 +1,7 @@
-<h1>Promoted Charging Points Settings</h1>
+<h1>Promoted charging points settings</h1>
 <hr/>
-<#list chargingPoints>
-    <table class="table table-hover">
+<#list chargingPointDtoList>
+     <table class="table table-hover">
         <thead>
             <th scope="col">Country</th>
             <th scope="col">Town</th>
@@ -10,17 +10,25 @@
             <th scope="col">Action</th>
         </thead>
         <tbody>
-        <#items as chargingPoint>
-            <tr>
-                <td>${chargingPoint.addressInfo.country.title}</td>
-                <td>${chargingPoint.addressInfo.town}</td>
-                <td>${chargingPoint.addressInfo.latitude}</td>
-                <td>${chargingPoint.addressInfo.longitude}</td>
-                <td>
-                    <a href="/promoted-settings?action=add&id=${chargingPoint.id?string["0"]}" rel="nofollow">Add</a>
-                </td>
-            </tr>
-        </#items>
+             <#items as chargingPoint>
+                <tr>
+                    <td>${chargingPoint.country}</td>
+                    <td>${chargingPoint.town}</td>
+                    <td>${chargingPoint.latitudeString}</td>
+                    <td>${chargingPoint.longitudeString}</td>
+                    <td>
+                        <#if chargingPoint.promoted>
+                            <a href="/administration/promoted-settings?action=remove&id=${chargingPoint.id?string["0"]}" class="btn btn-danger">Remove</a>
+                        <#else>
+                            <a href="/administration/promoted-settings?action=add&id=${chargingPoint.id?string["0"]}" class="btn btn-success">Add</a>
+                        </#if>
+                    </td>
+                </tr>
+            </#items>
         </tbody>
     </table>
 </#list>
+
+
+
+

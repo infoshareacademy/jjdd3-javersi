@@ -26,13 +26,14 @@ public class PromotedChargingPointDao {
         }
     }
 
-    public PromotedChargingPoint findById(Long id) {
+    public PromotedChargingPoint findById(Integer id) {
         return entityManager.find(PromotedChargingPoint.class, id);
     }
 
     public List<PromotedChargingPoint> findAll() {
-        final Query query = entityManager.createQuery("SELECT pcp FROM PromotedChargingPoint pcp");
+        final Query query = entityManager.createQuery("SELECT p FROM PromotedChargingPoint p");
         return query.getResultList();
+      //  return null;
     }
 }
 

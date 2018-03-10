@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 @WebServlet("/administration/json-file-upload")
 @MultipartConfig
-public class JsonFileUploadServlet extends HttpServlet {
+public class JsonFileUploadActionServlet extends HttpServlet {
 
     @Inject
     FileUploadProcessorBean fileUploadProcessor;
@@ -33,6 +33,6 @@ public class JsonFileUploadServlet extends HttpServlet {
             PrintWriter writer = resp.getWriter();
             writer.write(Arrays.toString(jsonFileNotFound.getStackTrace()));
         }
-        resp.sendRedirect("/json-upload?recordsAdded=" + recordsAdded);
+        resp.sendRedirect("/administration/json-upload?recordsAdded=" + recordsAdded);
     }
 }
