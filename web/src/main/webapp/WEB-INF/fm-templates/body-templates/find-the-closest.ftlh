@@ -5,27 +5,14 @@
     <form method="get" action="/find-the-closest">
         <fieldset>
             <div class='container'>
-                <label for="longitude">Longitude</label>
-                <div class="row">
-                    <div class="col-2">
-                        <div class="form-group">
-
-                            <input type="text" name="degreesLong" class="form-control" placeholder="Enter degrees">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <input type="text" name="minutesLong" class="form-control" placeholder="Enter minutes">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <input type="text" name="secondLong" class="form-control" placeholder="Enter second">
-                        </div>
-                    </div>
-                </div>
                 <label for="latitude">Latitude</label>
                 <div class="row">
+                    <div class="col-1">
+                        <select class="form-control" id="unit" name="directionLati">
+                            <option>N</option>
+                            <option>S</option>
+                        </select>
+                    </div>
                     <div class="col-2">
                         <div class="form-group">
 
@@ -40,6 +27,30 @@
                     <div class="col-2">
                         <div class="form-group">
                             <input type="text" name="secondLati" class="form-control" placeholder="Enter second">
+                        </div>
+                    </div>
+                </div>
+                <label for="longitude">Longitude</label>
+                <div class="row">
+                    <div class="col-1">
+                        <select class="form-control" id="unit" name="directionLong">
+                            <option>E</option>
+                            <option>W</option>
+                        </select>
+                     </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <input type="text" name="degreesLong" class="form-control" placeholder="Enter degrees">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <input type="text" name="minutesLong" class="form-control" placeholder="Enter minutes">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <input type="text" name="secondLong" class="form-control" placeholder="Enter second">
                         </div>
                     </div>
                 </div>

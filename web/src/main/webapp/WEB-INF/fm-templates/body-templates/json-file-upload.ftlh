@@ -1,7 +1,5 @@
-<h1>Administration</h1>
+<h1>JSON file upload</h1>
 <hr/>
-
-<h2>JSON file upload</h2>
 <div class="col-3">
     <form method="post" action="/administration/json-file-upload"" enctype="multipart/form-data">
         <fieldset>
