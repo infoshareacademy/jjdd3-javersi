@@ -16,13 +16,8 @@ public class PromotedChargingPointsBean {
 
     @Inject
     private PromotedChargingPointDao promotedChargingPointDao;
-
- //   private List<PromotedChargingPoint> promotedChargingPoints;
+    
     public PromotedChargingPointsBean() {
-    }
-
-    public void initialize() {
-  //      promotedChargingPoints = promotedChargingPointDao.findAll();
     }
 
     public boolean isPromoted(ChargingPoint chargingPoint) {
@@ -33,13 +28,7 @@ public class PromotedChargingPointsBean {
 
         PromotedChargingPoint promotedChargingPoint = promotedChargingPointDao.findById(chargingPointId);
 
-        return  promotedChargingPoint != null; // promotedChargingPoints.stream().anyMatch(p -> p.getChargingPointId() == chargingPointId);
-    }
-
-    private void initializeTest() {
-//        if (promotedChargingPoints == null) {
-//            throw new RuntimeException("PromotedChargingPointDao not initialized.");
-//        }
+        return  promotedChargingPoint != null; 
     }
 
     public void addToPromoted(ChargingPoint chargingPoint) {
@@ -61,5 +50,4 @@ public class PromotedChargingPointsBean {
     public void removeFromPromoted(int chargingPointId) {
         promotedChargingPointDao.delete(chargingPointId);
     }
-
 }
