@@ -41,6 +41,9 @@ public class FindTheClosestServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        LOG.info("User searched closest charging station");
+
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point");
 
