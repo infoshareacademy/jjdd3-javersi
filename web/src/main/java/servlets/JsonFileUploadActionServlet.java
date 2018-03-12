@@ -19,9 +19,9 @@ import java.util.Arrays;
 
 @WebServlet("/administration/json-file-upload")
 @MultipartConfig
-public class JsonFileUploadServlet extends HttpServlet {
+public class JsonFileUploadActionServlet extends HttpServlet {
 
-    public static final Logger LOG = LoggerFactory.getLogger(JsonFileUploadServlet.class);
+    public static final Logger LOG = LoggerFactory.getLogger(JsonFileUploadActionServlet.class);
 
     @Inject
     FileUploadProcessorBean fileUploadProcessor;
@@ -34,9 +34,7 @@ public class JsonFileUploadServlet extends HttpServlet {
             recordsAdded = fileUploadProcessor.uploadJsonFile(filePart);
         } catch (JsonFileNotFound jsonFileNotFound) {
             LOG.error("JsonFileNotFound Exception was catched.");
-            PrintWriter writer = resp.getWriter();
-            writer.write(Arrays.toString(jsonFileNotFound.getStackTrace()));
         }
-        resp.sendRedirect("/administration?recordsAdded=" + recordsAdded);
+        resp.sendRedirect("/administration/json-upload?recordsAdded=" + recordsAdded);
     }
 }

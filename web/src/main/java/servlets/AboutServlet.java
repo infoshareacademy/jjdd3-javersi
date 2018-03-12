@@ -18,7 +18,9 @@ import java.util.Map;
 
 @WebServlet("/about")
 public class AboutServlet extends HttpServlet {
+
     public static final Logger LOG = LoggerFactory.getLogger(AboutServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -35,6 +37,5 @@ public class AboutServlet extends HttpServlet {
         } catch (TemplateException e) {
             LOG.error("Template Exception was catched.");
         }
-
     }
 }

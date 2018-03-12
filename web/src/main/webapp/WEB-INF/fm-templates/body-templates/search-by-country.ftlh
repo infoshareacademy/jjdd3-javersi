@@ -1,4 +1,4 @@
-<h1>Search by town</h1>
+<h1>${title}</h1>
 <hr/>
 
 <div class="col-3">
