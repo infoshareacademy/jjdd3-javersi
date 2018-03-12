@@ -18,6 +18,7 @@ public class Main {
     
     public static final Logger LOG = LoggerFactory.getLogger(Main.class);
     public static final Logger UI_LOG = LoggerFactory.getLogger("UI");
+    public static final String WARNING = "Charging points not found.";
 
     public static void main(String[] args) {
         
@@ -47,7 +48,7 @@ public class Main {
                     if (chargingPoint != null) {
                         PointDisplayer.showChargingPointProperties(chargingPoint);
                     } else {
-                        UI_LOG.info("Charging points not found.");
+                        UI_LOG.info(WARNING);
                     }
                     scanner.nextLine();
                     break;
@@ -64,7 +65,7 @@ public class Main {
                     if (chargingPointListAtArea.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtArea);
                     } else {
-                        UI_LOG.info("Charging points not found.");
+                        UI_LOG.info(WARNING);
                     }
                     scanner.nextLine();
                     break;
@@ -77,7 +78,7 @@ public class Main {
                     if (chargingPointListAtTown.size() != 0) {
                         PointDisplayer.showAllAvailablePointsProperties(chargingPointListAtTown);
                     } else {
-                        UI_LOG.info("Charging points not found.");
+                        UI_LOG.info(WARNING);
                     }
                     scanner.nextLine();
                     break;
