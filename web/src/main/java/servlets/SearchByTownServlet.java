@@ -33,6 +33,8 @@ public class SearchByTownServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        LOG.info("User searched charging station at town");
+
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by town");
 
