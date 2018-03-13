@@ -1,10 +1,13 @@
 package servlets;
 
+import cdi.ChargingPointToDtoConverterBean;
 import dao.ChargingPointDao;
+import dto.ChargingPointDto;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,42 +18,46 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 @WebServlet("/search-by-country")
-public class SearchByCountry extends HttpServlet{
+public class SearchByCountryServlet extends HttpServlet{
+
     @Inject
     private ChargingPointDao chargingPointDao;
+
+    @Inject
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+
+    public static final Logger LOG = LoggerFactory.getLogger(SearchByCountryServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        LOG.info("User searched charging station at country");
+
         Map<String, Object> dataModel = new HashMap<>();
-        PrintWriter writer = resp.getWriter();
-        resp.setContentType("text/html;charset=UTF-8");
+        dataModel.put("title", "Search by country");
 
         String country = req.getParameter("country");
-
-
-        String town = req.getParameter("country");
-        if (town == null || town.isEmpty()) {
+        if (country == null || country.isEmpty()) {
             dataModel.put("body_template", "search-by-country");
-            dataModel.put("title", "Search by Country");
         } else {
-            List<ChargingPoint> chargingPointsList = chargingPointDao.findByCountry(country);
+            List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByCountry(country));
             dataModel.put("body_template", "results");
-            dataModel.put("title", "Search by Country");
-            dataModel.put("chargingPoints", chargingPointsList);
+            dataModel.put("chargingPoints", chargingPointsDtoList);
         }
 
+        PrintWriter writer = resp.getWriter();
+        resp.setContentType("text/html;charset=UTF-8");
 
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOG.error("Template problem occurred.");
         }
     }
-
 }

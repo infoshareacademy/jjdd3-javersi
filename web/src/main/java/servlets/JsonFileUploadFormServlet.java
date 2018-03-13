@@ -4,6 +4,8 @@ import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,18 +18,21 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-@WebServlet("/administration")
-public class AdministrationServlet extends HttpServlet {
+@WebServlet("/administration/json-upload")
+public class JsonFileUploadFormServlet extends HttpServlet {
+
+    public static final Logger LOG = LoggerFactory.getLogger(JsonFileUploadFormServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, Object> dataModel = new HashMap<>();
         PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
 
-        dataModel.put("body_template", "administration");
+        dataModel.put("body_template", "json-file-upload");
         dataModel.put("title", "Administration");
         String recordsAdded = req.getParameter("recordsAdded");
-        if (recordsAdded != null && !recordsAdded.isEmpty() ) {
+        if (recordsAdded != null && !recordsAdded.isEmpty()) {
             dataModel.put("recordsAdded", recordsAdded);
         }
 
@@ -36,7 +41,7 @@ public class AdministrationServlet extends HttpServlet {
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOG.error("Template Exception was catched.");
         }
     }
 }

@@ -1,11 +1,13 @@
 package servlets;
 
-import controller.DataFilter;
+import cdi.ChargingPointToDtoConverterBean;
 import dao.ChargingPointDao;
+import dto.ChargingPointDto;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import model.ChargingPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -18,39 +20,42 @@ import java.io.PrintWriter;
 import java.util.*;
 
 @WebServlet("/search-by-town")
-public class SearchByTown extends HttpServlet {
+public class SearchByTownServlet extends HttpServlet {
 
     @Inject
     private ChargingPointDao chargingPointDao;
 
+    @Inject
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+
+    public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        LOG.info("User searched charging station at town");
+
         Map<String, Object> dataModel = new HashMap<>();
-        PrintWriter writer = resp.getWriter();
-        resp.setContentType("text/html;charset=UTF-8");
+        dataModel.put("title", "Search by town");
 
         String town = req.getParameter("town");
-
-
         if (town == null || town.isEmpty()) {
             dataModel.put("body_template", "search-by-town");
-            dataModel.put("title", "Search by town");
         } else {
-            List <ChargingPoint> chargingPointsList = chargingPointDao.findByTown(town);
+            List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByTown(town));
             dataModel.put("body_template", "results");
-            dataModel.put("title", "Search by town");
-            dataModel.put("chargingPoints", chargingPointsList);
+            dataModel.put("chargingPoints", chargingPointsDtoList);
         }
+
+        PrintWriter writer = resp.getWriter();
+        resp.setContentType("text/html;charset=UTF-8");
 
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            //todo: Zastąpić loggerem jak będą działały
-            writer.write(Arrays.toString(e.getStackTrace()));
+            LOG.error("Template problem occurred.");
         }
     }
-
 }
