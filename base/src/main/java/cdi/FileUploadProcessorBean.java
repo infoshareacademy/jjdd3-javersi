@@ -1,5 +1,6 @@
 package cdi;
 
+import controller.CustomGsonBuilder;
 import controller.JsonParser;
 import dao.ChargingPointDao;
 import dao.CountryDao;
@@ -37,7 +38,7 @@ public class FileUploadProcessorBean extends UploadProcessor {
         InputStream fileContent = filePart.getInputStream();
         String content = convertInputSteamToString(fileContent);
 
-        List<ChargingPoint> chargingPointList = new JsonParser().jsonToChargingPointList(content);
+        List<ChargingPoint> chargingPointList = new JsonParser(new CustomGsonBuilder()).jsonToChargingPointList(content);
 
         saveChargingPoints(chargingPointList);
 
