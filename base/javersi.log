@@ -1,6 +1,0 @@
-2018-03-14 15:45:46,683 INFO c.o.l.LoggerFactory [main] Logging subsystem initialized to [com.openpojo.log.impl.SLF4JLogger]
-2018-03-14 15:45:46,715 INFO c.o.r.c.s.PojoCoverageFilterServiceFactory [main] Jacoco detected, auto-configuring OpenPojo to ignore its structures.
-2018-03-14 15:45:46,805 INFO c.o.v.a.Affirmation [main] Dynamically setting affirmation implementation = [com.openpojo.validation.affirm.JUnitAssertAffirmation [@67b61834: ]]
-2018-03-14 15:50:31,726 INFO c.o.l.LoggerFactory [main] Logging subsystem initialized to [com.openpojo.log.impl.SLF4JLogger]
-2018-03-14 15:50:31,759 INFO c.o.r.c.s.PojoCoverageFilterServiceFactory [main] Jacoco detected, auto-configuring OpenPojo to ignore its structures.
-2018-03-14 15:50:31,854 INFO c.o.v.a.Affirmation [main] Dynamically setting affirmation implementation = [com.openpojo.validation.affirm.JUnitAssertAffirmation [@38ac8968: ]]
