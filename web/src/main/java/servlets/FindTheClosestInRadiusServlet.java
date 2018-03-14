@@ -51,7 +51,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         LOG.info("User searched charging station at the area");
-        
+
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point in radius");
 
