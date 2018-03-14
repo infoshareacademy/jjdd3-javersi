@@ -1,6 +1,6 @@
 <h1>${title} - results</h1>
 <hr/>
-<#list chargingPoints>
+<#list chargingPoints?sort_by("promoted")?reverse>
     <ul>
         <#items as chargingPoint>
             <#if chargingPoint.promoted>
