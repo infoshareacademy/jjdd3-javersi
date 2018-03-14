@@ -2,6 +2,7 @@ package servlets;
 
 import cdi.ChargingPointToDtoConverterBean;
 import dao.ChargingPointDao;
+import dao.TownStatisticsDao;
 import dto.ChargingPointDto;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -28,6 +29,9 @@ public class SearchByTownServlet extends HttpServlet {
     @Inject
     private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
+    @Inject
+    private TownStatisticsDao townStatisticsDao;
+
     public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
 
     @Override
@@ -42,9 +46,13 @@ public class SearchByTownServlet extends HttpServlet {
         if (town == null || town.isEmpty()) {
             dataModel.put("body_template", "search-by-town");
         } else {
+
             List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByTown(town));
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
+            if (chargingPointsDtoList.size() > 0) {
+                townStatisticsDao.addToStatistics(town);
+            }
         }
 
         PrintWriter writer = resp.getWriter();
