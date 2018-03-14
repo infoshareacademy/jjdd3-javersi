@@ -6,4 +6,4 @@ out/
 *.iml
 *.class
 *.properties
-.log
+*.log
