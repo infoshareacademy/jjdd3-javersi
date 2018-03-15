@@ -31,6 +31,13 @@
                     <a class="nav-link" href="../about">About</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="../login">Login</a>
+                </li>
+
+            </ul>
         </div>
     </div>
 </div>
