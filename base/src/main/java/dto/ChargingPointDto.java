@@ -18,6 +18,9 @@ public class ChargingPointDto {
     private String town;
     private String longitudeString;
     private String latitudeString;
+    private double latitude;
+    private double longitude;
+
     private boolean promoted;
 
 
@@ -26,8 +29,8 @@ public class ChargingPointDto {
         result.setId(chargingPoint.getId());
         result.setCountry(chargingPoint.getAddressInfo().getCountry().getTitle());
         result.setTown(chargingPoint.getAddressInfo().getTown());
-        result.setLongitudeString(chargingPoint.getAddressInfo().getLongitude());
-        result.setLatitudeString(chargingPoint.getAddressInfo().getLatitude());
+        result.setLongitude(chargingPoint.getAddressInfo().getLongitude());
+        result.setLatitude(chargingPoint.getAddressInfo().getLatitude());
         return result;
     }
 
@@ -63,16 +66,8 @@ public class ChargingPointDto {
         return longitudeString;
     }
 
-    public void setLongitudeString(double longitude) {
-        this.longitudeString = coordinatesConverter.convertDecimalAToLongitudeCoordinatesString(longitude);
-    }
-
     public String getLatitudeString() {
         return latitudeString;
-    }
-
-    public void setLatitudeString(double latitude) {
-        this.latitudeString = coordinatesConverter.convertDecimalAToLatitudeCoordinatesString(latitude);
     }
 
     public boolean isPromoted() {
@@ -81,5 +76,23 @@ public class ChargingPointDto {
 
     public void setPromoted(boolean promoted) {
         this.promoted = promoted;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+        this.latitudeString = coordinatesConverter.convertDecimalAToLatitudeCoordinatesString(latitude);
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+        this.longitudeString = coordinatesConverter.convertDecimalAToLongitudeCoordinatesString(longitude);
     }
 }

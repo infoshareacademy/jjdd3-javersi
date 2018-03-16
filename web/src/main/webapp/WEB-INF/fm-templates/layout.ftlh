@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="site.css" crossorigin="anonymous">
 
+    <style>
+        #map {
+            width: 400px;
+            height: 400px;
+            background-color: grey;
+        }
+    </style>
+
     <title>${title}</title>
 </head>
 <body style="padding-top: 70px;">

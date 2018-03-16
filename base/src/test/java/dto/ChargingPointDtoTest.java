@@ -13,7 +13,7 @@ class ChargingPointDtoTest {
         //GIVEN
             double coordinates = 1.255;
         String expected = "N 01° 15' 18\"";
-        sut.setLatitudeString(coordinates);
+        sut.setLatitude(coordinates);
         //WHEN
         String result = sut.getLatitudeString();
         //THEN
@@ -25,7 +25,7 @@ class ChargingPointDtoTest {
         //GIVEN
         double coordinates = 1.255;
         String expected = "E 01° 15' 18\"";
-        sut.setLongitudeString(coordinates);
+        sut.setLongitude(coordinates);
         //WHEN
         String result = sut.getLongitudeString();
         //THEN

@@ -3,15 +3,40 @@ package controller;
 import com.google.gson.Gson;
 import model.ChargingPoint;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 
 class JsonParserTest {
+
+    @InjectMocks
+    public JsonParser testee;
+
+
+    @Mock
+    private CustomGsonBuilder customGsonBuilder;
+
+    @Test
+    public void jsonToChargingPointListDeserialize() {
+        MockitoAnnotations.initMocks(this);
+
+        List<ChargingPoint> list = new ArrayList<>();
+        ChargingPoint point = new ChargingPoint();
+        list.add(point);
+
+        Mockito.when(customGsonBuilder.deserialize(any(), any())).thenReturn(list);
+
+        testee.jsonToChargingPointList("json");
+    }
 
     @Test
     void jsonToChargingPointListOne() throws IOException {
@@ -41,5 +66,14 @@ class JsonParserTest {
                 () -> assertEquals(99559, point.getId(), "ID: "),
                 () -> assertEquals("99D22B9B-B787-4105-8236-D3871F99F9F3", point.getUuid(), "UUID: ")
         );
+    }
+
+    @Test
+    void jsonToChargingPointDeserializero() throws IOException {
+
+
+
+
+
     }
 }

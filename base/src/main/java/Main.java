@@ -1,3 +1,4 @@
+import controller.CustomGsonBuilder;
 import controller.DataFilter;
 import controller.JsonLoader;
 import controller.JsonParser;
@@ -26,7 +27,7 @@ public class Main {
 
         try {
             String jsonContent = JsonLoader.loadFromFile(args[0]);
-            JsonParser jsonParser = new JsonParser();
+            JsonParser jsonParser = new JsonParser(new CustomGsonBuilder());
             chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
         } catch (IOException e) {
             LOG.error("IOException was catched");

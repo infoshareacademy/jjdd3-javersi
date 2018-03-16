@@ -1,5 +1,6 @@
 package cdi;
 
+import controller.CustomGsonBuilder;
 import controller.JsonParser;
 import model.ChargingPoint;
 
@@ -23,7 +24,7 @@ public class ApiUploadProcessorBean extends UploadProcessor {
         Response response = target.request().accept(MediaType.APPLICATION_JSON).header("User-Agent", "curl/7.47.0").get();
         String data = response.readEntity(String.class);
         response.close();
-        List<ChargingPoint> chargingPointList = new JsonParser().jsonToChargingPointList(data);
+        List<ChargingPoint> chargingPointList = new JsonParser(new CustomGsonBuilder()).jsonToChargingPointList(data);
         clearTables();
         saveChargingPoints(chargingPointList);
         return chargingPointList.size();
