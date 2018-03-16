@@ -7,6 +7,7 @@ import model.AddressInfo;
 import model.ChargingPoint;
 import model.Country;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +22,7 @@ public abstract class UploadProcessor {
 
     @Inject
     AddressInfoDao addressInfoDao;
+
     void saveChargingPoints (List<ChargingPoint> chargingPointList) {
 
         Set<Country> countries = new HashSet<>();
@@ -28,9 +30,32 @@ public abstract class UploadProcessor {
         countries.forEach(c -> countryDao.save(c));
 
         Set<AddressInfo> addressInfos = new HashSet<>();
-        chargingPointList.forEach(c -> addressInfos.add(c.getAddressInfo()));
+        chargingPointList.forEach(c -> {
+            if (!addressInfos.stream().anyMatch(a -> a.getId() == c.getAddressInfo().getId())) {
+                addressInfos.add(c.getAddressInfo());
+            }
+
+        });
         addressInfos.forEach(c -> addressInfoDao.save(c));
 
-        chargingPointList.forEach(c -> chargingPointDao.save(c));
+
+
+        Set<ChargingPoint> chargingPoints = new HashSet<>();
+        chargingPointList.forEach(c -> {
+            if (!chargingPoints.stream().anyMatch(q -> q.getId() == c.getId())) {
+                chargingPoints.add(c);
+            }
+
+        });
+
+
+
+        chargingPoints.forEach(c -> chargingPointDao.save(c));
+    }
+
+    void clearTables() {
+        chargingPointDao.deleteAll();
+        addressInfoDao.deleteAll();
+        countryDao.deleteAll();
     }
 }

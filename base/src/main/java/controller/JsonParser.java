@@ -25,6 +25,7 @@ public class JsonParser {
     }
 
     public Set<Country> countries = new HashSet<>();
+    public Set<AddressInfo> adresses = new HashSet<>();
 
     private class ChargingPointDeserializer implements JsonDeserializer<List<ChargingPoint>> {
         public List<ChargingPoint> deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
@@ -65,7 +66,7 @@ public class JsonParser {
 
                 subElement = jsonObject.get("UsageCost");
                 if (!subElement.isJsonNull()) {
-                    chargingPoint.setUsageCost(subElement.getAsDouble());
+                    chargingPoint.setUsageCost(subElement.getAsString());
                 }
 
                 subElement = jsonObject.get("AddressInfo");
@@ -176,13 +177,24 @@ public class JsonParser {
         }
 
         private AddressInfo parseAsAddressInfo(JsonElement jsonElement) {
-            AddressInfo addressInfo = new AddressInfo();
+
             JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+            int id =-1;
 
             JsonElement subElement = jsonObject.get("ID");
             if (!subElement.isJsonNull()) {
-                addressInfo.setId(subElement.getAsInt());
+                id = subElement.getAsInt();
             }
+
+            final int idFinal = id;
+
+            if(adresses.stream().anyMatch(c -> c.getId() == idFinal)) {
+                return adresses.stream().filter(c -> c.getId() == idFinal).findFirst().get();
+            }
+
+            AddressInfo addressInfo = new AddressInfo();
+            addressInfo.setId(id);
 
             subElement = jsonObject.get("Title");
             if (!subElement.isJsonNull()) {
