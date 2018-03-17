@@ -25,7 +25,7 @@ public class ChargingPoint {
     @Transient
     private UsageType usageType;
     @Transient
-    private double usageCost;
+    private String usageCost;
     @Transient
     private StatusType statusType;
     @Transient
@@ -87,11 +87,11 @@ public class ChargingPoint {
         this.usageType = usageType;
     }
 
-    public double getUsageCost() {
+    public String getUsageCost() {
         return usageCost;
     }
 
-    public void setUsageCost(double usageCost) {
+    public void setUsageCost(String usageCost) {
         this.usageCost = usageCost;
     }
 

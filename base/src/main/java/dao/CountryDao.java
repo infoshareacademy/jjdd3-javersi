@@ -34,4 +34,9 @@ public class CountryDao {
             entityManager.remove(c);
         }
     }
+
+    public void deleteAll() {
+        final Query query = entityManager.createQuery("DELETE FROM Country c");
+        query.executeUpdate();
+    }
 }

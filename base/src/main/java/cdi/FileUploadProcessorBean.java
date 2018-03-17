@@ -40,6 +40,7 @@ public class FileUploadProcessorBean extends UploadProcessor {
 
         List<ChargingPoint> chargingPointList = new JsonParser(new CustomGsonBuilder()).jsonToChargingPointList(content);
 
+        clearTables();
         saveChargingPoints(chargingPointList);
 
         return chargingPointList.size();
@@ -50,4 +51,5 @@ public class FileUploadProcessorBean extends UploadProcessor {
                 .lines().collect(Collectors.joining(""));
         return result;
     }
+
 }

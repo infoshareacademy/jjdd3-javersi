@@ -51,7 +51,7 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
 
             subElement = jsonObject.get("UsageCost");
             if (!subElement.isJsonNull()) {
-                chargingPoint.setUsageCost(subElement.getAsDouble());
+                chargingPoint.setUsageCost(subElement.getAsString());
             }
 
             subElement = jsonObject.get("AddressInfo");

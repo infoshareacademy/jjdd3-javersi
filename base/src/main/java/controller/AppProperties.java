@@ -75,7 +75,12 @@ public class AppProperties {
 
     public Units getUnits() {
         String propName = applicationProps.getProperty(UNIT_PROPERTY_NAME);
-        return Units.valueOf(propName);
+        try {
+            return Units.valueOf(propName);
+        } catch (Exception x) {
+            creatDefaultFile();
+            return Units.KILOMETERS;
+        }
     }
 
     public void setUnits(Units value) {
