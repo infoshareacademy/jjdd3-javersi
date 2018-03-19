@@ -48,6 +48,7 @@ public class SearchByTownServlet extends HttpServlet {
         } else {
 
             List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByTown(town));
+            dataModel.put("points-map", "results");
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
             if (chargingPointsDtoList.size() > 0) {

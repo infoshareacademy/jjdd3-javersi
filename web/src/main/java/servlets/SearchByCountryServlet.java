@@ -45,6 +45,7 @@ public class SearchByCountryServlet extends HttpServlet{
             dataModel.put("body_template", "search-by-country");
         } else {
             List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByCountry(country));
+            dataModel.put("points-map", "results");
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
         }
