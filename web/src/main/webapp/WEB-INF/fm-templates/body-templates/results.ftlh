@@ -5,7 +5,7 @@
     <div class="row">
 
         <div class="col-lg-4" id="list-of-points">
-        <#list chargingPoints>
+        <#list chargingPoints?sort_by("promoted")?reverse>
             <#items as chargingPoint>
 
                 <#if chargingPoint.promoted>

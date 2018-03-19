@@ -5,11 +5,11 @@
 </script>
 
 <script>
-    function dodajMarker(mapa, lat, lon, opcjeMarkera) {
+    function addMarker(mapa, lat, lon, markerOptions) {
 
-        opcjeMarkera.position = new google.maps.LatLng(lat, lon);
-        opcjeMarkera.map = mapa;
-        var marker = new google.maps.Marker(opcjeMarkera);
+        markerOptions.position = new google.maps.LatLng(lat, lon);
+        markerOptions.map = mapa;
+        var marker = new google.maps.Marker(markerOptions);
     }
 
     function initMap() {
@@ -21,7 +21,7 @@
 
 <#list chargingPoints>
     <#items as chargingPoint>
-                dodajMarker(map, ${chargingPoint.latitude}, ${chargingPoint.longitude}, {title: '${chargingPoint.id}'});
+                addMarker(map, ${chargingPoint.latitude}, ${chargingPoint.longitude}, {title: '${chargingPoint.id}'});
     </#items>
 </#list>
     }
