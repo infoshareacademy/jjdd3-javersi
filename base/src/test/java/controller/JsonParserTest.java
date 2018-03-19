@@ -68,12 +68,4 @@ class JsonParserTest {
         );
     }
 
-    @Test
-    void jsonToChargingPointDeserializero() throws IOException {
-
-
-
-
-
-    }
 }
