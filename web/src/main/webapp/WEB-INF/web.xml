@@ -11,9 +11,9 @@
     <data-source>
         <name>java:ds/javersi_app</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://0.0.0.0:6603/javersi_data</url>
+        <url>jdbc:mysql://javersi_db:3306/javersi_data</url>
         <user>root</user>
-        <password>pass123</password>
+        <password>root</password>
     </data-source>
     <welcome-file-list>
         <welcome-file>/home</welcome-file>
