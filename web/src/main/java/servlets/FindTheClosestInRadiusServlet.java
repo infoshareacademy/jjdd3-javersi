@@ -128,7 +128,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
         try {
             template.process(dataModel, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOG.error("Template problem occurred.");
         }
     }
 
