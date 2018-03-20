@@ -20,7 +20,7 @@
                         <#if chargingPoint.promoted>
                             <a href="/administration/promoted-settings?action=remove&id=${chargingPoint.id?string["0"]}" class="btn btn-danger">Remove</a>
                         <#else>
-                            <a href="/administration/promoted-settings?action=add&id=${chargingPoint.id?string["0"]}" class="btn btn-success">Add</a>
+                            <a href="/administration/promoted-settings?action=add&id=${chargingPoint.id?string["0"]}" class="btn btn-success">Promote</a>
                         </#if>
                     </td>
                 </tr>

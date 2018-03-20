@@ -43,4 +43,8 @@ public class AddressInfoDao {
             entityManager.remove(ai);
         }
     }
+    public void deleteAll() {
+        final Query query = entityManager.createQuery("DELETE FROM AddressInfo ai");
+        query.executeUpdate();
+    }
 }

@@ -2,6 +2,8 @@ package controller;
 
 import com.google.gson.*;
 import model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Type;
 import java.text.DateFormat;
@@ -11,7 +13,9 @@ import java.util.*;
 
 public class ChargingPointDeserializer implements JsonDeserializer<List<ChargingPoint>> {
 
-    public Set<Country> countries = new HashSet<>();
+    public static final Logger LOG = LoggerFactory.getLogger(ChargingPointDeserializer.class);
+
+    private Set<Country> countries = new HashSet<>();
 
     public List<ChargingPoint> deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
             throws JsonParseException {
@@ -51,7 +55,7 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
 
             subElement = jsonObject.get("UsageCost");
             if (!subElement.isJsonNull()) {
-                chargingPoint.setUsageCost(subElement.getAsDouble());
+                chargingPoint.setUsageCost(subElement.getAsString());
             }
 
             subElement = jsonObject.get("AddressInfo");
@@ -254,8 +258,9 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
 
         final int idFinal = id;
 
-        if (countries.stream().anyMatch(c -> c.getId() == idFinal)) {
-            return countries.stream().filter(c -> c.getId() == idFinal).findFirst().get();
+        Optional<Country> countryOptional = countries.stream().filter(c -> c.getId() == idFinal).findFirst();
+        if (countryOptional.isPresent()) {
+            return countryOptional.get();
         }
 
         Country country = new Country();
@@ -334,7 +339,7 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
         try {
             date = format.parse(input);
         } catch (ParseException e) {
-            e.printStackTrace(); //Usunąć jak poznamy loggery
+            LOG.error("Parsing date exception");
             return null;
         }
 

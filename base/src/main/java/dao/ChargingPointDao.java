@@ -48,4 +48,9 @@ public class ChargingPointDao {
             entityManager.remove(cp);
         }
     }
+
+    public void deleteAll() {
+        final Query query = entityManager.createQuery("DELETE FROM ChargingPoint cp");
+        query.executeUpdate();
+    }
 }

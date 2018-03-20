@@ -25,13 +25,10 @@ public class Main {
         
         List<ChargingPoint> chargingPointList = null;
 
-        try {
-            String jsonContent = JsonLoader.loadFromFile(args[0]);
-            JsonParser jsonParser = new JsonParser(new CustomGsonBuilder());
-            chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
-        } catch (IOException e) {
-            LOG.error("IOException was catched");
-        }
+        String jsonContent = JsonLoader.loadFromFile(args[0]);
+        JsonParser jsonParser = new JsonParser(new CustomGsonBuilder());
+        chargingPointList = jsonParser.jsonToChargingPointList(jsonContent);
+
 
         Menu menu = new Menu();
         Scanner scanner = new Scanner(System.in);

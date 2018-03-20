@@ -78,6 +78,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                             latitude, radius);
 
             List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointsList);
+            dataModel.put("points-map", "results");
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
         }
