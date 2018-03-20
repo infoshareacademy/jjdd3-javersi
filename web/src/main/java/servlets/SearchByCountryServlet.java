@@ -46,12 +46,20 @@ public class SearchByCountryServlet extends HttpServlet {
         if (country == null || country.isEmpty()) {
             dataModel.put("body_template", "search-by-country");
         } else {
+            try {
 
-            List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByCountry(country));
-            dataModel.put("body_template", "results");
-            dataModel.put("chargingPoints", chargingPointsDtoList);
-            if (chargingPointsDtoList.size() > 0) {
-                countryStatisticsDao.addToStatistics(country);
+                List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByCountry(country));
+
+                if (chargingPointsDtoList.size() > 0) {
+                    countryStatisticsDao.addToStatistics(country);
+                    dataModel.put("body_template", "results");
+                    dataModel.put("chargingPoints", chargingPointsDtoList);
+                }
+                else { errorMessages(dataModel);
+                }
+            } catch (Exception e) {
+                errorMessages(dataModel);
+                LOG.error("Exception was catched.");
             }
         }
 
@@ -65,5 +73,10 @@ public class SearchByCountryServlet extends HttpServlet {
         } catch (TemplateException e) {
             LOG.error("Template problem occurred.");
         }
+    }
+
+    private void errorMessages(Map<String, Object> dataModel) {
+        dataModel.put("body_template", "search-by-country");
+        dataModel.put("error", "No charging points found");
     }
 }

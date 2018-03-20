@@ -19,10 +19,9 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 @WebServlet("/administration/load-data-upload")
-@MultipartConfig
 public class LoadDataFromApiActionServlet extends HttpServlet {
 
-    public static final Logger LOG = LoggerFactory.getLogger(JsonFileUploadActionServlet.class);
+    public static final Logger LOG = LoggerFactory.getLogger(LoadDataFromApiActionServlet.class);
 
     @Inject
     ApiUploadProcessorBean apiUploadProcessorBean;

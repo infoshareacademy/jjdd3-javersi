@@ -1,14 +1,18 @@
 <h1>Find the closest charging point</h1>
 <hr/>
-
-
+<#if error??>
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            ${error}
+        </div>
+</#if>
 <form method="get" action="/find-the-closest">
     <fieldset>
         <div class='container'>
             <label for="latitude">Latitude</label>
             <div class="form-inline">
-                <div class="form-group" >
-                    <select class="form-control" id="unit" name="directionLati" style="width:60px;" >
+                <div class="form-group">
+                    <select class="form-control" id="unit" name="directionLati" style="width:60px;">
                         <option>N</option>
                         <option>S</option>
                     </select>
@@ -43,12 +47,12 @@
             </div>
             <label for="longitude">Longitude</label>
             <div class="form-inline">
-                <div class="form-group" >
+                <div class="form-group">
                     <select class="form-control" id="unit" name="directionLong" style="width:60px;">
                         <option>E</option>
                         <option>W</option>
                     </select>
-                 </div>
+                </div>
                 <div class="form-group">
                     <div class="input-group ml-2">
                         <input type="number" class="form-control" name="degreesLong" style="width:70px;"

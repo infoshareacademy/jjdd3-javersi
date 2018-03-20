@@ -46,12 +46,18 @@ public class SearchByTownServlet extends HttpServlet {
         if (town == null || town.isEmpty()) {
             dataModel.put("body_template", "search-by-town");
         } else {
-
-            List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByTown(town));
-            dataModel.put("body_template", "results");
-            dataModel.put("chargingPoints", chargingPointsDtoList);
-            if (chargingPointsDtoList.size() > 0) {
-                townStatisticsDao.addToStatistics(town);
+            try {
+                List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByTown(town));
+                if (chargingPointsDtoList.size() > 0) {
+                    townStatisticsDao.addToStatistics(town);
+                    dataModel.put("body_template", "results");
+                    dataModel.put("chargingPoints", chargingPointsDtoList);
+                }
+                else { errorMessages(dataModel);
+                }
+            } catch (Exception e) {
+                errorMessages(dataModel);
+                LOG.error("Exception was catched.");
             }
         }
 
@@ -65,5 +71,10 @@ public class SearchByTownServlet extends HttpServlet {
         } catch (TemplateException e) {
             LOG.error("Template problem occurred.");
         }
+    }
+
+    private void errorMessages(Map<String, Object> dataModel) {
+        dataModel.put("body_template", "search-by-town");
+        dataModel.put("error", "No charging points found");
     }
 }
