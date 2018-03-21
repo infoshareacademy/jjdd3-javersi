@@ -46,16 +46,16 @@ public class CallbackServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        handle(req, res);
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        handle(req, resp);
     }
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        handle(req, res);
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        handle(req, resp);
     }
 
-    private void handle(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    private void handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             Tokens tokens = authenticationController.handle(req);
             SessionUtils.set(req, "accessToken", tokens.getAccessToken());
@@ -74,11 +74,14 @@ public class CallbackServlet extends HttpServlet {
 
             LOG.info("UserInfo: {}", userInfo.getValues());
             String userName = (String) userInfo.getValues().get("name");
+            req.getSession().setAttribute("user_name",userName);
 
-            res.sendRedirect(redirectOnSuccess);
+
+
+            resp.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
             e.printStackTrace();
-            res.sendRedirect(redirectOnFail);
+            resp.sendRedirect(redirectOnFail);
         }
     }
 

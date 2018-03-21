@@ -47,6 +47,9 @@ public class FindTheClosestServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         String directionLong = req.getParameter("directionLong");
         String degreesLong = req.getParameter("degreesLong");
         String minutesLong = req.getParameter("minutesLong");

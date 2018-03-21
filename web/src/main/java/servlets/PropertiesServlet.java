@@ -45,6 +45,9 @@ public class PropertiesServlet extends HttpServlet {
         dataModel.put("units", Formaters.getNames(Units.values()));
         dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
 

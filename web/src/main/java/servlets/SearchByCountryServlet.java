@@ -40,6 +40,9 @@ public class SearchByCountryServlet extends HttpServlet{
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by country");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         String country = req.getParameter("country");
         if (country == null || country.isEmpty()) {
             dataModel.put("body_template", "search-by-country");
@@ -48,6 +51,7 @@ public class SearchByCountryServlet extends HttpServlet{
             dataModel.put("points-map", "results");
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
+
         }
 
         PrintWriter writer = resp.getWriter();

@@ -30,14 +30,14 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
         String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
 
         String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
                 .withAudience(String.format("https://%s/userinfo", domain))
                 .withScope("openid profile")
                 .build();
-        res.sendRedirect(authorizeUrl);
+        resp.sendRedirect(authorizeUrl);
     }
 
 }

@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <#if userName??>
+            <#if userSessionName??>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="../">Home</a>
@@ -35,7 +35,7 @@
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item">
-                        <a class="nav-link" href="../logout">Logout ${userName}</a>
+                        <a class="nav-link" href="../logout">Logout ${userSessionName}</a>
                     </li>
 
                 </ul>

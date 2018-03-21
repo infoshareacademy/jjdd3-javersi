@@ -13,7 +13,7 @@ import java.io.IOException;
 public class HomeServletOAuth extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String accessToken = (String) SessionUtils.get(req, "accessToken");
         final String idToken = (String) SessionUtils.get(req, "idToken");
         if (accessToken != null) {
@@ -21,6 +21,6 @@ public class HomeServletOAuth extends HttpServlet {
         } else if (idToken != null) {
             req.setAttribute("userId", idToken);
         }
-        req.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(req, res);
+        req.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(req, resp);
     }
 }
