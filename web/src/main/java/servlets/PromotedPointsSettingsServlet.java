@@ -25,6 +25,7 @@ import java.util.Map;
 @WebServlet ("/administration/promoted-settings")
 public class PromotedPointsSettingsServlet extends HttpServlet {
 
+
     @Inject
     PromotedChargingPointsBean promotedChargingPointsBean;
 
@@ -62,6 +63,9 @@ public class PromotedPointsSettingsServlet extends HttpServlet {
         dataModel.put("body_template", "promoted-setting");
         dataModel.put("title", "Promoted Charging Points Settings");
         dataModel.put("chargingPointDtoList", chargingPointsDtoList);
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
 
         PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");

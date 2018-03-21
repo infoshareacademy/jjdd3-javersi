@@ -24,6 +24,8 @@ import java.util.*;
 
 @WebServlet("/find-the-closest")
 public class FindTheClosestServlet extends HttpServlet {
+    public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
+
 
     @Inject
     ChargingPointDao chargingPointDao;
@@ -37,8 +39,6 @@ public class FindTheClosestServlet extends HttpServlet {
     @Inject
     ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
-    public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestServlet.class);
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -47,6 +47,11 @@ public class FindTheClosestServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
+        PrintWriter writer = resp.getWriter();
+        resp.setContentType("text/html;charset=UTF-8");
         String directionLong = req.getParameter("directionLong");
         String degreesLong = req.getParameter("degreesLong");
         String minutesLong = req.getParameter("minutesLong");
@@ -72,8 +77,6 @@ public class FindTheClosestServlet extends HttpServlet {
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
         }
-
-        PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
 
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
@@ -84,4 +87,17 @@ public class FindTheClosestServlet extends HttpServlet {
             LOG.error("Template problem occurred.");
         }
     }
+
+    private void errorMessages(Map<String, Object> dataModel) {
+        dataModel.put("body_template", "find-the-closest");
+        dataModel.put("title", "Find the closest charging point");
+        dataModel.put("error", "Please fill the form with correct value");
+    }
+
+    private boolean isStringInRange(String value, int min, int max) {
+        Double coordinateDouble = Double.valueOf(value);
+        return coordinateDouble >= min && coordinateDouble <= max;
+    }
+
+
 }

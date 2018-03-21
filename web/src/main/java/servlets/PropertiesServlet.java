@@ -31,9 +31,14 @@ public class PropertiesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
+        resp.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Properties");
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
 
         String unit = req.getParameter("unit");
         if (unit != null && !unit.isEmpty()) {
@@ -41,12 +46,9 @@ public class PropertiesServlet extends HttpServlet {
         }
 
         dataModel.put("body_template", "properties");
-
         dataModel.put("units", Formaters.getNames(Units.values()));
         dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
-
-        PrintWriter writer = resp.getWriter();
-        resp.setContentType("text/html;charset=UTF-8");
+        dataModel.put("api_key", appPropertiesBean.getGoogleApiKey());
 
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 
@@ -55,5 +57,20 @@ public class PropertiesServlet extends HttpServlet {
         } catch (TemplateException e) {
             LOG.error("Template problem occurred.");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String unit = req.getParameter("unit");
+        if (unit != null && !unit.isEmpty()) {
+            appPropertiesBean.setUnits(Units.valueOf(unit.toUpperCase()));
+        }
+
+        String apiKey = req.getParameter("api_key");
+        if (apiKey != null && !apiKey.isEmpty()) {
+            appPropertiesBean.setGoogleApiKey(apiKey);
+        }
+
+        resp.sendRedirect("/administration/properties");
     }
 }

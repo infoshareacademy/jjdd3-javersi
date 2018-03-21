@@ -2,6 +2,7 @@ package servlets;
 
 import cdi.ChargingPointToDtoConverterBean;
 import dao.ChargingPointDao;
+import dao.CountryStatisticsDao;
 import dto.ChargingPointDto;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -30,6 +31,9 @@ public class SearchByCountryServlet extends HttpServlet{
     @Inject
     private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
+    @Inject
+    private CountryStatisticsDao countryStatisticsDao;
+
     public static final Logger LOG = LoggerFactory.getLogger(SearchByCountryServlet.class);
 
     @Override
@@ -40,14 +44,28 @@ public class SearchByCountryServlet extends HttpServlet{
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by country");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         String country = req.getParameter("country");
         if (country == null || country.isEmpty()) {
             dataModel.put("body_template", "search-by-country");
         } else {
-            List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByCountry(country));
-            dataModel.put("points-map", "results");
-            dataModel.put("body_template", "results");
-            dataModel.put("chargingPoints", chargingPointsDtoList);
+            try {
+
+                List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointDao.findByCountry(country));
+
+                if (chargingPointsDtoList.size() > 0) {
+                    countryStatisticsDao.addToStatistics(country);
+                    dataModel.put("body_template", "results");
+                    dataModel.put("chargingPoints", chargingPointsDtoList);
+                }
+                else { errorMessages(dataModel);
+                }
+            } catch (Exception e) {
+                errorMessages(dataModel);
+                LOG.error("Exception was catched.");
+            }
         }
 
         PrintWriter writer = resp.getWriter();
@@ -60,5 +78,10 @@ public class SearchByCountryServlet extends HttpServlet{
         } catch (TemplateException e) {
             LOG.error("Template problem occurred.");
         }
+    }
+
+    private void errorMessages(Map<String, Object> dataModel) {
+        dataModel.put("body_template", "search-by-country");
+        dataModel.put("error", "No charging points found");
     }
 }

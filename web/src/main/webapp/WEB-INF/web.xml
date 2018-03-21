@@ -11,11 +11,25 @@
     <data-source>
         <name>java:ds/javersi_app</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://0.0.0.0:6603/javersi_data</url>
+        <url>jdbc:mysql://javersi_db:3306/javersi_data</url>
         <user>root</user>
-        <password>pass123</password>
+        <password>root</password>
     </data-source>
     <welcome-file-list>
         <welcome-file>/home</welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>com.auth0.domain</param-name>
+        <param-value>javersi.eu.auth0.com</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>com.auth0.clientId</param-name>
+        <param-value>qjb_MPuj1ZYQpthp1962kdpQrT1Kj2VW</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>com.auth0.clientSecret</param-name>
+        <param-value>7ChyoKjzI5rlgSfQmxlYEK8khwDtu2BIGxxbvg7kIpqskGuYFu0FX6-Glykjz1eb</param-value>
+    </context-param>
 </web-app>

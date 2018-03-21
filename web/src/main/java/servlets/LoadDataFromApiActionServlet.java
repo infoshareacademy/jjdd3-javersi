@@ -15,10 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/administration/load-data-upload")
-@MultipartConfig
 public class LoadDataFromApiActionServlet extends HttpServlet {
 
-    public static final Logger LOG = LoggerFactory.getLogger(JsonFileUploadActionServlet.class);
+    public static final Logger LOG = LoggerFactory.getLogger(LoadDataFromApiActionServlet.class);
 
     @Inject
     ApiUploadProcessorBean apiUploadProcessorBean;
@@ -29,7 +28,7 @@ public class LoadDataFromApiActionServlet extends HttpServlet {
         try {
             recordsAdded = apiUploadProcessorBean.uploadJsonApi();
         } catch (Exception e) {
-            LOG.error("Failed to update chargingpoints from api.");
+            LOG.error("Failed to update chargingpoints from api: {}", e);
         }
         resp.sendRedirect("/administration/load-data?recordsAdded=" + recordsAdded);
     }

@@ -1,0 +1,24 @@
+version: "2"
+services:
+  javersi_db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=javersi_data
+      - MYSQL_USER=javersi
+      - MYSQL_PASSWORD=javersi123
+    ports:
+      - 4122:3306
+  javersi_web:
+    build:
+     context: ./web
+    ports:
+      - 4120:8080
+      - 4121:9990
+    depends_on:
+      - javersi_db
+    links:
+      - javersi_db
+
+
+
