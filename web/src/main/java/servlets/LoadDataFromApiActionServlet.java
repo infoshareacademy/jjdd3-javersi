@@ -32,7 +32,7 @@ public class LoadDataFromApiActionServlet extends HttpServlet {
         try {
             recordsAdded = apiUploadProcessorBean.uploadJsonApi();
         } catch (Exception e) {
-            LOG.error("Failed to update chargingpoints from api.");
+            LOG.error("Failed to update chargingpoints from api: {}", e);
         }
         resp.sendRedirect("/administration/load-data?recordsAdded=" + recordsAdded);
     }
