@@ -13,6 +13,15 @@ public class AppPropertiesBean {
 
     public void setUnits(Units units) {
         AppProperties.getInstance().setUnits(units);
+        AppProperties.getInstance().save();
     }
 
+    public String getGoogleApiKey() {
+        return AppProperties.getInstance().getGoogleApiKey();
+    }
+
+    public void  setGoogleApiKey(String key) {
+        AppProperties.getInstance().setGoogleApiKeyp(key);
+        AppProperties.getInstance().save();
+    }
 }

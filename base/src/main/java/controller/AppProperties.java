@@ -17,6 +17,7 @@ public class AppProperties {
 
     private static final String FILE_NAME = "config.properties";
     private static final String UNIT_PROPERTY_NAME = "unit";
+    private static final String GOOGLE_API_KEY_PROPERTY_NAME = "google_api_key";
 
     private Properties applicationProps = new Properties();
 
@@ -57,6 +58,7 @@ public class AppProperties {
 
     private void creatDefaultFile() {
         applicationProps.setProperty(UNIT_PROPERTY_NAME, Units.KILOMETERS.toString());
+        applicationProps.setProperty(GOOGLE_API_KEY_PROPERTY_NAME, "");
         save();
     }
 
@@ -85,5 +87,19 @@ public class AppProperties {
 
     public void setUnits(Units value) {
         applicationProps.setProperty(UNIT_PROPERTY_NAME, value.toString());
+    }
+
+    public String getGoogleApiKey() {
+        String propName = applicationProps.getProperty(GOOGLE_API_KEY_PROPERTY_NAME);
+        if (propName != null) {
+            return propName;
+        } else {
+            return "";
+        }
+    }
+
+
+    public void setGoogleApiKeyp(String key) {
+        applicationProps.setProperty(GOOGLE_API_KEY_PROPERTY_NAME, key);
     }
 }
