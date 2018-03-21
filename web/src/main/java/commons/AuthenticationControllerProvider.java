@@ -1,4 +1,4 @@
-package servlets;
+package commons;
 
 import com.auth0.AuthenticationController;
 

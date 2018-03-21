@@ -6,9 +6,8 @@ import com.auth0.SessionUtils;
 import com.auth0.Tokens;
 import com.auth0.client.auth.AuthAPI;
 import com.auth0.json.auth.UserInfo;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.net.Request;
+import commons.AuthenticationControllerProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +61,6 @@ public class CallbackServlet extends HttpServlet {
             SessionUtils.set(req, "idToken", tokens.getIdToken());
 
             String body = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            LOG.info("Body: {}", body);
 
             ServletConfig servletConfig = this.getServletConfig();
             AuthAPI auth = new AuthAPI(AuthenticationControllerProvider.getDomain(servletConfig),
@@ -72,15 +70,12 @@ public class CallbackServlet extends HttpServlet {
             Request<UserInfo> request = auth.userInfo(tokens.getAccessToken());
             UserInfo userInfo = request.execute();
 
-            LOG.info("UserInfo: {}", userInfo.getValues());
             String userName = (String) userInfo.getValues().get("name");
             req.getSession().setAttribute("user_name",userName);
 
-
-
             resp.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
-            e.printStackTrace();
+            LOG.error("IdentityVerificationException");
             resp.sendRedirect(redirectOnFail);
         }
     }

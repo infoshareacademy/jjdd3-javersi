@@ -2,6 +2,7 @@ package servlets;
 
 
 import com.auth0.AuthenticationController;
+import commons.AuthenticationControllerProvider;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
