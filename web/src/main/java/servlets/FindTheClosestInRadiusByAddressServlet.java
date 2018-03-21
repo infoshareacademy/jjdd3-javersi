@@ -32,22 +32,22 @@ import java.util.Map;
 public class FindTheClosestInRadiusByAddressServlet extends HttpServlet {
 
     @Inject
-    ChargingPointDao chargingPointDao;
+    private ChargingPointDao chargingPointDao;
 
     @Inject
-    DataFilter dataFilter;
+    private DataFilter dataFilter;
 
     @Inject
-    CoordinatesConverter coordinatesConverter;
+    private CoordinatesConverter coordinatesConverter;
 
     @Inject
-    AppPropertiesBean appPropertiesBean;
+    private AppPropertiesBean appPropertiesBean;
 
     @Inject
-    ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Inject
-    AddressToCoordinatesBean addressToCoordinatesBean;
+    private AddressToCoordinatesBean addressToCoordinatesBean;
 
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusByAddressServlet.class);
 

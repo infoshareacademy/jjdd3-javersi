@@ -4,8 +4,8 @@ import java.util.List;
 
 public class GMapsApiResponse {
 
-    List<GMapsApiResult> results;
-    String status;
+    private List<GMapsApiResult> results;
+    private String status;
 
     public List<GMapsApiResult> getResults() {
         return results;

@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"address_components", "formatted_address", "place_id", "types"})
 public class GMapsApiResult {
 
-    GMapsApiGeometry geometry;
-
-
+    private GMapsApiGeometry geometry;
 
     public GMapsApiGeometry getGeometry() {
         return geometry;

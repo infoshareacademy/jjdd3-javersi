@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GMapsApiLocation {
-    double lat;
-    double lng;
+
+    private double lat;
+    private double lng;
 
     public double getLat() {
         return lat;
