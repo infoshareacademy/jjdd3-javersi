@@ -49,7 +49,7 @@ public class Menu {
                 UI_LOG.info("Latitude (-90; 90): ");
                 double latitude = Double.valueOf(scanner.nextLine());
                 if ((longitude >= -180 && longitude <= 180) && (latitude >= -90 && latitude <= 90)) {
-                    return new Coordinates(longitude, latitude);
+                    return new Coordinates(latitude, longitude);
                 }
             } catch (NumberFormatException e) {
                 LOG.error("NumberFormatException was catched in method readCoordinates");
