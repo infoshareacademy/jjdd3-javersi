@@ -1,5 +1,11 @@
 <h1>Find the closest charging point in radius</h1>
 <hr/>
+<#if error??>
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            ${error}
+        </div>
+</#if>
 <form method="get" action="/find-the-closest-in-radius">
     <fieldset>
         <div class='container'>
