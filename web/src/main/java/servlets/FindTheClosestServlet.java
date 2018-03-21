@@ -1,8 +1,6 @@
 package servlets;
 
-import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
-import commons.Formaters;
 import controller.CoordinatesConverter;
 import controller.DataFilter;
 import dao.ChargingPointDao;
@@ -31,86 +29,56 @@ public class FindTheClosestServlet extends HttpServlet {
 
     @Inject
     ChargingPointDao chargingPointDao;
+
     @Inject
     DataFilter dataFilter;
+
     @Inject
     CoordinatesConverter coordinatesConverter;
-    @Inject
-    AppPropertiesBean appPropertiesBean;
+
     @Inject
     ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        LOG.info("User searched closest charging station");
+
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("title", "Find the closest charging point");
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
         String directionLong = req.getParameter("directionLong");
         String degreesLong = req.getParameter("degreesLong");
         String minutesLong = req.getParameter("minutesLong");
-        String secondsLong = req.getParameter("secondLong");
+        String secondLong = req.getParameter("secondLong");
         String directionLati = req.getParameter("directionLati");
         String degreesLati = req.getParameter("degreesLati");
         String minutesLati = req.getParameter("minutesLati");
-        String secondsLati = req.getParameter("secondLati");
+        String secondLati = req.getParameter("secondLati");
 
-
-        boolean isDegreesLongNull = (degreesLong == null || degreesLong.isEmpty());
-        boolean isMinutesLongNull = (minutesLong == null || minutesLong.isEmpty());
-        boolean isSecondsLongNull = (secondsLong == null || secondsLong.isEmpty());
-        boolean isDegreesLatiNull = (degreesLati == null || degreesLati.isEmpty());
-        boolean isMinutesLatiNull = (minutesLati == null || minutesLati.isEmpty());
-        boolean isSecondsLatiNull = (secondsLati == null || secondsLati.isEmpty());
-
-
-        if ((isDegreesLongNull && isMinutesLongNull && isSecondsLongNull)
-                && (isDegreesLatiNull && isMinutesLatiNull && isSecondsLatiNull)) {
+        if (degreesLong == null || degreesLong.isEmpty() || minutesLong == null || minutesLong.isEmpty()) {
             dataModel.put("body_template", "find-the-closest");
-            dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
-            dataModel.put("title", "Find the closest charging point");
-        } else if ((isDegreesLongNull && isMinutesLongNull && isSecondsLongNull)
-                || (isDegreesLatiNull && isMinutesLatiNull && isSecondsLatiNull)) {
-            errorMessages(dataModel);
+
         } else {
-            if (isDegreesLongNull) degreesLong = "0";
-            if (isMinutesLongNull) minutesLong = "0";
-            if (isSecondsLongNull) secondsLong = "0";
-            if (isDegreesLatiNull) degreesLati = "0";
-            if (isMinutesLatiNull) minutesLati = "0";
-            if (isSecondsLatiNull) secondsLati = "0";
-
-
-            if (isStringInRange(degreesLati, 0, 90)
-                    && isStringInRange(minutesLati, 0, 60)
-                    && isStringInRange(secondsLati, 0, 60)
-                    && isStringInRange(degreesLong, 0, 180)
-                    && isStringInRange(minutesLong, 0, 60)
-                    && isStringInRange(secondsLong, 0, 60)) {
-                try {
-                    double longitude = coordinatesConverter.convertCoordinatesToDecimal(directionLong, degreesLong, minutesLong, secondsLong);
-                    double latitude = coordinatesConverter.convertCoordinatesToDecimal(directionLati, degreesLati, minutesLati, secondsLati);
-
-                    List<ChargingPoint> chargingPointsList = new ArrayList<>();
-                    ChargingPoint chargingPoint = dataFilter
-                            .findClosestChargingStation(chargingPointDao.findAll(), longitude,
-                                    latitude);
-                    chargingPointsList.add(chargingPoint);
-                    List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointsList);
-
-                    dataModel.put("body_template", "results");
-                    dataModel.put("title", "Find the closest charging point");
-                    dataModel.put("chargingPoints", chargingPointsDtoList);
-
-                } catch (Exception e) {
-                    dataModel.put("body_template", "find-the-closest");
-                    dataModel.put("title", "Find the closest charging point");
-                    dataModel.put("error", "No charging points were found");
-                    LOG.error("No charging points were found");
-                }
-            } else {
-                errorMessages(dataModel);
-            }
+            double longitude = coordinatesConverter.convertCoordinatesToDecimal(directionLong, degreesLong, minutesLong, secondLong);
+            double latitude = coordinatesConverter.convertCoordinatesToDecimal(directionLati, degreesLati, minutesLati, secondLati);
+            List<ChargingPoint> chargingPointsList = new ArrayList<>();
+            ChargingPoint chargingPoint = dataFilter
+                    .findClosestChargingStation(chargingPointDao.findAll(), longitude,
+                            latitude);
+            chargingPointsList.add(chargingPoint);
+            List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointsList);
+            dataModel.put("points-map", "results");
+            dataModel.put("body_template", "results");
+            dataModel.put("chargingPoints", chargingPointsDtoList);
         }
+        resp.setContentType("text/html;charset=UTF-8");
+
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 
         try {

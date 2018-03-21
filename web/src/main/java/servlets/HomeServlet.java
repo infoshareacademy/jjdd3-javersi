@@ -32,6 +32,9 @@ public class HomeServlet extends HttpServlet {
         dataModel.put("title", "Home");
         dataModel.put("text", "Hello World! Javersi team.");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 
         try {

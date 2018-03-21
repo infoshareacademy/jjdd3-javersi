@@ -35,6 +35,10 @@ public class LoadDataFromApiFormServlet extends HttpServlet {
 
         dataModel.put("body_template", "api-data-upload");
         dataModel.put("title", "Administration");
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         String recordsAdded = req.getParameter("recordsAdded");
         if (recordsAdded != null && !recordsAdded.isEmpty()) {
             dataModel.put("recordsAdded", recordsAdded);

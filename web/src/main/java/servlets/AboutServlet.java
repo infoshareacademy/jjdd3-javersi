@@ -31,6 +31,9 @@ public class AboutServlet extends HttpServlet {
         dataModel.put("body_template", "about");
         dataModel.put("title", "About");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
         try {
             template.process(dataModel, writer);

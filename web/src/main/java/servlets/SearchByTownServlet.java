@@ -42,6 +42,9 @@ public class SearchByTownServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by town");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         String town = req.getParameter("town");
         if (town == null || town.isEmpty()) {
             dataModel.put("body_template", "search-by-town");

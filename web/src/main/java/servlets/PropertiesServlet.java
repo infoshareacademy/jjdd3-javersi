@@ -36,6 +36,15 @@ public class PropertiesServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Properties");
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
+        String unit = req.getParameter("unit");
+        if (unit != null && !unit.isEmpty()) {
+            appPropertiesBean.setUnits(Units.valueOf(unit.toUpperCase()));
+        }
+
         dataModel.put("body_template", "properties");
         dataModel.put("units", Formaters.getNames(Units.values()));
         dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
