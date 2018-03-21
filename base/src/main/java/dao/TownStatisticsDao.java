@@ -10,6 +10,7 @@ import java.util.List;
 
 @Stateless
 public class TownStatisticsDao {
+
     @PersistenceContext
     private EntityManager entityManager;
 

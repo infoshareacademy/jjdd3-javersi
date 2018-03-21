@@ -18,10 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet("/search-by-country")
-public class SearchByCountryServlet extends HttpServlet {
+public class SearchByCountryServlet extends HttpServlet{
 
     @Inject
     private ChargingPointDao chargingPointDao;
@@ -41,6 +43,9 @@ public class SearchByCountryServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by country");
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
 
         String country = req.getParameter("country");
         if (country == null || country.isEmpty()) {

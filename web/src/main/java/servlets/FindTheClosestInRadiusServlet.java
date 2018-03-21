@@ -44,6 +44,10 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, Object> dataModel = new HashMap<>();
+
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         PrintWriter writer = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
         String directionLong = req.getParameter("directionLong");
