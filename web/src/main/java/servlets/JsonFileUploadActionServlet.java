@@ -28,13 +28,19 @@ public class JsonFileUploadActionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Part filePart = req.getPart("jsonFile");
         int recordsAdded = -1;
         try {
-            recordsAdded = fileUploadProcessor.uploadJsonFile(filePart);
-        } catch (JsonFileNotFound jsonFileNotFound) {
-            LOG.error("JsonFileNotFound Exception was catched.");
+            Part filePart = req.getPart("jsonFile");
+            try {
+                recordsAdded = fileUploadProcessor.uploadJsonFile(filePart);
+            } catch (JsonFileNotFound jsonFileNotFound) {
+                LOG.error("JsonFileNotFound Exception was catched.");
+            }
+        } catch (Exception e) {
+            recordsAdded = 0;
         }
+
         resp.sendRedirect("/administration/json-upload?recordsAdded=" + recordsAdded);
+
     }
 }

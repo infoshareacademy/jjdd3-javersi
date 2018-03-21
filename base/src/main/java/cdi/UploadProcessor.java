@@ -38,18 +38,12 @@ public abstract class UploadProcessor {
         });
         addressInfos.forEach(c -> addressInfoDao.save(c));
 
-
-
         Set<ChargingPoint> chargingPoints = new HashSet<>();
         chargingPointList.forEach(c -> {
             if (!chargingPoints.stream().anyMatch(q -> q.getId() == c.getId())) {
                 chargingPoints.add(c);
             }
-
         });
-
-
-
         chargingPoints.forEach(c -> chargingPointDao.save(c));
     }
 

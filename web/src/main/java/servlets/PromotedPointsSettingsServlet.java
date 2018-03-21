@@ -25,6 +25,7 @@ import java.util.Map;
 @WebServlet ("/administration/promoted-settings")
 public class PromotedPointsSettingsServlet extends HttpServlet {
 
+
     @Inject
     PromotedChargingPointsBean promotedChargingPointsBean;
 
