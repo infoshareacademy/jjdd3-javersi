@@ -15,6 +15,9 @@
                         <a class="dropdown-item" href="../find-the-closest">Nearest</a>
                         <a class="dropdown-item" href="../find-the-closest-in-radius">In given radius</a>
                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../find-the-closest-by-address">Nearest by address</a>
+                        <a class="dropdown-item" href="../find-the-closest-in-radius-by-address">In given radius by address</a>
+                        <div class="dropdown-divider"> </div>
                         <a class="dropdown-item" href="../search-by-town">By town name</a>
                         <a class="dropdown-item" href="../search-by-country">By country name</a>
                     </div>
