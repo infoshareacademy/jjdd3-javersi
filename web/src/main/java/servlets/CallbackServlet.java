@@ -75,7 +75,7 @@ public class CallbackServlet extends HttpServlet {
 
             resp.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
-            LOG.error("IdentityVerificationException");
+            LOG.error("Verification failed", e);
             resp.sendRedirect(redirectOnFail);
         }
     }
