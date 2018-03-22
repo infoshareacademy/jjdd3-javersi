@@ -1,5 +1,6 @@
 package servlets;
 
+import cdi.UserBean;
 import com.auth0.AuthenticationController;
 import com.auth0.IdentityVerificationException;
 import com.auth0.SessionUtils;
@@ -8,9 +9,12 @@ import com.auth0.client.auth.AuthAPI;
 import com.auth0.json.auth.UserInfo;
 import com.auth0.net.Request;
 import commons.AuthenticationControllerProvider;
+import dto.UserDto;
+import model.UserName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +28,9 @@ import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = {"/callback"})
 public class CallbackServlet extends HttpServlet {
+
+    @Inject
+    private UserBean userBean;
 
     private String redirectOnSuccess;
     private String redirectOnFail;
@@ -71,7 +78,17 @@ public class CallbackServlet extends HttpServlet {
             UserInfo userInfo = request.execute();
 
             String userName = (String) userInfo.getValues().get("name");
+// TODO add user from req to dtoobject and then to database
+            UserDto userDto = new UserDto();
+            userDto.setId((String) userInfo.getValues().get("user_id"));
+            UserName user = userBean.getUser(userDto);
+
+
             req.getSession().setAttribute("user_name",userName);
+            req.getSession().setAttribute("user",user);
+
+
+
 
             resp.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "USER_INFO")
-public class UserNames {
+public class UserName {
 
     @Id
     @Column(name = "user_id")
@@ -21,6 +21,9 @@ public class UserNames {
 
     @Column(name = "nickname")
     private String nickname;
+
+    @Column(name = "role_administration")
+    private Boolean roleAdministration;
 
     public String getEmail() {
         return email;
@@ -60,5 +63,13 @@ public class UserNames {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public Boolean getRoleAdministration() {
+        return roleAdministration;
+    }
+
+    public void setRoleAdministration(Boolean roleAdministration) {
+        this.roleAdministration = roleAdministration;
     }
 }
