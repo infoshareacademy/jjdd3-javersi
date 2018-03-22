@@ -1,7 +1,6 @@
 package dao;
 
-import model.Country;
-
+import model.UserNames;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,29 +13,29 @@ public class UsersDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<User> findAll() {
-        final Query query = entityManager.createQuery("SELECT c FROM Country c");
+    public List<UserNames> findAll() {
+        final Query query = entityManager.createQuery("SELECT u FROM UserNames u");
         return query.getResultList();
     }
 
-    public Country update(Country c) {
-        return entityManager.merge(c);
+    public UserNames update(UserNames u) {
+        return entityManager.merge(u);
     }
 
-    public int save(Country c) {
-        entityManager.persist(c);
-        return c.getId();
+    public String save(UserNames u) {
+        entityManager.persist(u);
+        return u.getUserId();
     }
 
-    public void delete(int id) {
-        final Country c = entityManager.find(Country.class, id);
-        if(c != null) {
-            entityManager.remove(c);
+    public void delete(Long id) {
+        final UserNames u = entityManager.find(UserNames.class, id);
+        if(u != null) {
+            entityManager.remove(u);
         }
     }
 
     public void deleteAll() {
-        final Query query = entityManager.createQuery("DELETE FROM Country c");
+        final Query query = entityManager.createQuery("DELETE u FROM UserNames u");
         query.executeUpdate();
     }
 }
