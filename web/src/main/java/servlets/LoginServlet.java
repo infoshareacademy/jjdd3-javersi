@@ -34,9 +34,18 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+    private String getRedirectUri(HttpServletRequest req) {
+        if (req.getServerPort() == 80) {
+            return req.getScheme() + "://" + req.getServerName() + "/callback";
+        }
+
+        return req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
+    }
+
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
-        String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
+        
+        String redirectUri = getRedirectUri(req);
         LOG.info("redirectURI: {}", redirectUri);
 
         String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
