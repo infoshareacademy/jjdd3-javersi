@@ -52,6 +52,9 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point by address");
 
+        String userSessionName = (String) req.getSession().getAttribute("user_name");
+        dataModel.put("userSessionName", userSessionName);
+
         String address = req.getParameter("address");
 
 
