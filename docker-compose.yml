@@ -19,6 +19,8 @@ services:
       - javersi_db
     links:
       - javersi_db
+    extra_hosts:
+     - "api.openchargemap.io:52.62.156.51"
 
 
 
