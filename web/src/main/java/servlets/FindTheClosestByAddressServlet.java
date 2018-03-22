@@ -1,6 +1,7 @@
 package servlets;
 
 import cdi.AddressToCoordinatesBean;
+import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
 import controller.CoordinatesConverter;
 import controller.DataFilter;
@@ -42,6 +43,9 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
     @Inject
     private AddressToCoordinatesBean addressToCoordinatesBean;
 
+    @Inject
+    private AppPropertiesBean appPropertiesBean;
+
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestByAddressServlet.class);
 
     @Override
@@ -75,6 +79,7 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
                 dataModel.put("points-map", "results");
                 dataModel.put("body_template", "results");
                 dataModel.put("chargingPoints", chargingPointsDtoList);
+                dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
             } else {
                 resp.sendError(500, "Wrong Google Api Key");
             }

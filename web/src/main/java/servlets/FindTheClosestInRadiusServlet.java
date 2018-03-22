@@ -31,15 +31,19 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
 
     @Inject
-    ChargingPointDao chargingPointDao;
+    private ChargingPointDao chargingPointDao;
+
     @Inject
-    DataFilter dataFilter;
+    private DataFilter dataFilter;
+
     @Inject
-    CoordinatesConverter coordinatesConverter;
+    private CoordinatesConverter coordinatesConverter;
+
     @Inject
-    AppPropertiesBean appPropertiesBean;
+    private AppPropertiesBean appPropertiesBean;
+
     @Inject
-    ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -109,6 +113,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                             dataModel.put("body_template", "results");
                             dataModel.put("chargingPoints", chargingPointsDtoList);
                             dataModel.put("title", "Find the closest charging point in radius");
+                            dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
                         } else {
                             dataModel.put("body_template", "find-the-closest-in-radius");
                             dataModel.put("title", "Find the closest charging point in radius");

@@ -1,5 +1,6 @@
 package servlets;
 
+import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
 import controller.CoordinatesConverter;
 import controller.DataFilter;
@@ -28,16 +29,19 @@ public class FindTheClosestServlet extends HttpServlet {
 
 
     @Inject
-    ChargingPointDao chargingPointDao;
+    private ChargingPointDao chargingPointDao;
 
     @Inject
-    DataFilter dataFilter;
+    private DataFilter dataFilter;
 
     @Inject
-    CoordinatesConverter coordinatesConverter;
+    private CoordinatesConverter coordinatesConverter;
 
     @Inject
-    ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+
+    @Inject
+    private AppPropertiesBean appPropertiesBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -76,6 +80,7 @@ public class FindTheClosestServlet extends HttpServlet {
             dataModel.put("points-map", "results");
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
+            dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
         }
         resp.setContentType("text/html;charset=UTF-8");
 

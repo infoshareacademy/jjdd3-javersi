@@ -51,7 +51,7 @@ public class ChargingPointDto {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        this.country = (country != null) ? country : "";
     }
 
     public String getTown() {
@@ -59,7 +59,7 @@ public class ChargingPointDto {
     }
 
     public void setTown(String town) {
-        this.town = town;
+        this.town = (town != null) ? town : "";
     }
 
     public String getLongitudeString() {

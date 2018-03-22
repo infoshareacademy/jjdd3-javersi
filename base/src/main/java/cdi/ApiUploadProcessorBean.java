@@ -23,7 +23,7 @@ public class ApiUploadProcessorBean extends UploadProcessor {
     public int uploadJsonApi() {
 
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.openchargemap.io/v2/poi/?output=json&maxresults=1");
+        WebTarget target = client.target("https://api.openchargemap.io/v2/poi/?output=json&maxresults=100");
         Response response = target.request().accept(MediaType.APPLICATION_JSON).header("User-Agent", "curl/7.47.0").get();
         log.info("Response from HTTP Get openchargemap API: {}", response.getStatus());
         String data = response.readEntity(String.class);
