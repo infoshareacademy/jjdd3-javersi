@@ -13,11 +13,23 @@
     }
 
     function initMap() {
-        var point = {lat: ${chargingPoints[0].latitude}, lng: ${chargingPoints[0].longitude}};
-        map = new google.maps.Map(document.getElementById('map'), {
+
+            map = new google.maps.Map(document.getElementById('map'), {
+
+<#if chargingPoints?size == 0>
+            zoom: 3,
+            center: {lat: 0, lng: 0}
+            });
+
+<#elseif chargingPoints?size == 1>
+            zoom: 12,
+            center: {lat: ${chargingPoints[0].latitude},lng: ${chargingPoints[0].longitude}}}
+            );
+<#else>
             zoom: 4,
-            center: point
-        });
+            center: {lat: ${chargingPoints[0].latitude},lng: ${chargingPoints[0].longitude}}}
+            );
+</#if>
 
 <#list chargingPoints>
     <#items as chargingPoint>

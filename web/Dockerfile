@@ -4,7 +4,6 @@ MAINTAINER "Javersi"
 
 COPY target/javersi-web.war wildfly/standalone/deployments/
 
-
 # Dodanie użytkownika do panelu administracyjnego
 RUN wildfly/bin/add-user.sh admin admin --silent
 

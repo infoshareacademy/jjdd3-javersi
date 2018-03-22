@@ -3,6 +3,8 @@ package servlets;
 
 import com.auth0.AuthenticationController;
 import commons.AuthenticationControllerProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,6 +17,8 @@ import java.io.UnsupportedEncodingException;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
+
+    public static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
     private AuthenticationController authenticationController;
     private String domain;
@@ -30,9 +34,19 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+    private String getRedirectUri(HttpServletRequest req) {
+        if (req.getServerPort() == 80) {
+            return req.getScheme() + "://" + req.getServerName() + "/callback";
+        }
+
+        return req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
+    }
+
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
-        String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
+
+        String redirectUri = getRedirectUri(req);
+        LOG.info("redirectURI: {}", redirectUri);
 
         String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
                 .withAudience(String.format("https://%s/userinfo", domain))
