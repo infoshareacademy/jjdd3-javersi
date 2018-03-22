@@ -109,6 +109,8 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                             dataModel.put("body_template", "results");
                             dataModel.put("chargingPoints", chargingPointsDtoList);
                             dataModel.put("title", "Find the closest charging point in radius");
+                            dataModel.put("latitude", latitude);
+                            dataModel.put("longitude", longitude);
                         } else {
                             dataModel.put("body_template", "find-the-closest-in-radius");
                             dataModel.put("title", "Find the closest charging point in radius");

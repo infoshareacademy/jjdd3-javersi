@@ -5,6 +5,14 @@
 </script>
 
 <script>
+
+    function addMyMarker(mapa, lat, lon, markerOptions) {
+
+        markerOptions.position = new google.maps.LatLng(lat, lon);
+        markerOptions.map = mapa;
+        var marker = new google.maps.Marker(markerOptions);
+    }
+
     function addMarker(mapa, lat, lon, markerOptions) {
 
         markerOptions.position = new google.maps.LatLng(lat, lon);
@@ -31,6 +39,12 @@
             );
 </#if>
 
+ <#if longitude??>
+
+addMyMarker(map, ${latitude}, ${longitude}, {title: 'My position'});
+
+ </#if>
+
 <#list chargingPoints>
     <#items as chargingPoint>
                 addMarker(map, ${chargingPoint.latitude}, ${chargingPoint.longitude}, {title: '${chargingPoint.id}'});
@@ -38,6 +52,8 @@
 </#list>
     }
 </script>
+
+
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBrFSULlN8Yj4yi5E_NqqOHFEYZYChgIA&callback=initMap">
