@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
-
+        
         String redirectUri = getRedirectUri(req);
         LOG.info("redirectURI: {}", redirectUri);
 
