@@ -1,5 +1,6 @@
 package servlets;
 
+import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
 import dao.ChargingPointDao;
 import dao.TownStatisticsDao;
@@ -32,6 +33,9 @@ public class SearchByTownServlet extends HttpServlet {
     @Inject
     private TownStatisticsDao townStatisticsDao;
 
+    @Inject
+    private AppPropertiesBean appPropertiesBean;
+
     public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
 
     @Override
@@ -55,6 +59,7 @@ public class SearchByTownServlet extends HttpServlet {
                     townStatisticsDao.addToStatistics(town);
                     dataModel.put("body_template", "results");
                     dataModel.put("chargingPoints", chargingPointsDtoList);
+                    dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
                 }
                 else { errorMessages(dataModel);
                 }

@@ -111,6 +111,8 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                             dataModel.put("title", "Find all charging points in radius");
                             dataModel.put("latitude", latitude);
                             dataModel.put("longitude", longitude);
+                            dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
+
                         } else {
                             dataModel.put("body_template", "find-the-closest-in-radius");
                             dataModel.put("title", "Find all charging points in radius");
@@ -149,6 +151,4 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
         Double coordinateDouble = Double.valueOf(value);
         return coordinateDouble >= min && coordinateDouble <= max;
     }
-
-
 }
