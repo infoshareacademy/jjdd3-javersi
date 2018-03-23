@@ -5,15 +5,22 @@
 </script>
 
 <script>
-    function addMarker(mapa, lat, lon, markerOptions) {
 
+    function addMyMarker(mapa, lat, lon, markerOptions) {
         markerOptions.position = new google.maps.LatLng(lat, lon);
         markerOptions.map = mapa;
         var marker = new google.maps.Marker(markerOptions);
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+    }
+
+    function addMarker(mapa, lat, lon, markerOptions) {
+        markerOptions.position = new google.maps.LatLng(lat, lon);
+        markerOptions.map = mapa;
+        var marker = new google.maps.Marker(markerOptions);
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
     }
 
     function initMap() {
-
             map = new google.maps.Map(document.getElementById('map'), {
 
 <#if chargingPoints?size == 0>
@@ -30,6 +37,10 @@
             center: {lat: ${chargingPoints[0].latitude},lng: ${chargingPoints[0].longitude}}}
             );
 </#if>
+
+ <#if longitude??>
+         addMyMarker(map, ${latitude}, ${longitude}, {title: 'My position'});
+ </#if>
 
 <#list chargingPoints>
     <#items as chargingPoint>
