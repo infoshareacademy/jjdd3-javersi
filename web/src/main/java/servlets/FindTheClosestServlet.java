@@ -1,5 +1,6 @@
 package servlets;
 
+import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
 import controller.CoordinatesConverter;
 import controller.DataFilter;
@@ -26,18 +27,20 @@ import java.util.*;
 public class FindTheClosestServlet extends HttpServlet {
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
 
+    @Inject
+    private ChargingPointDao chargingPointDao;
 
     @Inject
-    ChargingPointDao chargingPointDao;
+    private DataFilter dataFilter;
 
     @Inject
-    DataFilter dataFilter;
+    private CoordinatesConverter coordinatesConverter;
 
     @Inject
-    CoordinatesConverter coordinatesConverter;
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Inject
-    ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+    private AppPropertiesBean appPropertiesBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -77,6 +80,7 @@ public class FindTheClosestServlet extends HttpServlet {
             dataModel.put("chargingPoints", chargingPointsDtoList);
             dataModel.put("latitude", latitude);
             dataModel.put("longitude", longitude);
+            dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
         }
         resp.setContentType("text/html;charset=UTF-8");
 
@@ -99,6 +103,4 @@ public class FindTheClosestServlet extends HttpServlet {
         Double coordinateDouble = Double.valueOf(value);
         return coordinateDouble >= min && coordinateDouble <= max;
     }
-
-
 }
