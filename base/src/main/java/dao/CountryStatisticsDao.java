@@ -31,6 +31,11 @@ public class CountryStatisticsDao {
         return query.getResultList();
     }
 
+    public List<CountryStatistics> findAllOrderByNumberOfVisitsDesc() {
+        final Query query = entityManager.createQuery("SELECT cs FROM CountryStatistics cs ORDER BY numberOfVisits DESC");
+        return query.getResultList();
+    }
+
     public List<CountryStatistics> findMostChecked() {
         final Query query = entityManager.createQuery("SELECT cs FROM CountryStatistics c WHERE numberOfVisits=(SELECT max(numberOfVisits) FROM CountryStatistics)");
 

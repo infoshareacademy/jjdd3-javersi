@@ -21,6 +21,8 @@
                             <div class="dropdown-divider"> </div>
                             <a class="dropdown-item" href="../search-by-town">By town name</a>
                             <a class="dropdown-item" href="../search-by-country">By country name</a>
+                            <div class="dropdown-divider"> </div>
+                            <a class="dropdown-item" href="../statistics">Statistics</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
