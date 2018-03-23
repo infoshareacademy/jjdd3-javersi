@@ -1,4 +1,4 @@
-<h1>Find the closest charging point in radius</h1>
+<h1>Find all charging points in radius</h1>
 <hr/>
 <form method="get" action="/find-the-closest-in-radius-by-address">
     <fieldset>
