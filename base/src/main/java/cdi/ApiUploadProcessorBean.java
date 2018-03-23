@@ -3,6 +3,7 @@ package cdi;
 import controller.CustomGsonBuilder;
 import controller.JsonParser;
 import model.ChargingPoint;
+import org.omg.IOP.Encoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +13,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.nio.charset.Charset;
 import java.util.List;
 
 
@@ -35,7 +37,6 @@ public class ApiUploadProcessorBean extends UploadProcessor {
         clearTables();
         log.info("Saving [{}] points", chargingPointList.size());
         saveChargingPoints(chargingPointList);
-
         return chargingPointList.size();
     }
 
