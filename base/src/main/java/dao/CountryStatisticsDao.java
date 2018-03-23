@@ -47,7 +47,7 @@ public class CountryStatisticsDao {
                 "INSERT INTO COUNTRY_STATISTICS (name, numberOfVisits) " +
                         "VALUES(:country, 1 ) ON DUPLICATE KEY UPDATE " +
                         "numberOfVisits = numberOfVisits +1");
-        query.setParameter("country", country);
+        query.setParameter("country", country.toUpperCase());
         query.executeUpdate();
         return;
     }

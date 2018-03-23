@@ -21,8 +21,6 @@
                             <div class="dropdown-divider"> </div>
                             <a class="dropdown-item" href="../search-by-town">By town name</a>
                             <a class="dropdown-item" href="../search-by-country">By country name</a>
-                            <div class="dropdown-divider"> </div>
-                            <a class="dropdown-item" href="../statistics">Statistics</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -33,6 +31,9 @@
                             <a class="dropdown-item" href="../administration/promoted-settings">Promoted Charging Points settings</a>
                             <a class="dropdown-item" href="../administration/properties">Properties</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../statistics">Statistics</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../about">About</a>

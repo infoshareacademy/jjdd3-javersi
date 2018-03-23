@@ -33,17 +33,12 @@ public class StatisticsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String userSessionName = (String) req.getSession().getAttribute("user_name");
-
-
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("userSessionName", userSessionName);
-
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
-
         dataModel.put("body_template", "statistics");
         dataModel.put("title", "Statistics");
-
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
         try {
             template.process(dataModel, writer);
@@ -54,11 +49,8 @@ public class StatisticsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String userSessionName = (String) req.getSession().getAttribute("user_name");
         String location = req.getParameter("location");
-
-
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("userSessionName", userSessionName);
         dataModel.put("title", "Statistics");
@@ -80,17 +72,12 @@ public class StatisticsServlet extends HttpServlet {
             if (locationList.size()==0) {
                 dataModel.put("body_template", "statistics");
                 dataModel.put("error" , "Noone was searching charging points by country name");
-
             }
             else {
                 dataModel.put("body_template", "show-statistics");
                 dataModel.put("locationList", locationList);
             }
-
         }
-
-
-
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
         try {
             template.process(dataModel, writer);
@@ -98,5 +85,4 @@ public class StatisticsServlet extends HttpServlet {
             LOG.error("Template Exception was catched.");
         }
     }
-
 }

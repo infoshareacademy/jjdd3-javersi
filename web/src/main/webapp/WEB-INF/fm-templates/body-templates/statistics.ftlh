@@ -10,13 +10,13 @@
 </#if>
     <form method="post" action="/statistics?location=country">
         <fieldset>
-            <button type="submit" class="btn btn-primary" name="location">Show countries</button>
+            <button type="submit" class="btn btn-primary" name="location">Show statistics for countries</button>
         </fieldset>
     </form>
     </br>
     <form method="post" action="/statistics?location=town">
         <fieldset>
-            <button type="submit" class="btn btn-primary">Show towns</button>
+            <button type="submit" class="btn btn-primary">Show statistics for towns</button>
         </fieldset>
     </form>
 </div>

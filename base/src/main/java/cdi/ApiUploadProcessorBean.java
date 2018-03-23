@@ -20,19 +20,33 @@ public class ApiUploadProcessorBean extends UploadProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(ApiUploadProcessorBean.class);
 
-    public int uploadJsonApi() {
+    public int uploadAllChargingpointsFromApi() {
+        return uploadJsonApi( downloadJsonAsStringFromApi("maxresults=1000000"));
 
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.openchargemap.io/v2/poi/?output=json&maxresults=100");
-        Response response = target.request().accept(MediaType.APPLICATION_JSON).header("User-Agent", "curl/7.47.0").get();
-        log.info("Response from HTTP Get openchargemap API: {}", response.getStatus());
-        String data = response.readEntity(String.class);
-        response.close();
-        List<ChargingPoint> chargingPointList = new JsonParser(new CustomGsonBuilder()).jsonToChargingPointList(data);
+    }
+
+    public int uploadAllChargingpointsInPolandFromApi() {
+       return uploadJsonApi( downloadJsonAsStringFromApi("countrycode=PL&maxresults=1000000"));
+    }
+
+    private int uploadJsonApi(String Json) {
+
+        List<ChargingPoint> chargingPointList = new JsonParser(new CustomGsonBuilder()).jsonToChargingPointList(Json);
         clearTables();
         log.info("Saving [{}] points", chargingPointList.size());
         saveChargingPoints(chargingPointList);
 
         return chargingPointList.size();
+    }
+
+    private String downloadJsonAsStringFromApi(String properties) {
+
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("https://api.openchargemap.io/v2/poi/?output=json&" + properties);
+        Response response = target.request().accept(MediaType.APPLICATION_JSON).header("User-Agent", "curl/7.47.0").get();
+        log.info("Response from HTTP Get openchargemap API: {}", response.getStatus());
+        String data = response.readEntity(String.class);
+        response.close();
+        return data;
     }
 }

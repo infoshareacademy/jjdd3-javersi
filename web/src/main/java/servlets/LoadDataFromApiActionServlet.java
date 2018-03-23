@@ -24,11 +24,21 @@ public class LoadDataFromApiActionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String option = req.getParameter("option");
         int recordsAdded = -1;
+        if (option.equals("pl")) {
         try {
-            recordsAdded = apiUploadProcessorBean.uploadJsonApi();
+            recordsAdded = apiUploadProcessorBean.uploadAllChargingpointsInPolandFromApi();
         } catch (Exception e) {
             LOG.error("Failed to update chargingpoints from api: {}", e);
+        }
+        }
+        else if (option.equals("all")) {
+            try {
+                recordsAdded = apiUploadProcessorBean.uploadAllChargingpointsFromApi();
+            } catch (Exception e) {
+                LOG.error("Failed to update chargingpoints from api: {}", e);
+            }
         }
         resp.sendRedirect("/administration/load-data?recordsAdded=" + recordsAdded);
     }

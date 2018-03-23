@@ -48,7 +48,7 @@ public class TownStatisticsDao {
                 "INSERT INTO TOWN_STATISTICS (name, numberOfVisits) " +
                 "VALUES(:town, 1 ) ON DUPLICATE KEY UPDATE " +
                 "numberOfVisits = numberOfVisits +1");
-        query.setParameter("town", town);
+        query.setParameter("town", town.toUpperCase());
         query.executeUpdate();
         return;
     }
