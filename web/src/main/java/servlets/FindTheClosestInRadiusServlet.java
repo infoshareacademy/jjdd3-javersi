@@ -74,7 +74,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                 && isRadiusStringNull) {
             dataModel.put("body_template", "find-the-closest-in-radius");
             dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
-            dataModel.put("title", "Find the closest charging point in radius");
+            dataModel.put("title", "Find all charging points in radius");
         } else if ((isDegreesLongNull && isMinutesLongNull && isSecondsLongNull)
                 || (isDegreesLatiNull && isMinutesLatiNull && isSecondsLatiNull)
                 || isRadiusStringNull) {
@@ -108,12 +108,12 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                         if (chargingPointsDtoList.size() > 0) {
                             dataModel.put("body_template", "results");
                             dataModel.put("chargingPoints", chargingPointsDtoList);
-                            dataModel.put("title", "Find the closest charging point in radius");
+                            dataModel.put("title", "Find all charging points in radius");
                             dataModel.put("latitude", latitude);
                             dataModel.put("longitude", longitude);
                         } else {
                             dataModel.put("body_template", "find-the-closest-in-radius");
-                            dataModel.put("title", "Find the closest charging point in radius");
+                            dataModel.put("title", "Find all charging points in radius");
                             dataModel.put("error", "No charging points were found");
                             dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
                             LOG.error("No charging points were found");
@@ -140,7 +140,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
 
     private void errorMessages(Map<String, Object> dataModel) {
         dataModel.put("body_template", "find-the-closest-in-radius");
-        dataModel.put("title", "Find the closest charging point in radius");
+        dataModel.put("title", "Find all charging points in radius");
         dataModel.put("error", "Please fill the form with correct value");
         dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
     }
