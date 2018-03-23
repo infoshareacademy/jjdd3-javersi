@@ -155,6 +155,4 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
         Double coordinateDouble = Double.valueOf(value);
         return coordinateDouble >= min && coordinateDouble <= max;
     }
-
-
 }
