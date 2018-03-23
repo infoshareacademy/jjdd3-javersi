@@ -11,6 +11,7 @@
         markerOptions.position = new google.maps.LatLng(lat, lon);
         markerOptions.map = mapa;
         var marker = new google.maps.Marker(markerOptions);
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
     }
 
     function addMarker(mapa, lat, lon, markerOptions) {
@@ -18,6 +19,7 @@
         markerOptions.position = new google.maps.LatLng(lat, lon);
         markerOptions.map = mapa;
         var marker = new google.maps.Marker(markerOptions);
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
     }
 
     function initMap() {
@@ -40,9 +42,7 @@
 </#if>
 
  <#if longitude??>
-
-addMyMarker(map, ${latitude}, ${longitude}, {title: 'My position'});
-
+         addMyMarker(map, ${latitude}, ${longitude}, {title: 'My position'});
  </#if>
 
 <#list chargingPoints>
