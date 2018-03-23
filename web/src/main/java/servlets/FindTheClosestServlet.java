@@ -27,7 +27,6 @@ import java.util.*;
 public class FindTheClosestServlet extends HttpServlet {
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
 
-
     @Inject
     private ChargingPointDao chargingPointDao;
 
@@ -77,9 +76,10 @@ public class FindTheClosestServlet extends HttpServlet {
                             latitude);
             chargingPointsList.add(chargingPoint);
             List<ChargingPointDto> chargingPointsDtoList = chargingPointToDtoConverterBean.convertList(chargingPointsList);
-            dataModel.put("points-map", "results");
             dataModel.put("body_template", "results");
             dataModel.put("chargingPoints", chargingPointsDtoList);
+            dataModel.put("latitude", latitude);
+            dataModel.put("longitude", longitude);
             dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
         }
         resp.setContentType("text/html;charset=UTF-8");
@@ -103,6 +103,4 @@ public class FindTheClosestServlet extends HttpServlet {
         Double coordinateDouble = Double.valueOf(value);
         return coordinateDouble >= min && coordinateDouble <= max;
     }
-
-
 }
