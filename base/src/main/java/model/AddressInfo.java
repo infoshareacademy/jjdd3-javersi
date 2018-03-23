@@ -27,14 +27,15 @@ public class AddressInfo {
     @JoinColumn(name = "country_id")
     private Country country;
 
-    @Transient
+    @Column(name = "postcode")
     private String postcode;
-    @Transient
+    @Column(name = "title")
     private String title;
-    @Transient
+    @Column(name = "addressLine1")
     private String addressLine1;
-    @Transient
+    @Column(name = "addressLine2")
     private String addressLine2;
+
     @Transient
     private String contactTelephone1;
     @Transient

@@ -350,7 +350,12 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
         Connection connection = new Connection();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        JsonElement subElement = jsonObject.get("Comments");
+        JsonElement subElement = jsonObject.get("ID");
+        if (!subElement.isJsonNull()) {
+            connection.setId(subElement.getAsInt());
+        }
+
+        subElement = jsonObject.get("Comments");
         if (!subElement.isJsonNull()) {
             connection.setComments(subElement.getAsString());
         }
@@ -435,7 +440,12 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
         Level level = new Level();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        JsonElement subElement = jsonObject.get("Title");
+        JsonElement subElement = jsonObject.get("ID");
+        if (!subElement.isJsonNull()) {
+            level.setId(subElement.getAsInt());
+        }
+
+        subElement = jsonObject.get("Title");
         if (!subElement.isJsonNull())
             level.setTitle(subElement.getAsString());
 

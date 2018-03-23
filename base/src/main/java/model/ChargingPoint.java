@@ -16,6 +16,12 @@ public class ChargingPoint {
     @JoinColumn(name = "address_id")
     private AddressInfo addressInfo;
 
+    @ManyToMany
+    @JoinTable(name = "CHARGING_POINTS_TO_CONNECTIONS",
+            joinColumns = @JoinColumn(name = "CHARGING_POINT_ID", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "CONNECTION_ID", referencedColumnName = "id"))
+    private List<Connection> connectionList;
+
     @Transient
     private String uuid;
     @Transient
@@ -34,8 +40,6 @@ public class ChargingPoint {
     private int dataQualityLevel;
     @Transient
     private Date dateCreated;
-    @Transient
-    private List<Connection> connectionList;
     @Transient
     private Date dateLastVerified;
     @Transient
@@ -182,4 +186,6 @@ public class ChargingPoint {
     public void setDateLastConfirmed(Date dateLastConfirmed) {
         this.dateLastConfirmed = dateLastConfirmed;
     }
+
+
 }
