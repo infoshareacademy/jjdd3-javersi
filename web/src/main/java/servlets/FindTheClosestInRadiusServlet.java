@@ -31,14 +31,18 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
 
     @Inject
-    ChargingPointDao chargingPointDao;
+    private ChargingPointDao chargingPointDao;
+
     @Inject
-    DataFilter dataFilter;
+    private DataFilter dataFilter;
+
     @Inject
-    CoordinatesConverter coordinatesConverter;
+    private CoordinatesConverter coordinatesConverter;
+
     @Inject
-    AppPropertiesBean appPropertiesBean;
-    @Inject
+    private AppPropertiesBean appPropertiesBean;
+
+    private @Inject
     ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Override
