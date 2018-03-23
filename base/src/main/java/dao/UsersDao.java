@@ -1,6 +1,6 @@
 package dao;
 
-import model.UserName;
+import model.User;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -14,33 +14,28 @@ public class UsersDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<UserName> findAll() {
-        final Query query = entityManager.createQuery("SELECT u FROM UserNames u");
+    public List<User> findAll() {
+        final Query query = entityManager.createQuery("SELECT u FROM User u");
         return query.getResultList();
     }
 
-    public UserName update(UserName u) {
+    public User update(User u) {
         return entityManager.merge(u);
     }
 
-    public String save(UserName u) {
+    public String save(User u) {
         entityManager.persist(u);
         return u.getUserId();
     }
 
     public void delete(Long id) {
-        final UserName u = entityManager.find(UserName.class, id);
+        final User u = entityManager.find(User.class, id);
         if(u != null) {
             entityManager.remove(u);
         }
     }
 
-    public void deleteAll() {
-        final Query query = entityManager.createQuery("DELETE u FROM UserNames u");
-        query.executeUpdate();
-    }
-
-    public UserName findById(String id) {
-
+    public User findById(String id) {
+        return entityManager.find(User.class, id);
     }
 }

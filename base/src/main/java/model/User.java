@@ -1,10 +1,12 @@
 package model;
 
+import dto.UserDto;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USER_INFO")
-public class UserName {
+public class User {
 
     @Id
     @Column(name = "user_id")
@@ -71,5 +73,16 @@ public class UserName {
 
     public void setRoleAdministration(Boolean roleAdministration) {
         this.roleAdministration = roleAdministration;
+    }
+
+    public static User createFromUserDto(UserDto dto) {
+        User user = new User();
+        user.userId = dto.getId();
+        user.email = dto.getEmail();
+        user.name = dto.getName();
+        user.locale = dto.getLocale();
+        user.nickname = dto.getNickname();
+        user.setRoleAdministration(false);
+        return user;
     }
 }

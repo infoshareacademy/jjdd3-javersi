@@ -1,16 +1,20 @@
 package dto;
 
 public class UserDto {
-    private String userName;
+    private String email;
     private String id;
-    private String token;
+    private String name;
+    private String locale;
+    private String nickname;
+    private Boolean roleAdministration;
 
-    public String getUserName() {
-        return userName;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getId() {
@@ -21,11 +25,35 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getToken() {
-        return token;
+    public String getName() {
+        return name;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Boolean getRoleAdministration() {
+        return roleAdministration;
+    }
+
+    public void setRoleAdministration(Boolean roleAdministration) {
+        this.roleAdministration = roleAdministration;
     }
 }

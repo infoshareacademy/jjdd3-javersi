@@ -10,7 +10,7 @@ import com.auth0.json.auth.UserInfo;
 import com.auth0.net.Request;
 import commons.AuthenticationControllerProvider;
 import dto.UserDto;
-import model.UserName;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,10 +78,14 @@ public class CallbackServlet extends HttpServlet {
             UserInfo userInfo = request.execute();
 
             String userName = (String) userInfo.getValues().get("name");
-// TODO add user from req to dtoobject and then to database
+
             UserDto userDto = new UserDto();
-            userDto.setId((String) userInfo.getValues().get("user_id"));
-            UserName user = userBean.getUser(userDto);
+            userDto.setId((String) userInfo.getValues().get("sub"));
+            userDto.setEmail((String) userInfo.getValues().get("email"));
+            userDto.setName((String) userInfo.getValues().get("name"));
+            userDto.setLocale((String) userInfo.getValues().get("locale"));
+            userDto.setNickname((String) userInfo.getValues().get("nickname"));
+            User user = userBean.getUser(userDto);
 
 
             req.getSession().setAttribute("user_name",userName);

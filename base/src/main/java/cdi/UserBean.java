@@ -2,7 +2,7 @@ package cdi;
 
 import dao.UsersDao;
 import dto.UserDto;
-import model.UserName;
+import model.User;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -13,14 +13,17 @@ public class UserBean {
     @Inject
     UsersDao usersDao;
 
-    public UserName getUser(UserDto userDto) {
-        UserName userName = usersDao.findById(userDto.getId());
-        if (userName != null)
-            return userName;
+    public User getUser(UserDto userDto) {
+        User user = usersDao.findById(userDto.getId());
+        if (user != null)
+            return user;
         else {
-
+            User newUser = User.createFromUserDto(userDto);
+            if (usersDao.findAll().size() == 0) {
+                newUser.setRoleAdministration(true);
+            }
+            usersDao.save(newUser);
+            return newUser;
         }
     }
-
-
 }
