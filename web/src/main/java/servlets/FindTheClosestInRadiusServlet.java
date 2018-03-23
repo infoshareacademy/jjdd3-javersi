@@ -42,8 +42,8 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     @Inject
     private AppPropertiesBean appPropertiesBean;
 
-    private @Inject
-    ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+    @Inject
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
