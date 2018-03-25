@@ -5,6 +5,7 @@ import dao.TownStatisticsDao;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +40,15 @@ public class StatisticsServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         dataModel.put("body_template", "statistics");
         dataModel.put("title", "Statistics");
+
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
+
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
         try {
             template.process(dataModel, writer);
@@ -80,6 +90,13 @@ public class StatisticsServlet extends HttpServlet {
         }
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
         try {
+            Object userObject = req.getSession().getAttribute("user");
+            User user;
+            if (userObject != null) {
+                user = (User) userObject;
+                dataModel.put("userSessionName", user.getName());
+                dataModel.put("userAdmin", user.getRoleAdministration());
+            }
             template.process(dataModel, writer);
         } catch (TemplateException e) {
             LOG.error("Template Exception was catched.");
