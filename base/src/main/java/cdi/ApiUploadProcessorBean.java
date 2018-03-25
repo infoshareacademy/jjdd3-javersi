@@ -27,8 +27,8 @@ public class ApiUploadProcessorBean extends UploadProcessor {
 
     }
 
-    public int uploadAllChargingpointsInPolandFromApi() {
-       return uploadJsonApi( downloadJsonAsStringFromApi("countrycode=PL&maxresults=1000000"));
+    public int uploadAllChargingpointsInIndiaFromApi() {
+       return uploadJsonApi( downloadJsonAsStringFromApi("countrycode=IN&maxresults=1000000"));
     }
 
     private int uploadJsonApi(String Json) {

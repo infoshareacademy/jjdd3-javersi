@@ -9,7 +9,7 @@
     </br>
     <form method="post" action="/administration/load-data-upload?option=pl">
         <fieldset>
-            <button type="submit" class="btn btn-primary">Upload all chargingpoints in Poland</button>
+            <button type="submit" class="btn btn-primary">Upload all chargingpoints in India</button>
         </fieldset>
     </form>
 </div>

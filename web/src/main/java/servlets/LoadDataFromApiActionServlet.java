@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +27,7 @@ public class LoadDataFromApiActionServlet extends HttpServlet {
         int recordsAdded = -1;
         if (option.equals("pl")) {
         try {
-            recordsAdded = apiUploadProcessorBean.uploadAllChargingpointsInPolandFromApi();
+            recordsAdded = apiUploadProcessorBean.uploadAllChargingpointsInIndiaFromApi();
         } catch (Exception e) {
             LOG.error("Failed to update chargingpoints from api: {}", e);
         }
