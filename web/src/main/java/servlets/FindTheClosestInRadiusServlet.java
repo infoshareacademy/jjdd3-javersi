@@ -31,15 +31,19 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestInRadiusServlet.class);
 
     @Inject
-    ChargingPointDao chargingPointDao;
+    private ChargingPointDao chargingPointDao;
+
     @Inject
-    DataFilter dataFilter;
+    private DataFilter dataFilter;
+
     @Inject
-    CoordinatesConverter coordinatesConverter;
+    private CoordinatesConverter coordinatesConverter;
+
     @Inject
-    AppPropertiesBean appPropertiesBean;
+    private AppPropertiesBean appPropertiesBean;
+
     @Inject
-    ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
+    private ChargingPointToDtoConverterBean chargingPointToDtoConverterBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -74,7 +78,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                 && isRadiusStringNull) {
             dataModel.put("body_template", "find-the-closest-in-radius");
             dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
-            dataModel.put("title", "Find the closest charging point in radius");
+            dataModel.put("title", "Find all charging points in radius");
         } else if ((isDegreesLongNull && isMinutesLongNull && isSecondsLongNull)
                 || (isDegreesLatiNull && isMinutesLatiNull && isSecondsLatiNull)
                 || isRadiusStringNull) {
@@ -108,10 +112,14 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
                         if (chargingPointsDtoList.size() > 0) {
                             dataModel.put("body_template", "results");
                             dataModel.put("chargingPoints", chargingPointsDtoList);
-                            dataModel.put("title", "Find the closest charging point in radius");
+                            dataModel.put("title", "Find all charging points in radius");
+                            dataModel.put("latitude", latitude);
+                            dataModel.put("longitude", longitude);
+                            dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
+
                         } else {
                             dataModel.put("body_template", "find-the-closest-in-radius");
-                            dataModel.put("title", "Find the closest charging point in radius");
+                            dataModel.put("title", "Find all charging points in radius");
                             dataModel.put("error", "No charging points were found");
                             dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
                             LOG.error("No charging points were found");
@@ -138,7 +146,7 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
 
     private void errorMessages(Map<String, Object> dataModel) {
         dataModel.put("body_template", "find-the-closest-in-radius");
-        dataModel.put("title", "Find the closest charging point in radius");
+        dataModel.put("title", "Find all charging points in radius");
         dataModel.put("error", "Please fill the form with correct value");
         dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
     }
@@ -147,6 +155,4 @@ public class FindTheClosestInRadiusServlet extends HttpServlet {
         Double coordinateDouble = Double.valueOf(value);
         return coordinateDouble >= min && coordinateDouble <= max;
     }
-
-
 }

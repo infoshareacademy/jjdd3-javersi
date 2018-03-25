@@ -57,7 +57,7 @@ public class FindTheClosestInRadiusByAddressServlet extends HttpServlet {
         LOG.info("User searched charging station at the area");
 
         Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("title", "Find the closest charging point in radius");
+        dataModel.put("title", "Find all charging points in radius");
 
         String userSessionName = (String) req.getSession().getAttribute("user_name");
         dataModel.put("userSessionName", userSessionName);
@@ -84,6 +84,7 @@ public class FindTheClosestInRadiusByAddressServlet extends HttpServlet {
                 dataModel.put("points-map", "results");
                 dataModel.put("body_template", "results");
                 dataModel.put("chargingPoints", chargingPointsDtoList);
+                dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
             } else {
                 resp.sendError(500, "Wrong Google Api Key");
             }
