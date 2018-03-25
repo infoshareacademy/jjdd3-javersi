@@ -31,6 +31,11 @@ public class CountryStatisticsDao {
         return query.getResultList();
     }
 
+    public List<CountryStatistics> findAllOrderByNumberOfVisitsDesc() {
+        final Query query = entityManager.createQuery("SELECT cs FROM CountryStatistics cs ORDER BY numberOfVisits DESC");
+        return query.getResultList();
+    }
+
     public List<CountryStatistics> findMostChecked() {
         final Query query = entityManager.createQuery("SELECT cs FROM CountryStatistics c WHERE numberOfVisits=(SELECT max(numberOfVisits) FROM CountryStatistics)");
 
@@ -42,7 +47,7 @@ public class CountryStatisticsDao {
                 "INSERT INTO COUNTRY_STATISTICS (name, numberOfVisits) " +
                         "VALUES(:country, 1 ) ON DUPLICATE KEY UPDATE " +
                         "numberOfVisits = numberOfVisits +1");
-        query.setParameter("country", country);
+        query.setParameter("country", country.toUpperCase());
         query.executeUpdate();
         return;
     }

@@ -1,10 +1,16 @@
 <h1>Api data upload</h1>
 <hr/>
 <div class="col-3">
-    <form method="post" action="/administration/load-data-upload">
+    <form method="post" action="/administration/load-data-upload?option=all">
     <fieldset>
-        <button type="submit" class="btn btn-primary">Upload data</button>
+        <button type="submit" class="btn btn-primary">Upload all chargingpoints</button>
     </fieldset>
+    </form>
+    </br>
+    <form method="post" action="/administration/load-data-upload?option=pl">
+        <fieldset>
+            <button type="submit" class="btn btn-primary">Upload all chargingpoints in India</button>
+        </fieldset>
     </form>
 </div>
 

@@ -37,6 +37,9 @@
                        </#if>
                     </#if>
                     <li class="nav-item">
+                        <a class="nav-link" href="../statistics">Statistics</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../about">About</a>
                     </li>
                 </ul>

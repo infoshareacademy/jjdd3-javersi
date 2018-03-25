@@ -18,7 +18,7 @@ public class CountryDao {
         final Query query = entityManager.createQuery("SELECT c FROM Country c");
         return query.getResultList();
     }
-    
+
     public Country update(Country c) {
         return entityManager.merge(c);
     }
