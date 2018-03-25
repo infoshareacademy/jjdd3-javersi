@@ -3,6 +3,7 @@ package servlets;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,8 +33,14 @@ public class HomeServlet extends HttpServlet {
         dataModel.put("title", "Home");
         dataModel.put("text", "Hello World! Javersi team.");
 
-        String userSessionName = (String) req.getSession().getAttribute("user_name");
-        dataModel.put("userSessionName", userSessionName);
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
+
 
         Template template = TemplateProvider.createTemplate(getServletContext(), "layout.ftlh");
 

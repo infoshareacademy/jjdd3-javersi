@@ -23,15 +23,19 @@
                             <a class="dropdown-item" href="../search-by-country">By country name</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="administration">Administration <span class="caret"></span></a>
-                        <div class="dropdown-menu" aria-labelledby="administration">
-                            <a class="dropdown-item" href="../administration/json-upload">JSON file upload</a>
-                            <a class="dropdown-item" href="../administration/load-data">Upload data from api</a>
-                            <a class="dropdown-item" href="../administration/promoted-settings">Promoted Charging Points settings</a>
-                            <a class="dropdown-item" href="../administration/properties">Properties</a>
-                        </div>
-                    </li>
+                    <#if userAdmin??>
+                        <#if userAdmin>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="administration">Administration!!! <span class="caret"></span></a>
+                                <div class="dropdown-menu" aria-labelledby="administration">
+                                    <a class="dropdown-item" href="../administration/json-upload">JSON file upload</a>
+                                    <a class="dropdown-item" href="../administration/load-data">Upload data from api</a>
+                                    <a class="dropdown-item" href="../administration/promoted-settings">Promoted Charging Points settings</a>
+                                    <a class="dropdown-item" href="../administration/properties">Properties</a>
+                                </div>
+                            </li>
+                       </#if>
+                    </#if>
                     <li class="nav-item">
                         <a class="nav-link" href="../about">About</a>
                     </li>

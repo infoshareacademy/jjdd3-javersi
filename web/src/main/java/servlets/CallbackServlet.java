@@ -87,12 +87,8 @@ public class CallbackServlet extends HttpServlet {
             userDto.setNickname((String) userInfo.getValues().get("nickname"));
             User user = userBean.getUser(userDto);
 
-
             req.getSession().setAttribute("user_name",userName);
             req.getSession().setAttribute("user",user);
-
-
-
 
             resp.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
