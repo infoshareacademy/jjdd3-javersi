@@ -33,11 +33,13 @@ public class AuthenticationAdminFilter implements Filter {
         User user = (User) request.getSession().getAttribute("user");
 
         if (user != null) {
-            if (user.getRoleAdministration()) {
-                filterChain.doFilter(servletRequest, servletResponse);
+            if (!user.getRoleAdministration()) {
+                HttpServletResponse response = (HttpServletResponse ) servletResponse;
+                response.sendError(404);
             }
         }
-        HttpServletResponse response = (HttpServletResponse ) servletResponse;
-        response.sendError(404);
+
+        filterChain.doFilter(servletRequest, servletResponse);
+
     }
 }

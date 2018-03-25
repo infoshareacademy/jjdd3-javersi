@@ -33,11 +33,11 @@ public class AuthenticationUserFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         User user = (User) request.getSession().getAttribute("user");
 
-        if (user != null) {
-            filterChain.doFilter(servletRequest, servletResponse);
-        } else {
+        if (user == null) {
             HttpServletResponse response = (HttpServletResponse ) servletResponse;
             response.sendError(403);
         }
+
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }
