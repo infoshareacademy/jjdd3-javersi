@@ -8,6 +8,7 @@ import dto.ChargingPointDto;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,8 +47,13 @@ public class SearchByTownServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by town");
 
-        String userSessionName = (String) req.getSession().getAttribute("user_name");
-        dataModel.put("userSessionName", userSessionName);
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
 
         String town = req.getParameter("town");
         if (town == null || town.isEmpty()) {

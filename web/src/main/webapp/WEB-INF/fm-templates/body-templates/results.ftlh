@@ -17,9 +17,45 @@
 <div class="card-body">
     <p class="card-text"><strong>Latitude:</strong> ${chargingPoint.latitudeString} <br/>
         <strong>Longitude:</strong> ${chargingPoint.longitudeString}</p>
+
+<h5>Address</h5>
+    <p class="card-text">
+        <strong>Title:</strong>
+        ${chargingPoint.title} </br>
+
+        <strong>Address:</strong>
+        ${chargingPoint.addressLine1} </br>
+
+        <#if chargingPoint.addressLine2??>
+            ${chargingPoint.addressLine2}
+            </br>
+        </#if>
+
+        <strong>Post code:</strong>
+        ${chargingPoint.postCode} </br>
+
+        <strong>Region:</strong>
+        ${chargingPoint.stateOrProvince} </br>
+    </p>
+
+        <#list chargingPoint.connections>
+        <h5>Connections</h5>
+         <p class="card-text">
+         <#items as connection>
+         <strong>Ord. : </strong>
+         ${connection?counter}</br>
+
+
+            <strong>Description:</strong>
+                ${connection.levelComments} </br>
+                   <strong>Quantity:</strong>
+                                ${connection.quantity} </br>
+          </#items>
+           </p>
+       </#list>
 </div>
 </div>
-            </#items>
+        </#items>
         </#list>
 
         </div>

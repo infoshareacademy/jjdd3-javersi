@@ -1,26 +1,13 @@
-package model;
+package dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "USER_INFO")
-public class UserNames {
-
-    @Id
-    @Column(name = "user_id")
-    private String userId;
-
-    @Column(name = "email")
+public class UserDto {
     private String email;
-
-    @Column(name = "name")
+    private String id;
     private String name;
-
-    @Column(name = "locale")
     private String locale;
-
-    @Column(name = "nickname")
     private String nickname;
+    private Boolean roleAdministration;
+
 
     public String getEmail() {
         return email;
@@ -28,6 +15,14 @@ public class UserNames {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,19 +41,19 @@ public class UserNames {
         this.locale = locale;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getNickname() {
         return nickname;
     }
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public Boolean getRoleAdministration() {
+        return roleAdministration;
+    }
+
+    public void setRoleAdministration(Boolean roleAdministration) {
+        this.roleAdministration = roleAdministration;
     }
 }
