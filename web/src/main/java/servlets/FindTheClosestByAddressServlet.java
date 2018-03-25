@@ -1,6 +1,7 @@
 package servlets;
 
 import cdi.AddressToCoordinatesBean;
+import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
 import controller.CoordinatesConverter;
 import controller.DataFilter;
@@ -11,6 +12,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
 import model.Coordinates;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +44,9 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
     @Inject
     private AddressToCoordinatesBean addressToCoordinatesBean;
 
+    @Inject
+    private AppPropertiesBean appPropertiesBean;
+
     public static final Logger LOG = LoggerFactory.getLogger(FindTheClosestByAddressServlet.class);
 
     @Override
@@ -51,6 +56,14 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point by address");
+
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
 
         String address = req.getParameter("address");
 
@@ -72,6 +85,7 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
                 dataModel.put("points-map", "results");
                 dataModel.put("body_template", "results");
                 dataModel.put("chargingPoints", chargingPointsDtoList);
+                dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
             } else {
                 resp.sendError(500, "Wrong Google Api Key");
             }

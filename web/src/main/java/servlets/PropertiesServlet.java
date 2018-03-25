@@ -6,6 +6,7 @@ import controller.Units;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +37,20 @@ public class PropertiesServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Properties");
+
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
+
+        String unit = req.getParameter("unit");
+        if (unit != null && !unit.isEmpty()) {
+            appPropertiesBean.setUnits(Units.valueOf(unit.toUpperCase()));
+        }
+
         dataModel.put("body_template", "properties");
         dataModel.put("units", Formaters.getNames(Units.values()));
         dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));

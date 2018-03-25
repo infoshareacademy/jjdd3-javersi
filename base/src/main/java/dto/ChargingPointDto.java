@@ -3,9 +3,11 @@ package dto;
 import cdi.PromotedChargingPointsBean;
 import controller.CoordinatesConverter;
 import model.ChargingPoint;
+import model.Connection;
 import model.PromotedChargingPoint;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,8 +22,18 @@ public class ChargingPointDto {
     private String latitudeString;
     private double latitude;
     private double longitude;
+    private List<ConnectionDto> connections;
 
     private boolean promoted;
+
+
+    private String stateOrProvince;
+    private String postCode;
+    private String title;
+    private String addressLine1;
+    private String addressLine2;
+
+
 
 
     public static ChargingPointDto convertFromChargingPoint(ChargingPoint chargingPoint) {
@@ -31,6 +43,16 @@ public class ChargingPointDto {
         result.setTown(chargingPoint.getAddressInfo().getTown());
         result.setLongitude(chargingPoint.getAddressInfo().getLongitude());
         result.setLatitude(chargingPoint.getAddressInfo().getLatitude());
+
+        result.setStateOrProvince(chargingPoint.getAddressInfo().getStateOrProvince());
+        result.setPostCode(chargingPoint.getAddressInfo().getPostcode());
+        result.setTitle(chargingPoint.getAddressInfo().getTitle());
+        result.setAddressLine1(chargingPoint.getAddressInfo().getAddressLine1());
+        result.setAddressLine2(chargingPoint.getAddressInfo().getAddressLine2());
+
+        List<ConnectionDto> connections = new ArrayList<>();
+        chargingPoint.getConnectionList().forEach(c -> connections.add(new ConnectionDto(c.getLevel().getComments(), c.getLevel().getTitle(), c.getQuantity())));
+        result.setConnections(connections);
         return result;
     }
 
@@ -51,7 +73,7 @@ public class ChargingPointDto {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        this.country = (country != null) ? country : "";
     }
 
     public String getTown() {
@@ -59,7 +81,7 @@ public class ChargingPointDto {
     }
 
     public void setTown(String town) {
-        this.town = town;
+        this.town = (town != null) ? town : "";
     }
 
     public String getLongitudeString() {
@@ -94,5 +116,53 @@ public class ChargingPointDto {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
         this.longitudeString = coordinatesConverter.convertDecimalAToLongitudeCoordinatesString(longitude);
+    }
+
+    public List<ConnectionDto> getConnections() {
+        return connections;
+    }
+
+    public void setConnections(List<ConnectionDto> connections) {
+        this.connections = connections;
+    }
+
+    public String getStateOrProvince() {
+        return stateOrProvince;
+    }
+
+    public void setStateOrProvince(String stateOrProvince) {
+        this.stateOrProvince = stateOrProvince;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
 }

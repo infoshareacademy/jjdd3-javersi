@@ -1,5 +1,6 @@
 package servlets;
 
+import cdi.AppPropertiesBean;
 import cdi.ChargingPointToDtoConverterBean;
 import dao.ChargingPointDao;
 import dao.TownStatisticsDao;
@@ -7,6 +8,7 @@ import dto.ChargingPointDto;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +34,9 @@ public class SearchByTownServlet extends HttpServlet {
     @Inject
     private TownStatisticsDao townStatisticsDao;
 
+    @Inject
+    private AppPropertiesBean appPropertiesBean;
+
     public static final Logger LOG = LoggerFactory.getLogger(SearchByTownServlet.class);
 
     @Override
@@ -41,6 +46,14 @@ public class SearchByTownServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Search by town");
+
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
 
         String town = req.getParameter("town");
         if (town == null || town.isEmpty()) {
@@ -52,6 +65,7 @@ public class SearchByTownServlet extends HttpServlet {
                     townStatisticsDao.addToStatistics(town);
                     dataModel.put("body_template", "results");
                     dataModel.put("chargingPoints", chargingPointsDtoList);
+                    dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
                 }
                 else { errorMessages(dataModel);
                 }

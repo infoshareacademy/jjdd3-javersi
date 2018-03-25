@@ -13,6 +13,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
 import model.Coordinates;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,7 +58,15 @@ public class FindTheClosestInRadiusByAddressServlet extends HttpServlet {
         LOG.info("User searched charging station at the area");
 
         Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("title", "Find the closest charging point in radius");
+        dataModel.put("title", "Find all charging points in radius");
+
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
 
         String radiusString = req.getParameter("radius");
         String address = req.getParameter("address");
@@ -81,6 +90,7 @@ public class FindTheClosestInRadiusByAddressServlet extends HttpServlet {
                 dataModel.put("points-map", "results");
                 dataModel.put("body_template", "results");
                 dataModel.put("chargingPoints", chargingPointsDtoList);
+                dataModel.put("google_api_key", appPropertiesBean.getGoogleApiKey());
             } else {
                 resp.sendError(500, "Wrong Google Api Key");
             }

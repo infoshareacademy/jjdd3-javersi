@@ -88,7 +88,7 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
                 List<Connection> connectionList = new ArrayList<Connection>();
                 for (JsonElement subArrayElement : subElement.getAsJsonArray()) {
                     if (!subArrayElement.isJsonNull())
-                        connectionList.add(parseAsConnection(subArrayElement));
+                        connectionList.add(parseAsConnection(subArrayElement, chargingPoint));
                 }
                 chargingPoint.setConnectionList(connectionList);
             }
@@ -346,11 +346,17 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
         return date;
     }
 
-    private Connection parseAsConnection(JsonElement jsonElement) {
+    private Connection parseAsConnection(JsonElement jsonElement, ChargingPoint chargingPoint ) {
         Connection connection = new Connection();
+        connection.setChargingPoint( chargingPoint);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        JsonElement subElement = jsonObject.get("Comments");
+        JsonElement subElement = jsonObject.get("ID");
+        if (!subElement.isJsonNull()) {
+            connection.setId(subElement.getAsInt());
+        }
+
+        subElement = jsonObject.get("Comments");
         if (!subElement.isJsonNull()) {
             connection.setComments(subElement.getAsString());
         }
@@ -435,7 +441,12 @@ public class ChargingPointDeserializer implements JsonDeserializer<List<Charging
         Level level = new Level();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        JsonElement subElement = jsonObject.get("Title");
+        JsonElement subElement = jsonObject.get("ID");
+        if (!subElement.isJsonNull()) {
+            level.setId(subElement.getAsInt());
+        }
+
+        subElement = jsonObject.get("Title");
         if (!subElement.isJsonNull())
             level.setTitle(subElement.getAsString());
 
