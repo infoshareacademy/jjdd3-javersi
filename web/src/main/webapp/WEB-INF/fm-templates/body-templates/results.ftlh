@@ -20,9 +20,12 @@
 
 <h5>Address</h5>
     <p class="card-text">
+        <#if chargingPoint.title??>
         <strong>Title:</strong>
         ${chargingPoint.title} </br>
+        </#if>
 
+        <#if chargingPoint.addressLine1??>
         <strong>Address:</strong>
         ${chargingPoint.addressLine1} </br>
 
@@ -30,12 +33,18 @@
             ${chargingPoint.addressLine2}
             </br>
         </#if>
+        </#if>
 
+        <#if chargingPoint.postCode??>
         <strong>Post code:</strong>
         ${chargingPoint.postCode} </br>
+        </#if>
 
+
+        <#if chargingPoint.stateOrProvince??>
         <strong>Region:</strong>
         ${chargingPoint.stateOrProvince} </br>
+        </#if>
     </p>
 
         <#list chargingPoint.connections>
