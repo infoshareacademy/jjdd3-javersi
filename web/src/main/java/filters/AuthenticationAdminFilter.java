@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(
-        filterName = "AuthenticationFilter",
+        filterName = "AuthenticationAdminFilter",
         urlPatterns = {"/administration/*"},
         initParams = {
                 @WebInitParam(name = "isUserAdmin", value = "true")
         })
-public class AuthenticationFilter implements Filter {
+public class AuthenticationAdminFilter implements Filter {
 
     Boolean isUserAdmin;
     @Override

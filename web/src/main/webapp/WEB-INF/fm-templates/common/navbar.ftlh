@@ -26,7 +26,7 @@
                     <#if userAdmin??>
                         <#if userAdmin>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="administration">Administration!!! <span class="caret"></span></a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="administration">Administration <span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="administration">
                                     <a class="dropdown-item" href="../administration/json-upload">JSON file upload</a>
                                     <a class="dropdown-item" href="../administration/load-data">Upload data from api</a>
