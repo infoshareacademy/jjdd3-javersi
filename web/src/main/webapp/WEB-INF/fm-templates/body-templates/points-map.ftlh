@@ -44,7 +44,7 @@
 
 <#list chargingPoints>
     <#items as chargingPoint>
-                addMarker(map, ${chargingPoint.latitude}, ${chargingPoint.longitude}, {title: '${chargingPoint.id}'});
+                addMarker(map, ${chargingPoint.latitude}, ${chargingPoint.longitude}, {title: '${chargingPoint.title}'});
     </#items>
 </#list>
     }

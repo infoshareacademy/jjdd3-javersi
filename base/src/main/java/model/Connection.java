@@ -1,14 +1,39 @@
 package model;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "CONNECTION")
 public class Connection {
-    private ConnectionType connectionType;
-    private StatusType statusType;
+
+    @Id
+    @Column(name = "id")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "level_id")
     private Level level;
+
+    @ManyToOne
+    @JoinColumn(name = "chargingPoint_id")
+    private ChargingPoint chargingPoint;
+
+    @Transient
+    private ConnectionType connectionType;
+    @Transient
+    private StatusType statusType;
+    @Transient
     private double amps;
+    @Transient
     private double voltage;
+    @Transient
     private double powerKW;
+    @Transient
     private CurrentType currentType;
+    @Column(name = "quantity")
     private int quantity;
+    @Transient
     private String comments;
 
     public ConnectionType getConnectionType() {
@@ -81,5 +106,21 @@ public class Connection {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ChargingPoint getChargingPoint() {
+        return chargingPoint;
+    }
+
+    public void setChargingPoint(ChargingPoint chargingPoint) {
+        this.chargingPoint = chargingPoint;
     }
 }
