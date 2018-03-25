@@ -1,5 +1,6 @@
 package servlets;
 
+import cdi.UserBean;
 import com.auth0.AuthenticationController;
 import com.auth0.IdentityVerificationException;
 import com.auth0.SessionUtils;
@@ -8,9 +9,12 @@ import com.auth0.client.auth.AuthAPI;
 import com.auth0.json.auth.UserInfo;
 import com.auth0.net.Request;
 import commons.AuthenticationControllerProvider;
+import dto.UserDto;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +28,9 @@ import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = {"/callback"})
 public class CallbackServlet extends HttpServlet {
+
+    @Inject
+    private UserBean userBean;
 
     private String redirectOnSuccess;
     private String redirectOnFail;
@@ -71,7 +78,16 @@ public class CallbackServlet extends HttpServlet {
             UserInfo userInfo = request.execute();
 
             String userName = (String) userInfo.getValues().get("name");
-            req.getSession().setAttribute("user_name",userName);
+
+            UserDto userDto = new UserDto();
+            userDto.setId((String) userInfo.getValues().get("sub"));
+            userDto.setEmail((String) userInfo.getValues().get("email"));
+            userDto.setName((String) userInfo.getValues().get("name"));
+            userDto.setLocale((String) userInfo.getValues().get("locale"));
+            userDto.setNickname((String) userInfo.getValues().get("nickname"));
+            User user = userBean.getUser(userDto);
+
+            req.getSession().setAttribute("user",user);
 
             resp.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
