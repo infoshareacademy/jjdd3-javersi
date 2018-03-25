@@ -11,8 +11,8 @@ import java.io.IOException;
 
 @WebFilter(
         filterName = "AuthenticationUserFilter",
-        urlPatterns = {"/about" , "/callback", "/find-the-closest-by-address", "/find-the-closest-in-radius-by-address", "/find-the-closest-in-radius",
-        "/find-the-closest", "/login", "/logout", "/search-by-country", "/search-by-town"},
+        urlPatterns = {"/about", "/find-the-closest-by-address", "/find-the-closest-in-radius-by-address", "/find-the-closest-in-radius",
+        "/find-the-closest", "/search-by-country", "/search-by-town"},
         initParams = {
                 @WebInitParam(name = "isUser", value = "true")
         })

@@ -12,6 +12,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
 import model.Coordinates;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,8 +57,13 @@ public class FindTheClosestByAddressServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("title", "Find the closest charging point by address");
 
-        String userSessionName = (String) req.getSession().getAttribute("user_name");
-        dataModel.put("userSessionName", userSessionName);
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
 
         String address = req.getParameter("address");
 

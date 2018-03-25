@@ -4,6 +4,7 @@ import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import model.ChargingPoint;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,8 +33,13 @@ public class JsonFileUploadFormServlet extends HttpServlet {
         dataModel.put("body_template", "json-file-upload");
         dataModel.put("title", "Administration");
 
-        String userSessionName = (String) req.getSession().getAttribute("user_name");
-        dataModel.put("userSessionName", userSessionName);
+        Object userObject = req.getSession().getAttribute("user");
+        User user;
+        if (userObject != null) {
+            user = (User) userObject;
+            dataModel.put("userSessionName", user.getName());
+            dataModel.put("userAdmin", user.getRoleAdministration());
+        }
 
         String recordsAdded = req.getParameter("recordsAdded");
         if (recordsAdded != null && !recordsAdded.isEmpty()) {
