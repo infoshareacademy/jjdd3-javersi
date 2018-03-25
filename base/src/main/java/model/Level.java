@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "LEVEL")
@@ -15,7 +16,7 @@ public class Level {
     private String comments;
 
     @OneToMany(mappedBy = "level", fetch = FetchType.EAGER)
-    private Connection connection;
+    private List<Connection> connections;
 
     @Transient
     private boolean isFastChargeCapable;
@@ -52,11 +53,11 @@ public class Level {
         this.id = id;
     }
 
-    public Connection getConnection() {
-        return connection;
+    public List<Connection> getConnections() {
+        return connections;
     }
 
-    public void setConnection(Connection connection) {
-        this.connection = connection;
+    public void setConnections(List<Connection> connections) {
+        this.connections = connections;
     }
 }

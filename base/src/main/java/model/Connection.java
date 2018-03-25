@@ -12,11 +12,12 @@ public class Connection {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "level")
+    @JoinColumn(name = "level_id")
     private Level level;
 
-    @ManyToMany(mappedBy = "connectionList")
-    private List<ChargingPoint> chargingPointList;
+    @ManyToOne
+    @JoinColumn(name = "chargingPoint_id")
+    private ChargingPoint chargingPoint;
 
     @Transient
     private ConnectionType connectionType;
@@ -30,7 +31,7 @@ public class Connection {
     private double powerKW;
     @Transient
     private CurrentType currentType;
-    @Transient
+    @Column(name = "quantity")
     private int quantity;
     @Transient
     private String comments;
@@ -115,11 +116,11 @@ public class Connection {
         this.id = id;
     }
 
-    public List<ChargingPoint> getChargingPointList() {
-        return chargingPointList;
+    public ChargingPoint getChargingPoint() {
+        return chargingPoint;
     }
 
-    public void setChargingPointList(List<ChargingPoint> chargingPointList) {
-        this.chargingPointList = chargingPointList;
+    public void setChargingPoint(ChargingPoint chargingPoint) {
+        this.chargingPoint = chargingPoint;
     }
 }
