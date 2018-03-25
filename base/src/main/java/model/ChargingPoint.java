@@ -16,6 +16,9 @@ public class ChargingPoint {
     @JoinColumn(name = "address_id")
     private AddressInfo addressInfo;
 
+    @OneToMany(mappedBy = "chargingPoint", fetch = FetchType.EAGER)
+    private List<Connection> connectionList;
+
     @Transient
     private String uuid;
     @Transient
@@ -34,8 +37,6 @@ public class ChargingPoint {
     private int dataQualityLevel;
     @Transient
     private Date dateCreated;
-    @Transient
-    private List<Connection> connectionList;
     @Transient
     private Date dateLastVerified;
     @Transient
@@ -182,4 +183,6 @@ public class ChargingPoint {
     public void setDateLastConfirmed(Date dateLastConfirmed) {
         this.dateLastConfirmed = dateLastConfirmed;
     }
+
+
 }

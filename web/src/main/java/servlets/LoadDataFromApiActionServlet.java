@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,11 +23,21 @@ public class LoadDataFromApiActionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String option = req.getParameter("option");
         int recordsAdded = -1;
+        if (option.equals("pl")) {
         try {
-            recordsAdded = apiUploadProcessorBean.uploadJsonApi();
+            recordsAdded = apiUploadProcessorBean.uploadAllChargingpointsInIndiaFromApi();
         } catch (Exception e) {
             LOG.error("Failed to update chargingpoints from api: {}", e);
+        }
+        }
+        else if (option.equals("all")) {
+            try {
+                recordsAdded = apiUploadProcessorBean.uploadAllChargingpointsFromApi();
+            } catch (Exception e) {
+                LOG.error("Failed to update chargingpoints from api: {}", e);
+            }
         }
         resp.sendRedirect("/administration/load-data?recordsAdded=" + recordsAdded);
     }

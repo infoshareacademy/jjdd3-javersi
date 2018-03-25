@@ -1,11 +1,7 @@
 package cdi;
 
-import dao.AddressInfoDao;
-import dao.ChargingPointDao;
-import dao.CountryDao;
-import model.AddressInfo;
-import model.ChargingPoint;
-import model.Country;
+import dao.*;
+import model.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -14,6 +10,13 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class UploadProcessor {
+
+    @Inject
+    LevelDao levelDao;
+
+    @Inject
+    ConnectionDao connectionDao;
+
     @Inject
     ChargingPointDao chargingPointDao;
 
@@ -24,6 +27,8 @@ public abstract class UploadProcessor {
     AddressInfoDao addressInfoDao;
 
     void saveChargingPoints (List<ChargingPoint> chargingPointList) {
+
+
 
         Set<Country> countries = new HashSet<>();
         chargingPointList.forEach(c -> countries.add(c.getAddressInfo().getCountry()));
@@ -45,11 +50,29 @@ public abstract class UploadProcessor {
             }
         });
         chargingPoints.forEach(c -> chargingPointDao.save(c));
+
+        Set<Level> levels = new HashSet<>();
+        chargingPointList.forEach(c -> c.getConnectionList().forEach(n -> {
+            if (!levels.stream().anyMatch(a -> a.getId() == n.getLevel().getId())) {
+                levels.add(n.getLevel());
+            }
+        }));
+        levels.forEach(c -> levelDao.save(c));
+
+        Set<Connection> connections = new HashSet<>();
+        chargingPointList.forEach(c -> c.getConnectionList().forEach(n -> {
+            if (!connections.stream().anyMatch(a -> a.getId() == n.getId())) {
+                connections.add(n);
+            }
+        }));
+        connections.forEach(c -> connectionDao.save(c));
     }
 
     void clearTables() {
         chargingPointDao.deleteAll();
         addressInfoDao.deleteAll();
         countryDao.deleteAll();
+        connectionDao.deleteAll();
+        levelDao.deleteAll();
     }
 }

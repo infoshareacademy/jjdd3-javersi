@@ -12,22 +12,21 @@ import java.io.IOException;
 @WebFilter(
         filterName = "AuthenticationUserFilter",
         urlPatterns = {"/about", "/find-the-closest-by-address", "/find-the-closest-in-radius-by-address", "/find-the-closest-in-radius",
-        "/find-the-closest", "/search-by-country", "/search-by-town"},
-        initParams = {
-                @WebInitParam(name = "isUser", value = "true")
-        })
+        "/find-the-closest", "/search-by-country", "/search-by-town", "/statistics"}
+      )
 public class AuthenticationUserFilter implements Filter {
 
-    Boolean isUser;
+
     @Override
-    public void init(FilterConfig filterConfig) {
-        Boolean isUser = Boolean.valueOf(filterConfig.getInitParameter("isUser"));
+    public void init(FilterConfig filterConfig) throws ServletException {
+
     }
 
     @Override
     public void destroy() {
-        isUser = false;
+
     }
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
@@ -35,9 +34,10 @@ public class AuthenticationUserFilter implements Filter {
         User user = (User) request.getSession().getAttribute("user");
 
         if (user != null) {
-                filterChain.doFilter(servletRequest, servletResponse);
+            filterChain.doFilter(servletRequest, servletResponse);
+        } else {
+            HttpServletResponse response = (HttpServletResponse ) servletResponse;
+            response.sendError(403);
         }
-        HttpServletResponse response = (HttpServletResponse ) servletResponse;
-        response.sendError(404);
     }
 }

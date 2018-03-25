@@ -32,8 +32,13 @@ public class TownStatisticsDao {
         return query.getResultList();
     }
 
+    public List<TownStatistics> findAllOrderByNumberOfVisitsDesc() {
+        final Query query = entityManager.createQuery("SELECT ts FROM TownStatistics ts ORDER BY numberOfVisits DESC");
+        return query.getResultList();
+    }
+
     public List<TownStatistics> findMostChecked() {
-        final Query query = entityManager.createQuery("SELECT ts FROM TownStatistics c WHERE numberOfVisits=(SELECT max(numberOfVisits) FROM TownStatistics)");
+        final Query query = entityManager.createQuery("SELECT ts FROM TownStatistics ts WHERE numberOfVisits=(SELECT max(numberOfVisits) FROM TownStatistics)");
 
         return query.getResultList();
     }
@@ -43,7 +48,7 @@ public class TownStatisticsDao {
                 "INSERT INTO TOWN_STATISTICS (name, numberOfVisits) " +
                 "VALUES(:town, 1 ) ON DUPLICATE KEY UPDATE " +
                 "numberOfVisits = numberOfVisits +1");
-        query.setParameter("town", town);
+        query.setParameter("town", town.toUpperCase());
         query.executeUpdate();
         return;
     }
