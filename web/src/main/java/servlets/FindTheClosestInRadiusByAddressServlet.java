@@ -71,11 +71,20 @@ public class FindTheClosestInRadiusByAddressServlet extends HttpServlet {
         String radiusString = req.getParameter("radius");
         String address = req.getParameter("address");
 
+        boolean isRadiusStringNull = (radiusString == null || radiusString.isEmpty());
+        boolean isRadiusCorrect = false;
+
+        if (!isRadiusStringNull) {
+            isRadiusCorrect = (radiusString.length() < 10);
+        }
         if (address == null || address.isEmpty()) {
             dataModel.put("body_template", "find-the-closest-in-radius-by-address");
             dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
+        }  else if (!isRadiusCorrect) {
+            dataModel.put("body_template", "find-the-closest-in-radius-by-address");
+            dataModel.put("current_unit", Formaters.naturalFormat(appPropertiesBean.getCurrentUnit().name()));
+            dataModel.put("error", "Wrong radius. Value should be less then 999 999 999");
         } else {
-
             Coordinates coordinates = addressToCoordinatesBean.getCoordinates(address);
             if (coordinates != null) {
                 double radius = Double.valueOf(radiusString);
