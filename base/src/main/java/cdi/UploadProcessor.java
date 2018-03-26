@@ -27,9 +27,6 @@ public abstract class UploadProcessor {
     AddressInfoDao addressInfoDao;
 
     void saveChargingPoints (List<ChargingPoint> chargingPointList) {
-
-
-
         Set<Country> countries = new HashSet<>();
         chargingPointList.forEach(c -> countries.add(c.getAddressInfo().getCountry()));
         countries.forEach(c -> countryDao.save(c));
@@ -52,11 +49,18 @@ public abstract class UploadProcessor {
         chargingPoints.forEach(c -> chargingPointDao.save(c));
 
         Set<Level> levels = new HashSet<>();
-        chargingPointList.forEach(c -> c.getConnectionList().forEach(n -> {
-            if (!levels.stream().anyMatch(a -> a.getId() == n.getLevel().getId())) {
-                levels.add(n.getLevel());
-            }
-        }));
+        try {
+            chargingPointList.forEach(c -> c.getConnectionList().forEach(n -> {
+
+                if (!levels.stream().anyMatch(a -> a.getId() == n.getLevel().getId())) {
+                    System.out.println("#X " + n.getLevel().getId());
+                    levels.add(n.getLevel());
+                }
+            }));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }
+        levels.forEach(c -> System.out.println(c.getId()));
         levels.forEach(c -> levelDao.save(c));
 
         Set<Connection> connections = new HashSet<>();
@@ -65,14 +69,15 @@ public abstract class UploadProcessor {
                 connections.add(n);
             }
         }));
-        connections.forEach(c -> connectionDao.save(c));
+        connections.forEach(c -> { if (c.getLevel() != null) connectionDao.save(c);});
+
     }
 
     void clearTables() {
+        connectionDao.deleteAll();
+        levelDao.deleteAll();
         chargingPointDao.deleteAll();
         addressInfoDao.deleteAll();
         countryDao.deleteAll();
-        connectionDao.deleteAll();
-        levelDao.deleteAll();
     }
 }
